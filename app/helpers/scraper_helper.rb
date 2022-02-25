@@ -31,16 +31,24 @@ module ScraperHelper
     # KROQ 1980 to 2013
     # 91X 1983 to 2016
     # Q101 1996 to 2003
-    @list_store = []
-    @doc_list = target_scrape("http://www.radiohitlist.com/KROQ/#{station}-#{year}.htm")
+
+    @doc_list = target_scrape("http://www.radiohitlist.com/#{station}/#{station}-#{year}.htm")
     @info = @doc_list.css("table")
 
-    ## left off here
-    
-    @info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\r\n/,'') } # NOT WORKING
     rows = @info.css("tr")
-    @list_store = rows.css('tr').map { |tr| tr.at_css('td:font:p:span').map &:text} # trouble with this
-    #tr.td.font.p.span.text
-  end
+    @list_store_raw = rows.css('tr').map { |tr| tr.css('span').map &:text}
+    @list_store_raw = @list_store_raw[0] - ["-"]
+    @list_store_raw[0][0..4].each do |lsr|
+      if lsr == "Ranking" || lsr == "Artist Name" || lsr == "Song Title" || lsr == "Album Title" || lsr == "Click for sample"
+        @list_store_raw[0].shift
+      end
+    end
+    @list_store_raw[0].each do |lsr|
+      lsr.slice! "\r\n      "
+    end
 
+    # next step, need to break into array of arrays 
+  end
+  
 end
+# lsr = lsr.gsub("\r\n      ", "")
