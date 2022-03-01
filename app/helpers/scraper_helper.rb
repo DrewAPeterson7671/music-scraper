@@ -10,12 +10,6 @@ module ScraperHelper
     @doc = Nokogiri::HTML.parse(URI.open(url))
   end
   
-  def league_year_prefix(year, league = 'NBA')
-    # aba_seasons = 1968..1976
-    baa_seasons = 1947..1949
-    baa_seasons.include?(year) ? league_year = "BAA_#{year}" : league_year = "#{league}_#{year}"
-  end
-
   def harvest_franks_page_list(year)
     #1980 to 2019
     @list_store = []
@@ -34,21 +28,27 @@ module ScraperHelper
 
     @doc_list = target_scrape("http://www.radiohitlist.com/#{station}/#{station}-#{year}.htm")
     @info = @doc_list.css("table")
-
     rows = @info.css("tr")
-    @list_store_raw = rows.css('tr').map { |tr| tr.css('span').map &:text}
-    @list_store_raw = @list_store_raw[0] - ["-"]
-    @list_store_raw[0][0..4].each do |lsr|
-      if lsr == "Ranking" || lsr == "Artist Name" || lsr == "Song Title" || lsr == "Album Title" || lsr == "Click for sample"
-        @list_store_raw[0].shift
+    @list_store_raw = rows.css('tr')[1..-1].map { |tr| tr.css('span').map &:text}
+
+    @list_store_raw.delete_if(&:blank?)
+
+    @list_store_raw.reject! do |lsr|
+      lsr == ["Ranking", "Artist Name", "Song Title", "Album Title", "Click for sample"]
+    end
+    
+    @list_store_raw.each do |lsr|
+      lsr.reject! do |lsra|
+        lsra == "-"
       end
     end
-    @list_store_raw[0].each do |lsr|
-      lsr.slice! "\r\n      "
-    end
 
-    # next step, need to break into array of arrays 
+    @list_store_raw.each do |lsr|
+      lsr.each do |lsra|
+        lsra.slice! "\r\n      "
+      end
+    end
   end
   
 end
-# lsr = lsr.gsub("\r\n      ", "")
+
