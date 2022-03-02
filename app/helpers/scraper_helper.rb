@@ -49,6 +49,22 @@ module ScraperHelper
       end
     end
   end
+
+  def rocklists_
+    @doc_list = target_scrape("https://www.rocklists.com/radiostations.html")
+    @info = @doc_list.css('div.entry-content')
+    @info.css('a').try(:text) # gets station names, SEND to array?
+    @station_list = []
+
+    @info.css('a').each do |i|
+      @station_list << i.try(:text)
+      @station_list << i['href']
+    end
+
+    # @info.css('a')[0]['href']
+    # @info.css('a')[0].try(:text)
+
+  end
   
 end
 
