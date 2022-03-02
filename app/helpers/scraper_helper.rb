@@ -13,10 +13,10 @@ module ScraperHelper
   def harvest_franks_page_list(year)
     #1980 to 2019
     @list_store = []
-    @doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}.htm")
-    @info = @doc_list.css("tbody")
-    @info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\r\n/,'') }
-    rows = @info.css("tr")
+    doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}.htm")
+    info = doc_list.css("tbody")
+    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\r\n/,'') }
+    rows = info.css("tr")
 
     @list_store = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
   end
@@ -26,37 +26,36 @@ module ScraperHelper
     # 91X 1983 to 2016
     # Q101 1996 to 2003
 
-    @doc_list = target_scrape("http://www.radiohitlist.com/#{station}/#{station}-#{year}.htm")
-    @info = @doc_list.css("table")
-    rows = @info.css("tr")
-    @list_store_raw = rows.css('tr')[1..-1].map { |tr| tr.css('span').map &:text}
+    doc_list = target_scrape("http://www.radiohitlist.com/#{station}/#{station}-#{year}.htm")
+    info = doc_list.css("table")
+    rows = info.css("tr")
+    @list_store = rows.css('tr')[1..-1].map { |tr| tr.css('span').map &:text}
 
-    @list_store_raw.delete_if(&:blank?)
+    @list_store.delete_if(&:blank?)
 
-    @list_store_raw.reject! do |lsr|
-      lsr == ["Ranking", "Artist Name", "Song Title", "Album Title", "Click for sample"]
+    @list_store.reject! do |ls|
+      ls == ["Ranking", "Artist Name", "Song Title", "Album Title", "Click for sample"]
     end
     
-    @list_store_raw.each do |lsr|
-      lsr.reject! do |lsra|
+    @list_store.each do |ls|
+      ls.reject! do |lsa|
         lsra == "-"
       end
     end
 
-    @list_store_raw.each do |lsr|
-      lsr.each do |lsra|
-        lsra.slice! "\r\n      "
+    @list_store.each do |ls|
+      ls.each do |lsa|
+        lsa.slice! "\r\n      "
       end
     end
   end
 
-  def rocklists_
-    @doc_list = target_scrape("https://www.rocklists.com/radiostations.html")
-    @info = @doc_list.css('div.entry-content')
-    @info.css('a').try(:text) # gets station names, SEND to array?
+  def rocklists_stations
+    doc_list = target_scrape("https://www.rocklists.com/radiostations.html")
+    info = doc_list.css('div.entry-content')
     @station_list = []
 
-    @info.css('a').each do |i|
+    info.css('a').each do |i|
       @station_list << i.try(:text)
       @station_list << i['href']
     end
@@ -66,5 +65,36 @@ module ScraperHelper
 
   end
   
+  def rocklists_years_gather(url)
+    doc_list = target_scrape("https://www.rocklists.com#{url}")
+    info = doc_list.at('p:contains("Year-End Countdowns available: ")')
+    @list_years = []
+    info.css('a').each do |i|
+      @list_years << i.try(:text)
+      @list_years << i['href']
+    end
+    @other_countdowns = []
+    info = doc_list.at('p:contains("Other Countdowns available: ")')
+    info.css('a').each do |i|
+      @other_countdowns << i.try(:text)
+      @other_countdowns << i['href']
+    end
+
+    def rocklists_by_year(url)
+      # append station and year to instance to ID it?
+      doc_list = target_scrape("https://www.rocklists.com#{url}")
+      info = doc_list.css('div.entry-content')
+      @year_list = []
+
+      info.css('p').each { |i| @year_list  << i.try(:text) }
+      @year_list.each { |yl| yl.gsub!("\n\n\t", "") }
+      @year_list.each { |yl| yl.gsub!("\n\n\n", "") }
+      end
+      # Need to use regex to split up each string into rank, artist, song
+
+    end
+    # other countdowns are not homogenous and may need special handling by station
+  end
+
 end
 
