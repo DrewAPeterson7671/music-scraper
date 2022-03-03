@@ -80,15 +80,29 @@ module ScraperHelper
       @other_countdowns << i['href']
     end
 
-    def rocklists_by_year(url)
+    def rocklists_by_year(year)
       # append station and year to instance to ID it?
-      doc_list = target_scrape("https://www.rocklists.com#{url}")
+      doc_list = target_scrape("https://www.rocklists.com#{year}")
       info = doc_list.css('div.entry-content')
       @year_list = []
 
       info.css('p').each { |i| @year_list  << i.try(:text) }
-      @year_list.each { |yl| yl.gsub!("\n\n\t", "") }
-      @year_list.each { |yl| yl.gsub!("\n\n\n", "") }
+
+      @year_list.map do |yl| 
+        yl.gsub!(/\\n|\\t/)
+        yl.strip
+      end
+
+      @year_list = @year_list.map { |yl| yl.split(/\. | - /) }
+      # J. Geils Band messes this up
+
+      # @year_list.map do |yl| 
+      #   yl.map do |yla|
+      #     yla.gsub!(/\\n|\\t/)
+      #     yla.strip
+      #   end
+      # end
+
       end
       # Need to use regex to split up each string into rank, artist, song
 
