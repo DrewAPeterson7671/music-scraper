@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Genre</th>
       <th>Subgenre1</th>
       <th>Subgenre2</th>
@@ -21,6 +22,7 @@
   <tbody>
     <% @artists.each do |artist| %>
       <tr>
+        <td><%= artist.name %></td>
         <td><%= artist.genre %></td>
         <td><%= artist.subgenre1 %></td>
         <td><%= artist.subgenre2 %></td>
