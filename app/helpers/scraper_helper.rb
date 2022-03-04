@@ -121,6 +121,7 @@ module ScraperHelper
 
   def billboardtop100_to_1958(year)
     # 1940 to 1958
+    # merge these with billboard wiki
     if year = "1940" 
       year = "336"
     end
@@ -138,12 +139,14 @@ module ScraperHelper
 
   def billboard_wiki(year)
     # from 1959 to 2021
+    # however 1946 to 1958 doesn't have the annoying artist slashes
     doc_list = target_scrape("https://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_#{year}")
     info = doc_list.css('table.wikitable')
     @year_list = []
     rows = info.css("tr")
 
     @year_list = rows.css('tr').map { |tr| tr.css('td').map &:text}
+    @year_list.delete_if(&:blank?)
 
     @year_list.map do |yl|
       yl.map do |yla|
@@ -151,9 +154,57 @@ module ScraperHelper
         yla.gsub!("\n", "")
       end
     end
-    # yl[1].gsub!("\"", "")
-    # yl[2].gsub!("\n", "")
 
+    @year_list.map do |yl|
+      yl[1], yl[2] = yl[2], yl[1]
+    end
+  end
+
+  def indie_shuffle
+    # This site is dynamic
+    doc_list = target_scrape("https://www.indieshuffle.com/songs/alternative/")
+    info = doc_list.css('div.scrollerList')
+    @current_list = []
+    rows = info.css("h5")
+
+    @current_list = rows.map do |row|
+      initial = row.at_css("h5").children.text
+    end
+
+    rows_artist = rows.css("strong").text
+    rows_song = rows.css("h5").text
+
+
+    # these worked
+    rows_song = rows.at_css("h5").children.text
+    test = rows_song.gsub!("\n", '').strip
+    test = test.split(" - ")
+    # map and strip
+
+    <a class="number-page ajaxlink active" rel="noindex" href="/songs/alternative/page/1" data-href="/songs/content/songs/alternative/page/1" data-holder="#leftContainer">
+      1 
+    </a>
+
+
+    "https://www.indieshuffle.com/songs/alternative/page/1" # 1 to 107
+    "https://www.indieshuffle.com/songs/alternative-rock/" # 1 to 51
+    "https://www.indieshuffle.com/songs/indie-rock/" # 1 to 453
+    "https://www.indieshuffle.com/songs/rock/" # 1 to 80
+    "https://www.indieshuffle.com/songs/indie-pop/" # 1 to 467
+    "https://www.indieshuffle.com/songs/dream-pop/" # 1 to 138
+    "https://www.indieshuffle.com/songs/garage-rock/" # 1 to 36
+    "https://www.indieshuffle.com/songs/synth-pop/" # 1 to 214
+    "https://www.indieshuffle.com/songs/electro-pop/" # 1 to 235
+    "https://www.indieshuffle.com/songs/electronic/" # 1 to 782
+    "https://www.indieshuffle.com/songs/shoegaze/" # 1 to 47
+    "https://www.indieshuffle.com/songs/psychedelic/" # 1 to 67
+    "https://www.indieshuffle.com/songs/psychedelic-pop/" # 1 to 50
+    "https://www.indieshuffle.com/songs/punk/" # 1 to 19
+    "https://www.indieshuffle.com/songs/punk-rock/" # 1 to 10
+    "https://www.indieshuffle.com/songs/post-punk/" # 1 to 31
+    "https://www.indieshuffle.com/songs/alternative-indie/" # 1 to 12
+
+    "https://www.indieshuffle.com/songs/alternative/songs/content/songs/alternative/page/1"
     
 
 
