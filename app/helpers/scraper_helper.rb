@@ -171,41 +171,17 @@ module ScraperHelper
       initial = row.at_css("h5").children.text
     end
 
-    rows_artist = rows.css("strong").text
-    rows_song = rows.css("h5").text
+    # rows_artist = rows.css("strong").text
+    # rows_song = rows.css("h5").text
 
 
-    # these worked
-    rows_song = rows.at_css("h5").children.text
-    test = rows_song.gsub!("\n", '').strip
-    test = test.split(" - ")
+    # # these worked
+    # rows_song = rows.at_css("h5").children.text
+    # test = rows_song.gsub!("\n", '').strip
+    # test = test.split(" - ")
     # map and strip
 
-    <a class="number-page ajaxlink active" rel="noindex" href="/songs/alternative/page/1" data-href="/songs/content/songs/alternative/page/1" data-holder="#leftContainer">
-      1 
-    </a>
 
-
-    "https://www.indieshuffle.com/songs/alternative/page/1" # 1 to 107
-    "https://www.indieshuffle.com/songs/alternative-rock/" # 1 to 51
-    "https://www.indieshuffle.com/songs/indie-rock/" # 1 to 453
-    "https://www.indieshuffle.com/songs/rock/" # 1 to 80
-    "https://www.indieshuffle.com/songs/indie-pop/" # 1 to 467
-    "https://www.indieshuffle.com/songs/dream-pop/" # 1 to 138
-    "https://www.indieshuffle.com/songs/garage-rock/" # 1 to 36
-    "https://www.indieshuffle.com/songs/synth-pop/" # 1 to 214
-    "https://www.indieshuffle.com/songs/electro-pop/" # 1 to 235
-    "https://www.indieshuffle.com/songs/electronic/" # 1 to 782
-    "https://www.indieshuffle.com/songs/shoegaze/" # 1 to 47
-    "https://www.indieshuffle.com/songs/psychedelic/" # 1 to 67
-    "https://www.indieshuffle.com/songs/psychedelic-pop/" # 1 to 50
-    "https://www.indieshuffle.com/songs/punk/" # 1 to 19
-    "https://www.indieshuffle.com/songs/punk-rock/" # 1 to 10
-    "https://www.indieshuffle.com/songs/post-punk/" # 1 to 31
-    "https://www.indieshuffle.com/songs/alternative-indie/" # 1 to 12
-
-    "https://www.indieshuffle.com/songs/alternative/songs/content/songs/alternative/page/1"
-    
 
 
 
