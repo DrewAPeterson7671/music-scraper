@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @artist.genre %>
+</p>
+
+<p>
+  <strong>Subgenre1:</strong>
+  <%= @artist.subgenre1 %>
+</p>
+
+<p>
+  <strong>Subgenre2:</strong>
+  <%= @artist.subgenre2 %>
+</p>
+
+<p>
+  <strong>Subgenre3:</strong>
+  <%= @artist.subgenre3 %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @artist.priority %>
+</p>
+
+<p>
+  <strong>Pop list:</strong>
+  <%= @artist.pop_list %>
+</p>
+
+<p>
+  <strong>Greatest list:</strong>
+  <%= @artist.greatest_list %>
+</p>
+
+<p>
+  <strong>Current album:</strong>
+  <%= @artist.current_album %>
+</p>
+
+<p>
+  <strong>Current song:</strong>
+  <%= @artist.current_song %>
+</p>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>
