@@ -18,37 +18,42 @@
 
   <div class="field">
     <%= form.label :genre %>
-    <%= form.text_field :genre %>
+    <%= form.select :genre, @genre_choices %>
   </div>
 
   <div class="field">
     <%= form.label :subgenre1 %>
-    <%= form.text_field :subgenre1 %>
+    <%= form.select :subgenre1, @subgenre_choices %>
   </div>
 
   <div class="field">
     <%= form.label :subgenre2 %>
-    <%= form.text_field :subgenre2 %>
+    <%= form.select :subgenre2, @subgenre_choices %>
   </div>
 
   <div class="field">
     <%= form.label :subgenre3 %>
-    <%= form.text_field :subgenre3 %>
+    <%= form.select :subgenre3, @subgenre_choices %>
   </div>
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.text_field :priority %>
+    <%= form.select :priority, @priority_choices, selected: 'Current' %>
   </div>
 
   <div class="field">
     <%= form.label :pop_list %>
-    <%= form.text_field :pop_list %>
+    <%= form.select :pop_list, @status_choices, selected: 'Active' %>
   </div>
 
   <div class="field">
     <%= form.label :greatest_list %>
-    <%= form.text_field :greatest_list %>
+    <%= form.select :greatest_list, @status_choices, selected: 'Unexplored' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :album %>
+    <%= form.select :album, @status_choices, selected: 'Unexplored' %>
   </div>
 
   <div class="field">
