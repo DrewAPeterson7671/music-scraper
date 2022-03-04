@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_03_04_192007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string "genre"
+    t.string "subgenre1"
+    t.string "subgenre2"
+    t.string "subgenre3"
+    t.string "priority"
+    t.string "pop_list"
+    t.string "greatest_list"
+    t.string "current_album"
+    t.string "current_song"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
