@@ -2,63 +2,62 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
 
   def initialize
-    @priority = "Current"
-    @pop_list = "Active"
-    @greatest_hits = "Unexplored"
-    @album = "Unexplored"
+    @priority_choices = ["Current", "Paragons", "Focus", "Set Aside", "Complete & Revisit", "Don't Like"]
+    @status_choices = ["Active", "Unexplored", "Done"]
     @priority_choices = ["Paragon", "Focus", "Current", "Suspended", "Complete & Revist", "Dislike"]
     @progress_choices = ["Active", "Done", "Unexplored"]
     @genre_choices = 
     ["Alternative", 
+      "Blues", 
       "Classic Rock", 
-      "80s Pop", 
-      "Punk", 
-      "Metal", 
+      "Dance",
+      "Disco", 
+      "Hip Hop", 
       "Jam Bands", 
+      "Metal", 
+      "Punk", 
+      "Reggae", 
       "Rock N Roll", 
       "Soul R&B", 
-      "Blues", 
-      "Disco", 
-      "Reggae", 
-      "Hip Hop", 
-      "Dance",
+      "80s Pop",
       "Pop"]
-    @subgenre = 
-    ["Progressive Rock", 
+    @subgenre_choices = 
+    ["", 
+      "Ambient", 
+      "Alternative Metal", 
+      "Alternative Rap", 
+      "Brit Pop", 
+      "Christian Rock", 
+      "Classic Punk", 
+      "College Radio", 
+      "Darkwave", 
+      "Dream Pop", 
+      "EDM", 
+      "Electro", 
+      "Funk", 
+      "Goth", 
+      "Grunge", 
       "Hair Metal",
+      "Hardcore Punk", 
       "Heartland Rock",
-      "Psychedelic Rock", 
+      "Industrial Rock", 
+      "Jangle Pop", 
+      "Motown",
+      "New Wave", 
+      "Nu Metal", 
+      "Oi", 
+      "Post Punk", 
+      "Power Pop", 
+      "Progressive Rock", 
       "Proto Metal", 
       "Proto Punk", 
-      "Funk", 
-      "Alternative Metal", 
-      "Nu Metal", 
-      "Speed Metal", 
-      "Ambient", 
-      "EDM", 
-      "Darkwave", 
-      "Electro", 
+      "Psychedelic Rock", 
       "Rave", 
+      "Shoegaze", 
+      "Soft Rock", 
+      "Speed Metal", 
       "Techno", 
       "Trance", 
-      "Classic Punk", 
-      "Hardcore Punk", 
-      "Power Pop", 
-      "Oi", 
-      "New Wave", 
-      "Soft Rock", 
-      "Shoegaze", 
-      "Post Punk", 
-      "Dream Pop", 
-      "Industrial Rock", 
-      "Goth", 
-      "Brit Pop", 
-      "College Radio", 
-      "Grunge", 
-      "Jangle Pop", 
-      "Alternative Rap", 
-      "Christian Rock", 
-      "Motown",
       "90s Pop",
       "00s Pop",
       "10s Pop",
@@ -130,6 +129,6 @@ class ArtistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artist_params
-      params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :current_album, :current_song)
+      params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :album, :current_album, :current_song)
     end
 end
