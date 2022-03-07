@@ -78,14 +78,18 @@ class ArtistsController < ApplicationController
   def new
     @artist = Artist.new
   end
-
+  
   # GET /artists/1/edit
   def edit
   end
-
+  
   # POST /artists or /artists.json
   def create
     @artist = Artist.new(artist_params)
+
+    binding.pry
+
+    artist_name(@artist)
 
     respond_to do |format|
       if @artist.save
@@ -130,5 +134,14 @@ class ArtistsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artist_params
       params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :album, :current_album, :current_song)
+    end
+
+    def artist_name(artist)
+      pattern_a = /^((a)\s)/i
+      pattern_the = /^((the)\s)/i
+
+      return artist.name.sub!(pattern_a, "").concat(', A') if artist.name.match?(pattern_a)
+      return artist.name.sub!(pattern_the, "").concat(', The') if artist.name.match?(pattern_the)
+
     end
 end
