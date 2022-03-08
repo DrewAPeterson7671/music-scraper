@@ -87,8 +87,6 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
 
-    binding.pry
-
     artist_name(@artist)
 
     respond_to do |format|
