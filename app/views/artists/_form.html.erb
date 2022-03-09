@@ -38,22 +38,22 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.select :priority, @priority_choices, selected: 'Current' %>
+    <%= form.select :priority, @priority_choices, selected: @artist.priority || 'Current' %>
   </div>
 
   <div class="field">
     <%= form.label :pop_list %>
-    <%= form.select :pop_list, @status_choices, selected: 'Active' %>
+    <%= form.select :pop_list, @status_choices, selected: @artist.pop_list || 'Active' %>
   </div>
 
   <div class="field">
     <%= form.label :greatest_list %>
-    <%= form.select :greatest_list, @status_choices, selected: 'Unexplored' %>
+    <%= form.select :greatest_list, @status_choices, selected: @artist.greatest_list || 'Unexplored' %>
   </div>
 
   <div class="field">
     <%= form.label :album %>
-    <%= form.select :album, @status_choices, selected: 'Unexplored' %>
+    <%= form.select :album, @status_choices, selected: @artist.album || 'Unexplored' %>
   </div>
 
   <div class="field">

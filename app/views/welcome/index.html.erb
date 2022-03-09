@@ -1,0 +1,10 @@
+<h1>Music Scraper</h1>
+
+<h3>Alternative Paragons Pop List</h3>
+
+<ol>
+<% Artist.alternative_paragon_poplist.each do |ap| %>
+  <ul><%= link_to ap.name, artist_path(ap) %></ul>
+<% end %>
+</ol>
+
