@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :artists
 
   root to: 'welcome#index'
+
+  resources :artists
   
 end

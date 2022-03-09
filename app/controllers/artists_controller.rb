@@ -1,7 +1,9 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: %i[ show edit update destroy ]
 
-  def initialize
+  before_action :set_artist, only: %i[ show edit update destroy ]
+  before_action :load_locals
+
+  def load_locals
     @priority_choices = ["Current", "Paragons", "Focus", "Set Aside", "Complete & Revisit", "Don't Like"]
     @status_choices = ["Active", "Unexplored", "Done"]
     @priority_choices = ["Paragon", "Focus", "Current", "Suspended", "Complete & Revist", "Dislike"]
