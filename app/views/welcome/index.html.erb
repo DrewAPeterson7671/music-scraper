@@ -1,10 +1,53 @@
 <h1>Music Scraper</h1>
 
+<%= link_to 'Artist List', artists_path %> 
+
 <h3>Alternative Paragons Pop List</h3>
 
 <ol>
 <% Artist.alternative_paragon_poplist.each do |ap| %>
-  <ul><%= link_to ap.name, artist_path(ap) %></ul>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
 <% end %>
 </ol>
 
+<h3>Alternative Paragons Greatest List</h3>
+
+<ol>
+<% Artist.alternative_paragon_greatestlist.each do |ap| %>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+<% end %>
+</ol>
+
+<h3>Alternative Paragons Album List</h3>
+
+<ol>
+<% Artist.alternative_paragon_album.each do |ap| %>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+<% end %>
+</ol>
+
+<h3>TOTAL Alternative Paragons Pop List</h3>
+
+<ol>
+<% Artist.alpha_alternative_paragon_poplist.each do |ap| %>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+<% end %>
+</ol>
+
+<h3>TOTAL Alternative Paragons Greatest List</h3>
+
+<ol>
+<% Artist.alpha_alternative_paragon_greatestlist.each do |ap| %>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+<% end %>
+</ol>
+
+<h3>TOTAL Alternative Paragons Album List</h3>
+
+<ol>
+<% Artist.alpha_alternative_paragon_album.each do |ap| %>
+  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+<% end %>
+</ol>
+
+<%= link_to 'Artist List', artists_path %> 
