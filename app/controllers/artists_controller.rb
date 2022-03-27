@@ -9,67 +9,81 @@ class ArtistsController < ApplicationController
     @priority_choices = ["Paragon", "Focus", "Current", "Suspended", "Complete & Revist", "Dislike"]
     @progress_choices = ["Active", "Done", "Unexplored"]
     @genre_choices = 
-    ["Alternative", 
-      "Blues", 
-      "Classic Rock", 
+    ["Alternative",
+      "Blues",
+      "Christian",
+      "Classic Rock",
+      "Classical",
+      "Country",
       "Dance",
-      "Disco", 
-      "Hip Hop", 
-      "Jam Bands", 
-      "Metal", 
-      "Punk", 
-      "Reggae", 
-      "Rock N Roll", 
-      "Soul R&B", 
+      "Disco",
+      "Hip Hop",
+      "Jam Bands",
+      "Jazz",
+      "Metal",
+      "New Age",
+      "Punk",
+      "Reggae",
+      "Rock N Roll",
+      "Soul R&B",
+      "40s Pop",
+      "50s Pop",
+      "60s Pop",
+      "70s Pop",
       "80s Pop",
-      "Pop"]
-    @subgenre_choices = 
-    ["", 
-      "Ambient", 
-      "Alternative Metal", 
-      "Alternative Rap", 
-      "Brit Pop", 
-      "Christian Rock", 
-      "Classic Punk", 
-      "College Radio", 
-      "Darkwave", 
-      "Dream Pop", 
-      "EDM", 
-      "Electro", 
-      "Funk", 
-      "Goth", 
-      "Grunge", 
-      "Hair Metal",
-      "Hardcore Punk", 
-      "Heartland Rock",
-      "Industrial Rock", 
-      "Jangle Pop", 
-      "Motown",
-      "New Wave", 
-      "Nu Metal", 
-      "Oi", 
-      "Post Punk", 
-      "Power Pop", 
-      "Progressive Rock", 
-      "Proto Metal", 
-      "Proto Punk", 
-      "Psychedelic Rock", 
-      "Rave", 
-      "Shoegaze", 
-      "Soft Rock", 
-      "Speed Metal", 
-      "Techno", 
-      "Trance", 
       "90s Pop",
       "00s Pop",
       "10s Pop",
       "20s Pop"]
+    @subgenre_choices = 
+    ["",
+      "Alternative Metal",
+      "Alternative Rap",
+      "Ambient",
+      "Brit Pop",
+      "Classic Punk",
+      "College Radio",
+      "Darkwave",
+      "Dream Pop",
+      "EDM",
+      "Electro",
+      "Funk",
+      "Goth",
+      "Grunge",
+      "Hair Metal",
+      "Hardcore Punk",
+      "Heartland Rock",
+      "Industrial Rock",
+      "Jangle Pop",
+      "Motown",
+      "New Wave",
+      "Nu Metal",
+      "Oi",
+      "Old School Hip Hop",
+      "Post Punk",
+      "Power Pop",
+      "Progressive Rock",
+      "Proto Metal",
+      "Proto Punk",
+      "Psychedelic Rock",
+      "Rave",
+      "Shoegaze",
+      "Soft Rock",
+      "Speed Metal",
+      "Techno",
+      "Trance"]
   end
 
 
   # GET /artists or /artists.json
   def index
-    @artists = Artist.order('name ASC')
+    @artists = sort_artist_index.page params[:page]
+
+    if params[:search]
+      @search_results = Artist.search(:search)
+      # binding.pry
+    end
+
   end
 
   # GET /artists/1 or /artists/1.json
@@ -142,6 +156,18 @@ class ArtistsController < ApplicationController
 
       return artist.name.sub!(pattern_a, "").concat(', A') if artist.name.match?(pattern_a)
       return artist.name.sub!(pattern_the, "").concat(', The') if artist.name.match?(pattern_the)
+    end
 
+    def sort_artist_index
+      case
+        when params[:letter] == "#"
+          @artists_sort = Artist.order('name ASC').where("name ~ '^[0-9]'")
+        when params[:letter] == "?"
+          @artists_sort = Artist.order('name ASC').where("name ~ '^[^A-Z0-9]'")
+        when params[:letter]
+          @artists_sort = Artist.order('name ASC').where("name LIKE ?", "#{params[:letter]}%")
+        else
+          @artists_sort = Artist.order('name ASC')
+      end
     end
 end

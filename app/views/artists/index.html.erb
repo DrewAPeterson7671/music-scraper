@@ -20,6 +20,42 @@
     </tr>
   </thead>
 
+  <% ('A'..'Z').each do |letter| %>
+    <%=  link_to letter, artists_path(:letter => letter) %>&nbsp
+  <% end %>
+  <%= link_to '#', artists_path(:letter => '#') %>&nbsp
+  <%= link_to '?', artists_path(:letter => '?') %>
+
+  <%= form_tag(artists_path, :method => 'get') do %>
+  <p>
+    <%= search_field_tag :search, params[:name_parameter] %>
+    <%= submit_tag 'Search', :name => nil %>
+  <p>
+  <% end %>
+
+  <% if @search_results? %>
+    <tbody>
+      <% @search_results.each do |sartist| %>
+        <tr>
+          <td><%= sartist.name %></td>
+          <td><%= sartist.genre %></td>
+          <td><%= sartist.subgenre1 %></td>
+          <td><%= sartist.subgenre2 %></td>
+          <td><%= sartist.subgenre3 %></td>
+          <td><%= sartist.priority %></td>
+          <td><%= sartist.pop_list %></td>
+          <td><%= sartist.greatest_list %></td>
+          <td><%= sartist.album %></td>
+          <td><%= sartist.current_album %></td>
+          <td><%= sartist.current_song %></td>
+          <td><%= button_to 'Show', sartist, method: :get %></td>
+          <td><%= button_to 'Edit', edit_artist_path(sartist), method: :get %></td>
+          <td><%= button_to 'Destroy', sartist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>  
+
   <tbody>
     <% @artists.each do |artist| %>
       <tr>
@@ -41,6 +77,8 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
 
 <br>
 
