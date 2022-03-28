@@ -20,6 +20,20 @@
     </tr>
   </thead>
 
+  <% ('A'..'Z').each do |letter| %>
+    <%=  link_to letter, artists_path(:letter => letter) %>&nbsp
+  <% end %>
+  <%= link_to '#', artists_path(:letter => '#') %>&nbsp
+  <%= link_to '?', artists_path(:letter => '?') %>
+
+  <%= form_tag(artists_path, :method => 'get') do %>
+  <p>
+    <%= search_field_tag :search, params[:name_parameter] %>
+    <%= submit_tag 'Search', :name => nil %>
+  <p>
+  <% end %>
+
+
   <tbody>
     <% @artists.each do |artist| %>
       <tr>
@@ -41,6 +55,8 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
 
 <br>
 

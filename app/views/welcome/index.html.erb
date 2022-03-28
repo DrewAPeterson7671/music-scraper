@@ -4,50 +4,132 @@
 
 <h3>Alternative Paragons Pop List</h3>
 
-<ol>
+<ul>
 <% Artist.alternative_paragon_poplist.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
 
 <h3>Alternative Paragons Greatest List</h3>
 
-<ol>
+<ul>
 <% Artist.alternative_paragon_greatestlist.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
 
 <h3>Alternative Paragons Album List</h3>
 
-<ol>
+<ul>
 <% Artist.alternative_paragon_album.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
+
+<h3>Alternative Focus Pop List</h3>
+
+<ul>
+<% Artist.alternative_focus_poplist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Paragons Pop List</h3>
+
+<ul>
+<% Artist.classicrock_paragon_poplist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Paragons Greatest List</h3>
+
+<ul>
+<% Artist.classicrock_paragon_greatestlist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Paragons Album List</h3>
+
+<ul>
+<% Artist.classicrock_paragon_album.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Current Pop List</h3>
+
+<ul>
+<% Artist.classicrock_current_poplist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Current Greatest List</h3>
+
+<ul>
+<% Artist.classicrock_current_greatestlist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Classic Rock Current Album List</h3>
+
+<ul>
+<% Artist.classicrock_current_album.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Blues Current Pop List</h3>
+
+<ul>
+<% Artist.blues_current_poplist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Blues Current Greatest List</h3>
+
+<ul>
+<% Artist.blues_current_greatestlist.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+<h3>Blues Current Album List</h3>
+
+<ul>
+<% Artist.blues_current_album.each do |ap| %>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+<% end %>
+</ul>
+
+
 
 <h3>TOTAL Alternative Paragons Pop List</h3>
 
-<ol>
+<ul>
 <% Artist.alpha_alternative_paragon_poplist.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
 
 <h3>TOTAL Alternative Paragons Greatest List</h3>
 
-<ol>
+<ul>
 <% Artist.alpha_alternative_paragon_greatestlist.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
 
 <h3>TOTAL Alternative Paragons Album List</h3>
 
-<ol>
+<ul>
 <% Artist.alpha_alternative_paragon_album.each do |ap| %>
-  <ul><%= link_to ap.name, edit_artist_path(ap) %></ul>
+  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
-</ol>
+</ul>
 
 <%= link_to 'Artist List', artists_path %> 
