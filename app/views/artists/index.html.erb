@@ -33,28 +33,6 @@
   <p>
   <% end %>
 
-  <% if @search_results? %>
-    <tbody>
-      <% @search_results.each do |sartist| %>
-        <tr>
-          <td><%= sartist.name %></td>
-          <td><%= sartist.genre %></td>
-          <td><%= sartist.subgenre1 %></td>
-          <td><%= sartist.subgenre2 %></td>
-          <td><%= sartist.subgenre3 %></td>
-          <td><%= sartist.priority %></td>
-          <td><%= sartist.pop_list %></td>
-          <td><%= sartist.greatest_list %></td>
-          <td><%= sartist.album %></td>
-          <td><%= sartist.current_album %></td>
-          <td><%= sartist.current_song %></td>
-          <td><%= button_to 'Show', sartist, method: :get %></td>
-          <td><%= button_to 'Edit', edit_artist_path(sartist), method: :get %></td>
-          <td><%= button_to 'Destroy', sartist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>  
 
   <tbody>
     <% @artists.each do |artist| %>

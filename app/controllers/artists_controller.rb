@@ -80,7 +80,7 @@ class ArtistsController < ApplicationController
     @artists = sort_artist_index.page params[:page]
 
     if params[:search]
-      @search_results = Artist.search(:search)
+      @artists = Artist.search(params['search'])
       # binding.pry
     end
 
