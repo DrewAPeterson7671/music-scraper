@@ -4,7 +4,9 @@ class Artist < ApplicationRecord
 
   paginates_per 50
 
-  scope :search, -> (name_parameter) { where("name LIKE ?", "%#{name_parameter}%") }
+  scope :search, -> (name_parameter) { where("name LIKE ?", "%#{name_parameter}") }
+
+  scope :genre_search, -> (genre_parameter) { where(genre: genre_parameter) }
 
   scope :alternative_paragon_poplist, -> { where("genre = 'Alternative' AND priority = 'Paragon' AND pop_list = 'Active'")
     .order('updated_at ASC')
