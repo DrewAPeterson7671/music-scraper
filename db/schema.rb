@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_223805) do
+ActiveRecord::Schema.define(version: 2022_04_12_042552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2022_03_04_223805) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "album"
+    t.string "to_download"
+    t.string "download_type"
+    t.date "download_date"
+    t.string "download_status"
+    t.string "wiki_page"
+    t.string "discogs_page"
+    t.string "current_download"
+    t.string "dl_listen_album"
+    t.string "dl_listen_song"
   end
 
 end

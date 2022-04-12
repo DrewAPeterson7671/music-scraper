@@ -72,6 +72,12 @@ class ArtistsController < ApplicationController
       "Speed Metal",
       "Techno",
       "Trance"]
+      @to_download_choices = 
+      ["Unexplored", "To Do", "No", "Done"]
+      @download_type = 
+      ["Not Set", "Everything", "Major", "Greatest Hits & Revelant Albums", "Greatest Hits", "Relevant Albums", "Sample"]
+      @download_status = 
+      ["Not Started", "New Artist Watch", "Ongoing & Active", "Closed", "Current to Date Listed", "Downloading"]
   end
 
 
@@ -81,7 +87,6 @@ class ArtistsController < ApplicationController
 
     if params[:search]
       @artists = Artist.search(params['search'])
-      # binding.pry
     end
 
   end
@@ -147,7 +152,8 @@ class ArtistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artist_params
-      params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :album, :current_album, :current_song)
+      params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :album, :current_album, :current_song, :to_download, :download_type, :download_date, :download_status, :wiki_page, :discogs_page,:current_download, :dl_listen_album, :dl_listen_song)
+      # Need to make download migrations
     end
 
     def artist_name(artist)

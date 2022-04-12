@@ -5,21 +5,22 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Genre</th>
-      <th>Subgenre1</th>
-      <th>Subgenre2</th>
-      <th>Subgenre3</th>
-      <th>Priority</th>
-      <th>Pop list</th>
-      <th>Greatest list</th>
-      <th>Album</th>
-      <th>Current Album</th>
-      <th>Current Song</th>
+      <th><%= link_to 'Name', :sort => 'name'%></th>
+      <th><%= link_to 'Genre', :sort => 'genre'%></th>
+      <th><%= link_to 'Subgenre1', :sort => 'subgenre1'%></th>
+      <th><%= link_to 'Subgenre2', :sort => 'subgenre2'%></th>
+      <th><%= link_to 'Subgenre3', :sort => 'subgenre3'%></th>
+      <th><%= link_to 'Priority', :sort => 'priority'%></th>
+      <th><%= link_to 'Pop list', :sort => 'pop_list'%></th>
+      <th><%= link_to 'Greatest list', :sort => 'greatest_list'%></th>
+      <th><%= link_to 'Album', :sort => 'album'%></th>
+      <th><%= link_to 'Current Album', :sort => 'current_album'%></th>
+      <th><%= link_to 'Current Song', :sort => 'current_song'%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
+  <%= link_to 'All', artists_path %>&nbsp
   <% ('A'..'Z').each do |letter| %>
     <%=  link_to letter, artists_path(:letter => letter) %>&nbsp
   <% end %>
@@ -31,6 +32,11 @@
     <%= search_field_tag :search, params[:name_parameter] %>
     <%= submit_tag 'Search', :name => nil %>
   <p>
+  <% end %>
+
+  <%= form_tag(artists_path , method: 'get') do %>
+    <%= select_tag Artist.genre_search(params[:genre_parameter]), options_for_select(@genre_choices), include_blank: true %>
+    <%= submit_tag 'Genre Search', :name => nil %>
   <% end %>
 
 
@@ -57,6 +63,9 @@
 </table>
 
 <br>
+<% if @artists.count > 1 %>
+  <%= paginate @artists %>
+<% end %>
 
 <br>
 

@@ -66,6 +66,51 @@
     <%= form.text_field :current_song %>
   </div>
 
+  <div class="field">
+    <%= form.label :to_download %>
+    <%= form.select :to_download, @to_download_choices, selected: @artist.to_download || 'Unexplored' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :download_type %>
+    <%= form.select :download_type, @download_type, selected: @artist.download_type || 'Not Set' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :download_status %>
+    <%= form.select :download_status, @download_status, selected: @artist.download_status || 'Not Started' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_download %>
+    <%= form.text_field :current_download %>
+  </div>
+
+  <div class="field">
+    <%= form.label :download_date %>
+    <%= form.date_field :download_date, as: :date, value: form.object.try(:strftime,"%m/%d/%Y") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wiki_page %>
+    <%= form.text_field :wiki_page %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :discogs_page %>
+    <%= form.text_field :discogs_page %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dl_listen_album %>
+    <%= form.text_field :dl_listen_album %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dl_listen_song %>
+    <%= form.text_field :dl_listen_song %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
