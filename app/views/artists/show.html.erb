@@ -55,6 +55,49 @@
   <%= @artist.current_song %>
 </p>
 
+<p>
+  <strong>To download:</strong>
+  <%= @artist.to_download %>
+</p>
+
+<p>
+  <strong>Download type:</strong>
+  <%= @artist.download_type %>
+</p>
+
+<p>
+  <strong>Download status:</strong>
+  <%= @artist.download_status %>
+</p>
+
+<p>
+  <strong>Current download:</strong>
+  <%= @artist.current_download %>
+</p>
+
+<p>
+  <strong>Download date:</strong>
+  <%= @artist.download_date %>
+</p>
+
+<p>
+  <%= link_to "Wikipedia Discography", @artist.wiki_page %>
+</p>
+
+<p>
+  <%= link_to "Discogs Discography", @artist.discogs_page %>
+</p>
+
+<p>
+  <strong>Download listening album:</strong>
+  <%= @artist.dl_listen_album %>
+</p>
+
+<p>
+  <strong>Download listening song:</strong>
+  <%= @artist.dl_listen_song %>
+</p>
+
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %> | 
 <%= link_to 'Home', root_path %>
