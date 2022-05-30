@@ -8,7 +8,7 @@ class Artist < ApplicationRecord
 
 ### Search
 
-  scope :search, -> (name_parameter) { where("name ILIKE ?", "%#{name_parameter}") }
+  scope :search, -> (name_parameter) { where("name ILIKE ?", "%#{name_parameter}%") }
 
 ### Genre Search
 

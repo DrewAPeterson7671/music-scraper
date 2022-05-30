@@ -56,18 +56,18 @@
         <td><%= artist.album %></td>
         <td><%= artist.current_album %></td>
         <td><%= artist.current_song %></td>
-        <td><%= button_to 'Show', artist, method: :get %></td>
-        <td><%= button_to 'Edit', edit_artist_path(artist), method: :get %></td>
-        <td><%= button_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'S', artist, method: :get %></td>
+        <td><%= button_to 'E', edit_artist_path(artist), method: :get %></td>
+        <td><%= button_to 'D', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<br>
-<% if @artists.count > 1 %>
+</table><% if !@artists.nil? %>
   <%= paginate @artists %>
 <% end %>
+
+<br>
+
 
 <br>
 
