@@ -34,7 +34,8 @@ class ArtistsController < ApplicationController
       "90s Pop",
       "00s Pop",
       "10s Pop",
-      "20s Pop"]
+      "20s Pop",
+      "Misc"]
     @subgenre_choices = 
     ["",
       "Alternative Metal",
@@ -53,6 +54,7 @@ class ArtistsController < ApplicationController
       "Hair Metal",
       "Hardcore Punk",
       "Heartland Rock",
+      "House",
       "Industrial Rock",
       "Jangle Pop",
       "Motown",
@@ -86,7 +88,7 @@ class ArtistsController < ApplicationController
     @artists = sort_artist_index.page params[:page]
 
     if params[:search]
-      @artists = Artist.search(params['search'])
+      @artists = Artist.search(params['search']).page params[:page]
     end
 
   end
@@ -169,9 +171,9 @@ class ArtistsController < ApplicationController
         when params[:letter] == "#"
           @artists_sort = Artist.order('name ASC').where("name ~ '^[0-9]'")
         when params[:letter] == "?"
-          @artists_sort = Artist.order('name ASC').where("name ~ '^[^A-Z0-9]'")
+          @artists_sort = Artist.order('name ASC').where("name ~ '^[^A-Za-z0-9]'")
         when params[:letter]
-          @artists_sort = Artist.order('name ASC').where("name LIKE ?", "#{params[:letter]}%")
+          @artists_sort = Artist.order('name ASC').where("name ILIKE ?", "#{params[:letter]}%")
         else
           @artists_sort = Artist.order('name ASC')
       end
