@@ -85,10 +85,14 @@ class ArtistsController < ApplicationController
 
   # GET /artists or /artists.json
   def index
-    @artists = sort_artist_index.page params[:page]
+    @artists = sort_artist_index.order(:name).page params[:page]
 
     if params[:search]
       @artists = Artist.search(params['search']).page params[:page]
+    end
+
+    if params[:genre_search]
+      @artists = Artist.genre_search(params['genre_search']).page params[:page]
     end
 
   end
