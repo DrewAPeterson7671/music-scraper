@@ -2,7 +2,7 @@
 
 <h1>Artists</h1>
 
-<%= link_to 'New Artist', new_artist_path %>
+<%= link_to 'New Artist', new_artist_path %><br>
 
 <table>
   <thead>
@@ -36,11 +36,10 @@
   <p>
   <% end %>
 
-  <%= form_tag(artists_path , method: 'get') do %>
-    <%= select_tag Artist.genre_search(params[:genre_parameter]), options_for_select(@genre_choices), include_blank: true %>
+  <%= form_tag(artists_path, method: 'get') do %>
+    <%= select_tag :genre_search, options_for_select(@genre_choices, Artist.genre_search(params[:genre_parameter])), include_blank: true %>
     <%= submit_tag 'Genre Search', :name => nil %>
   <% end %>
-
 
   <tbody>
     <% @artists.each do |artist| %>

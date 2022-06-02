@@ -8,11 +8,12 @@ class Artist < ApplicationRecord
 
 ### Search
 
-  scope :search, -> (name_parameter) { where("name ILIKE ?", "%#{name_parameter}%") }
+  scope :search, -> (name_parameter) { where("name ILIKE ?", "%#{name_parameter}%")
+  .order(:name) }
 
 ### Genre Search
 
-  scope :genre_search, -> (genre_parameter) { where(genre: genre_parameter) }
+  scope :genre_search, -> (genre_parameter) { where("genre ILIKE ?", genre_parameter).order(:name) }
 
 ### Paragons
 
