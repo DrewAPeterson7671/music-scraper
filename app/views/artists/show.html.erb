@@ -83,11 +83,11 @@
 </p>
 
 <p>
-  <%= link_to "Wikipedia Discography", @artist.wiki_page %>
+  <%= link_to "Wikipedia Discography", @artist.wiki_page, target: :_blank %>
 </p>
 
 <p>
-  <%= link_to "Discogs Discography", @artist.discogs_page %>
+  <%= link_to "Discogs Discography", @artist.discogs_page, target: :_blank %>
 </p>
 
 <p>
@@ -103,3 +103,21 @@
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %> | 
 <%= link_to 'Home', root_path %>
+
+<h3>Albums</h3>
+
+<% if @artist.albums.any? %>
+  <% @artist.albums.each do |album| %>
+    <ul>
+      <li>
+        <%= link_to album.album_name, artist_album_path(@artist, album)%>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>To Albums are listed for this artist</p>
+<% end %>
+
+<%= link_to 'New Album', new_artist_album_path(@artist) %>
+
+

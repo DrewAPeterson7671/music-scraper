@@ -8,24 +8,29 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1 or /albums/1.json
   def show
+    @album = Album.find(params[:id])
   end
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.new
   end
 
   # GET /albums/1/edit
   def edit
+    # @artist = Artist.find(params[:artist_id])
+    @album = Album.find(params[:id])
   end
 
   # POST /albums or /albums.json
   def create
-    @album = Album.new(album_params)
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.new(album_params)
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
+        format.html { redirect_to artist_path(@artist), notice: "Album was successfully created." }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new, status: :unprocessable_entity }

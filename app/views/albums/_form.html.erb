@@ -1,4 +1,6 @@
-<%= form_with(model: album) do |form| %>
+
+
+<%= form_for [@artist, @album] do |form| %>
   <% if album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,14 +13,14 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= form.label :album_name %>
     <%= form.text_field :album_name %>
   </div>
 
   <div class="field">
-    <%= form.label :artist_id %>
-    <%= form.number_field :artist_id %>
+    <%= form.hidden_field :artist_id %>
   </div>
 
   <div class="field">
