@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Album name:</strong>
+  <%= @album.album_name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @album.artist_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @album.year %>
+</p>
+
+<p>
+  <strong>Album genre:</strong>
+  <%= @album.album_genre %>
+</p>
+
+<p>
+  <strong>Album priority:</strong>
+  <%= @album.album_priority %>
+</p>
+
+<p>
+  <strong>Album type:</strong>
+  <%= @album.album_type %>
+</p>
+
+<p>
+  <strong>Album complete:</strong>
+  <%= @album.album_complete %>
+</p>
+
+<p>
+  <strong>Album download:</strong>
+  <%= @album.album_download %>
+</p>
+
+<p>
+  <strong>Current album song:</strong>
+  <%= @album.current_album_song %>
+</p>
+
+<p>
+  <strong>Album version:</strong>
+  <%= @album.album_version %>
+</p>
+
+<p>
+  <strong>Download verified:</strong>
+  <%= @album.download_verified %>
+</p>
+
+<p>
+  <strong>Download status:</strong>
+  <%= @album.download_status %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @album.rating %>
+</p>
+
+<p>
+  <strong>Normalized tagged:</strong>
+  <%= @album.normalized_tagged %>
+</p>
+
+<p>
+  <strong>Compiliation:</strong>
+  <%= @album.compiliation %>
+</p>
+
+<p>
+  <strong>Album sub genre1:</strong>
+  <%= @album.album_sub_genre1 %>
+</p>
+
+<p>
+  <strong>Album sub genre2:</strong>
+  <%= @album.album_sub_genre2 %>
+</p>
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>

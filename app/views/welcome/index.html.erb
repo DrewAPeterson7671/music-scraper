@@ -5,13 +5,15 @@
 <!-- Paragons -->
 <!-- Alternative -->
 
-<h3>Alternative Paragons Pop List</h3>
+<h3>Alternative Paragons Pop List <span class='scope-hide' id='alternative-paragon-poplist'>▼</span></h3>
 
-<ul>
-<% Artist.alternative_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
+<div id='alternative-paragon-poplist-div'>
+  <ul>
+  <% Artist.alternative_paragon_poplist.each do |ap| %>
+    <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+  <% end %>
+  </ul>
+</div>
 
 <h3>Alternative Paragons Greatest List</h3>
 
@@ -479,7 +481,8 @@
 <% end %>
 </ul>
 
-<!-- Metcurrent
+<!-- Metal current -->
+
 <h3>Metal Current Pop List</h3>
 
 <ul>
@@ -633,32 +636,3 @@
   <li><%= link_to ap.name, edit_artist_path(ap) %></li>
 <% end %>
 </ul>
-
-<!-- FULL LISTS -->
-
-
-<h3>TOTAL Classic Rock Current Pop List</h3>
-
-<ul>
-<% Artist.alpha_alternative_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>TOTAL Classic Rock Current Greatest List</h3>
-
-<ul>
-<% Artist.alpha_alternative_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>TOTAL Classic Rock Current Album List</h3>
-
-<ul>
-<% Artist.alpha_alternative_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<%= link_to 'Artist List', artists_path %> 
