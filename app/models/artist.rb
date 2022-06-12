@@ -2,6 +2,8 @@ class Artist < ApplicationRecord
   validates :name, :genre, :priority, presence: true
   validates :name, uniqueness: { message: ': Artist %{value} already exists.' }
 
+  has_many :albums, dependent: :destroy
+
   paginates_per 50
 
 ###### Scopes

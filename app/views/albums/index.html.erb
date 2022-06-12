@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Album name</th>
+      <th>Artist</th>
+      <th>Year</th>
+      <th>Album genre</th>
+      <th>Album priority</th>
+      <th>Album type</th>
+      <th>Album complete</th>
+      <th>Album download</th>
+      <th>Current album song</th>
+      <th>Album version</th>
+      <th>Download verified</th>
+      <th>Download status</th>
+      <th>Rating</th>
+      <th>Normalized tagged</th>
+      <th>Compiliation</th>
+      <th>Album sub genre1</th>
+      <th>Album sub genre2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.album_name %></td>
+        <td><%= album.artist_id %></td>
+        <td><%= album.year %></td>
+        <td><%= album.album_genre %></td>
+        <td><%= album.album_priority %></td>
+        <td><%= album.album_type %></td>
+        <td><%= album.album_complete %></td>
+        <td><%= album.album_download %></td>
+        <td><%= album.current_album_song %></td>
+        <td><%= album.album_version %></td>
+        <td><%= album.download_verified %></td>
+        <td><%= album.download_status %></td>
+        <td><%= album.rating %></td>
+        <td><%= album.normalized_tagged %></td>
+        <td><%= album.compiliation %></td>
+        <td><%= album.album_sub_genre1 %></td>
+        <td><%= album.album_sub_genre2 %></td>
+        <td><%= link_to 'Show', album %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Album', new_album_path %>
