@@ -129,7 +129,7 @@
     <tbody>
       <% @albums.each do |album| %>
         <tr>
-          <td><%= album.album_name %></td>
+          <td><%= link_to album.album_name, artist_album_path(@artist, album.id) %></td>
           <td><%= album.year %></td>
           <td><%= album.album_type %></td>
           <td><%= album.album_complete %></td>
@@ -139,7 +139,6 @@
           <td><%= album.download_verified %></td>
           <td><%= album.download_status %></td>
           <td><%= album.rating %></td>
-          <td><%= link_to 'S', artist_album_path(@artist, album.id) %></td>
           <td><%= link_to 'E', edit_artist_album_path(@artist, album.id) %></td>
           <td><%= link_to 'D', artist_album_path(@artist, album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           
