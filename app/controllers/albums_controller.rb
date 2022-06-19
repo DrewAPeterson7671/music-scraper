@@ -8,7 +8,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1 or /albums/1.json
   def show
-    @album = Album.find(params[:id])
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.find(params[:id])
   end
 
   # GET /albums/new
@@ -19,8 +20,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    # @artist = Artist.find(params[:artist_id])
-    @album = Album.find(params[:id])
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.find(params[:id])
   end
 
   # POST /albums or /albums.json
