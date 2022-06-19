@@ -99,6 +99,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1 or /artists/1.json
   def show
+    @albums = Album.where(params[:artist_id])
   end
 
   # GET /artists/new
