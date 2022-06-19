@@ -83,11 +83,11 @@
 </p>
 
 <p>
-  <%= link_to "Wikipedia Discography", @artist.wiki_page %>
+  <%= link_to "Wikipedia Discography", @artist.wiki_page, target: :_blank %>
 </p>
 
 <p>
-  <%= link_to "Discogs Discography", @artist.discogs_page %>
+  <%= link_to "Discogs Discography", @artist.discogs_page, target: :_blank %>
 </p>
 
 <p>
@@ -101,5 +101,57 @@
 </p>
 
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %> | 
+<%= link_to 'Back', artist_path %> | 
 <%= link_to 'Home', root_path %>
+
+<h3>Albums</h3>
+
+
+<% if @artist.albums.any? %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Album name</th>
+        <th>Year</th>
+        <th>Album type</th>
+        <th>Album complete</th>
+        <th>Album download</th>
+        <th>Current album song</th>
+        <th>Album version</th>
+        <th>Download verified</th>
+        <th>Download status</th>
+        <th>Rating</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @albums.each do |album| %>
+        <tr>
+          <td><%= album.album_name %></td>
+          <td><%= album.year %></td>
+          <td><%= album.album_type %></td>
+          <td><%= album.album_complete %></td>
+          <td><%= album.album_download %></td>
+          <td><%= album.current_album_song %></td>
+          <td><%= album.album_version %></td>
+          <td><%= album.download_verified %></td>
+          <td><%= album.download_status %></td>
+          <td><%= album.rating %></td>
+          <td><%= link_to 'S', artist_album_path(@artist, album.id) %></td>
+          <td><%= link_to 'E', edit_artist_album_path(@artist, album.id) %></td>
+          <td><%= link_to 'D', artist_album_path(@artist, album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>To Albums are listed for this artist</p>
+<% end %>
+
+<%= link_to 'New Album', new_artist_album_path(@artist) %>
+
+

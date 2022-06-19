@@ -8,24 +8,30 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1 or /albums/1.json
   def show
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.find(params[:id])
   end
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.new
   end
 
   # GET /albums/1/edit
   def edit
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.find(params[:id])
   end
 
   # POST /albums or /albums.json
   def create
-    @album = Album.new(album_params)
+    @artist = Artist.find(params[:artist_id])
+    @album = @artist.albums.new(album_params)
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
+        format.html { redirect_to artist_path(@artist), notice: "Album was successfully created." }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +44,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to album_url(@album), notice: "Album was successfully updated." }
+        format.html { redirect_to artist_album_path, notice: "Album was successfully updated." }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,10 +55,11 @@ class AlbumsController < ApplicationController
 
   # DELETE /albums/1 or /albums/1.json
   def destroy
+    @artist = Artist.find(params[:artist_id])
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url, notice: "Album was successfully destroyed." }
+      format.html { redirect_to artist_path(@artist), notice: "Album was successfully destroyed." }
       format.json { head :no_content }
     end
   end
