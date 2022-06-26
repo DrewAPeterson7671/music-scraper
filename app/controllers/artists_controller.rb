@@ -3,6 +3,8 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
   before_action :load_locals
 
+  # attr_accessor :load_locals_album
+
   def load_locals
     @priority_choices = ["Current", "Paragons", "Focus", "Set Aside", "Complete & Revisit", "Don't Like"]
     @status_choices = ["Active", "Unexplored", "Done"]
@@ -80,6 +82,17 @@ class ArtistsController < ApplicationController
       ["Not Set", "Everything", "Major", "Greatest Hits & Revelant Albums", "Greatest Hits", "Relevant Albums", "Sample"]
       @download_status = 
       ["Not Started", "New Artist Watch", "Ongoing & Active", "Closed", "Current to Date Listed", "Downloading"]
+      @album_types = [
+        'Studio',
+        'EP',
+        'Live EP',
+        'Remix EP',
+        'Live',
+        'Greatest Hits',
+        'Live Greatest Hits',
+        'Compilation',
+        'Remix'
+      ]
   end
 
 
@@ -99,7 +112,8 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1 or /artists/1.json
   def show
-    @albums = Album.where(params[:artist_id])
+    @albums = Album.where(params[:artist_id]).sort_by &:year
+    # @album_types = Album.load_locals
   end
 
   # GET /artists/new

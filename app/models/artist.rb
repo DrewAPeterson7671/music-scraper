@@ -362,16 +362,5 @@ scope :reggae_current_current_album, -> { where("genre = 'Reggae' AND priority =
   .limit(10) }
 
 
-### Complete Lists
-
-
-  scope :alpha_alternative_current_poplist, -> { where("genre = 'Metal' AND pop_list = 'Active'")
-    .order('name ASC') }
-
-  scope :alpha_alternative_current_greatestlist, -> { where("genre = 'Metal' AND greatest_list = 'Active'")
-    .order('name ASC') }
-
-  scope :alpha_alternative_current_album, -> { where("genre = 'Metal' AND album = 'Active'")
-    .order('name ASC') }
 
 end
