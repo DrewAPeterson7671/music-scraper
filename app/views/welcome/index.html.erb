@@ -1,3 +1,33 @@
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Collapsed content</h5>
+    <span class="text-muted">Toggleable via the navbar brand.</span>
+  </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Album example</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+
 <h1>Music Scraper</h1>
 
 <%= link_to 'Artist List', artists_path %>
@@ -5,9 +35,11 @@
 <!-- Paragons -->
 <!-- Alternative -->
 
-<h3>Alternative Paragons Pop List <span class='scope-hide' id='alternative-paragon-poplist'>▼</span></h3>
+<h3>Alternative Paragons Pop List 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#alternative-paragon-poplist-div" aria-expanded="false" aria-controls="alternative-paragon-poplist-div">Hide</button>
+</h3>
 
-<div id='alternative-paragon-poplist-div'>
+<div class="collapse" id='alternative-paragon-poplist-div'>
   <ul>
   <% Artist.alternative_paragon_poplist.each do |ap| %>
     <li><%= link_to ap.name, edit_artist_path(ap) %></li>
