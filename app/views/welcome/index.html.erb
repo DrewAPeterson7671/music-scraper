@@ -1,33 +1,3 @@
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-dark p-4">
-    <h5 class="text-white h4">Collapsed content</h5>
-    <span class="text-muted">Toggleable via the navbar brand.</span>
-  </div>
-</div>
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
-
-<main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
-  </section>
-</main>
-
-
 <h1>Music Scraper</h1>
 
 <%= link_to 'Artist List', artists_path %>
@@ -35,636 +5,693 @@
 <!-- Paragons -->
 <!-- Alternative -->
 
-<h3>Alternative Paragons Pop List 
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#alternative-paragon-poplist-div" aria-expanded="false" aria-controls="alternative-paragon-poplist-div">Hide</button>
-</h3>
+<div class="accordion" id="accordionArtistList">
 
-<div class="collapse" id='alternative-paragon-poplist-div'>
-  <ul>
-  <% Artist.alternative_paragon_poplist.each do |ap| %>
-    <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-  <% end %>
-  </ul>
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonPoplistDiv" aria-expanded="false" aria-controls="alternativeParagonPoplistDiv">Alternative Paragons Pop List</button>
+    <div class="collapse" id='alternativeParagonPoplistDiv'>
+      <ul>
+      <% Artist.alternative_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsGreatestListDiv" aria-expanded="false" aria-controls="alternativeParagonsGreatestListDiv">Alternative Paragons Greatest List</button>
+    <div class="collapse" id='alternativeParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.alternative_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsAlbumListDiv" aria-expanded="false" aria-controls="alternativeParagonsAlbumListDiv">Alternative Paragons Album List</button>
+    <div class="collapse" id='alternativeParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.alternative_paragon_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Classic Rock -->
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsPopListDiv" aria-expanded="false" aria-controls="classicRockParagonsPopListDiv">Classic Rock Paragons Pop List</button>
+    <div class="collapse" id='classicRockParagonsPopListDiv'>
+      <ul>
+      <% Artist.classicrock_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsGreatestListDiv" aria-expanded="false" aria-controls="classicRockParagonsGreatestListDiv">Classic Rock Paragons Greatest List</button>
+    <div class="collapse" id='classicRockParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.classicrock_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsAlbumListDiv" aria-expanded="false" aria-controls="classicRockParagonsAlbumListDiv">Classic Rock Paragons Album List</button>
+    <div class="collapse" id='classicRockParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.classicrock_paragon_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <!-- 80s Pop -->
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsPopListDiv" aria-expanded="false" aria-controls="a80sPopParagonsPopListDiv">80s Pop Paragons Pop List</button>
+    <div class="collapse" id='a80sPopParagonsPopListDiv'>
+      <ul>
+      <% Artist.a80s_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsGreatestListDiv" aria-expanded="false" aria-controls="a80sPopParagonsGreatestListDiv">80s Pop Paragons Greatest List</button>
+    <div class="collapse" id='a80sPopParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.a80s_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsAlbumListDiv" aria-expanded="false" aria-controls="a80sPopParagonsAlbumListDiv">80s Pop Paragons Album List</button>
+    <div class="collapse" id='a80sPopParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.a80s_paragon_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Blues -->
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsPopListDiv" aria-expanded="false" aria-controls="bluesParagonsPopListDiv">Blues Paragon Pop List</button>
+    <div class="collapse" id='bluesParagonsPopListDiv'>
+      <ul>
+      <% Artist.blues_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsGreatestListDiv" aria-expanded="false" aria-controls="bluesParagonsGreatestListDiv">Blues Paragon Greatest List</button>
+    <div class="collapse" id='bluesParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.blues_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsAlbumListDiv" aria-expanded="false" aria-controls="bluesParagonsAlbumListDiv">Blues Paragon Album List</button>
+    <div class="collapse" id='bluesParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.blues_paragon_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Punk -->
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsPopListDiv" aria-expanded="false" aria-controls="punkParagonsPopListDiv">Punk Paragon Pop List</button>
+    <div class="collapse" id='punkParagonsPopListDiv'>
+      <ul>
+      <% Artist.punk_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsGreatestListDiv" aria-expanded="false" aria-controls="punkParagonsGreatestListDiv">Punk Paragon Greatest List</button>
+    <div class="collapse" id='punkParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.punk_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsAlbumListDiv" aria-expanded="false" aria-controls="punkParagonsAlbumListDiv">Punk Paragon Album List</button>
+    <div class="collapse" id='punkParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.punk_paragon_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Metal -->
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsPopListDiv" aria-expanded="false" aria-controls="metalParagonsPopListDiv">Metal Paragon Pop List</button>
+    <div class="collapse" id='metalParagonsPopListDiv'>
+      <ul>
+      <% Artist.metal_paragon_poplist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsGreatestListDiv" aria-expanded="false" aria-controls="metalParagonsGreatestListDiv">Metal Paragon Greatest List</button>
+    <div class="collapse" id='metalParagonsGreatestListDiv'>
+      <ul>
+      <% Artist.metal_paragon_greatestlist.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accorion-item">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsAlbumListDiv" aria-expanded="false" aria-controls="metalParagonsAlbumListDiv">Metal Paragon Album List</button>
+    <div class="collapse" id='metalParagonsAlbumListDiv'>
+      <ul>
+      <% Artist.metal_paragon_current_album.each do |ap| %>
+        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+    <!-- Jam Bands -->
+
+    <h3>Jam Bands Paragon Pop List</h3>
+
+    <ul>
+    <% Artist.jambands_paragon_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Jam Bands Paragon Greatest List</h3>
+
+    <ul>
+    <% Artist.jambands_paragon_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Jam Bands Paragon Album List</h3>
+
+    <ul>
+    <% Artist.jambands_paragon_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Rock N Roll -->
+
+    <h3>Rock N Roll Paragon Pop List</h3>
+
+    <ul>
+    <% Artist.rocknroll_paragon_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Rock N Roll Paragon Greatest List</h3>
+
+    <ul>
+    <% Artist.rocknroll_paragon_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Rock N Roll Paragon Album List</h3>
+
+    <ul>
+    <% Artist.rocknroll_paragon_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Soul R&B -->
+
+    <h3>Soul R&B Paragon Pop List</h3>
+
+    <ul>
+    <% Artist.soulrb_paragon_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Soul R&B Paragon Greatest List</h3>
+
+    <ul>
+    <% Artist.soulrb_paragon_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Soul R&B Paragon Album List</h3>
+
+    <ul>
+    <% Artist.soulrb_paragon_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Disco -->
+
+    <h3>Disco Paragon Pop List</h3>
+
+    <ul>
+    <% Artist.disco_paragon_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Disco Paragon Greatest List</h3>
+
+    <ul>
+    <% Artist.disco_paragon_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Disco Paragon Album List</h3>
+
+    <ul>
+    <% Artist.disco_paragon_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Reggae -->
+
+    <h3>Reggae Paragon Pop List</h3>
+
+    <ul>
+    <% Artist.reggae_paragon_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Reggae Paragon Greatest List</h3>
+
+    <ul>
+    <% Artist.reggae_paragon_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Reggae Paragon Album List</h3>
+
+    <ul>
+    <% Artist.reggae_paragon_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Focus -->
+    <!-- Alternative -->
+
+    <h3>Alternative Focus Pop List</h3>
+
+    <ul>
+    <% Artist.alternative_focus_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Current -->
+    <!-- Alternative -->
+
+    <h3>Alternative Current Pop List A-D</h3>
+
+    <ul>
+    <% Artist.alternative_current_poplist_a_d.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Greatest List A-D</h3>
+
+    <ul>
+    <% Artist.alternative_current_greatestlist_a_d.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Pop List E-K</h3>
+
+    <ul>
+    <% Artist.alternative_current_poplist_e_k.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Greatest List E-K</h3>
+
+    <ul>
+    <% Artist.alternative_current_greatestlist_e_k.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Pop List L-R</h3>
+
+    <ul>
+    <% Artist.alternative_current_poplist_l_r.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Greatest List L-R</h3>
+
+    <ul>
+    <% Artist.alternative_current_greatestlist_l_r.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Pop List S-Z & #</h3>
+
+    <ul>
+    <% Artist.alternative_current_poplist_s_z.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Greatest List S-Z & #</h3>
+
+    <ul>
+    <% Artist.alternative_current_greatestlist_s_z.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Alternative Current Album List</h3>
+
+    <ul>
+    <% Artist.alternative_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Classic Rock -->
+
+    <h3>Classic Rock Current Pop List</h3>
+
+    <ul>
+    <% Artist.classicrock_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Classic Rock Current Greatest List</h3>
+
+    <ul>
+    <% Artist.classicrock_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Classic Rock Current Album List</h3>
+
+    <ul>
+    <% Artist.classicrock_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- 80s Pop -->
+
+    <h3>80s Pop Current Pop List</h3>
+
+    <ul>
+    <% Artist.a80s_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>80s Pop Current Greatest List</h3>
+
+    <ul>
+    <% Artist.a80s_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>80s Pop Current Album List</h3>
+
+    <ul>
+    <% Artist.a80s_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Blues -->
+
+    <h3>Blues Current Pop List</h3>
+
+    <ul>
+    <% Artist.blues_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Blues Current Greatest List</h3>
+
+    <ul>
+    <% Artist.blues_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Blues Current Album List</h3>
+
+    <ul>
+    <% Artist.blues_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Punk -->
+
+    <h3>Punk Current Pop List</h3>
+
+    <ul>
+    <% Artist.punk_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Punk Current Greatest List</h3>
+
+    <ul>
+    <% Artist.punk_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Punk Current Album List</h3>
+
+    <ul>
+    <% Artist.punk_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Metal current -->
+
+    <h3>Metal Current Pop List</h3>
+
+    <ul>
+    <% Artist.metal_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Metal Current Greatest List</h3>
+
+    <ul>
+    <% Artist.metal_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Metal Current Album List</h3>
+
+    <ul>
+    <% Artist.metal_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Jam Bands -->
+
+    <h3>Jam Bands Current Pop List</h3>
+
+    <ul>
+    <% Artist.jambands_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Jam Bands Current Greatest List</h3>
+
+    <ul>
+    <% Artist.jambands_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Jam Bands Current Album List</h3>
+
+    <ul>
+    <% Artist.jambands_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Rock N Roll -->
+
+    <h3>Rock N Roll Current Pop List</h3>
+
+    <ul>
+    <% Artist.rocknroll_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Rock N Roll Current Greatest List</h3>
+
+    <ul>
+    <% Artist.rocknroll_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Rock N Roll Current Album List</h3>
+
+    <ul>
+    <% Artist.rocknroll_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Soul R&B -->
+
+    <h3>Soul R&B Current Pop List</h3>
+
+    <ul>
+    <% Artist.soulrb_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Soul R&B Current Greatest List</h3>
+
+    <ul>
+    <% Artist.soulrb_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Soul R&B Current Album List</h3>
+
+    <ul>
+    <% Artist.soulrb_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Disco -->
+
+    <h3>Disco Current Pop List</h3>
+
+    <ul>
+    <% Artist.disco_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Disco Current Greatest List</h3>
+
+    <ul>
+    <% Artist.disco_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Disco Current Album List</h3>
+
+    <ul>
+    <% Artist.disco_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <!-- Reggae -->
+
+    <h3>Reggae Current Pop List</h3>
+
+    <ul>
+    <% Artist.reggae_current_poplist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Reggae Current Greatest List</h3>
+
+    <ul>
+    <% Artist.reggae_current_greatestlist.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
+    <h3>Reggae Current Album List</h3>
+
+    <ul>
+    <% Artist.reggae_current_current_album.each do |ap| %>
+      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+    <% end %>
+    </ul>
+
 </div>
-
-<h3>Alternative Paragons Greatest List</h3>
-
-<ul>
-<% Artist.alternative_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Paragons Album List</h3>
-
-<ul>
-<% Artist.alternative_paragon_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Classic Rock -->
-
-<h3>Classic Rock Paragons Pop List</h3>
-
-<ul>
-<% Artist.classicrock_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Classic Rock Paragons Greatest List</h3>
-
-<ul>
-<% Artist.classicrock_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Classic Rock Paragons Album List</h3>
-
-<ul>
-<% Artist.classicrock_paragon_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- 80s Pop -->
-
-<h3>80s Pop Paragons Pop List</h3>
-
-<ul>
-<% Artist.a80s_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>80s Pop Paragons Greatest List</h3>
-
-<ul>
-<% Artist.a80s_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>80s Pop Paragons Album List</h3>
-
-<ul>
-<% Artist.a80s_paragon_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Blues -->
-
-<h3>Blues Paragon Pop List</h3>
-
-<ul>
-<% Artist.blues_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Blues Paragon Greatest List</h3>
-
-<ul>
-<% Artist.blues_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Blues Paragon Album List</h3>
-
-<ul>
-<% Artist.blues_paragon_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Punk -->
-
-<h3>Punk Paragon Pop List</h3>
-
-<ul>
-<% Artist.punk_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Punk Paragon Greatest List</h3>
-
-<ul>
-<% Artist.punk_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Punk Paragon Album List</h3>
-
-<ul>
-<% Artist.punk_paragon_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Metal -->
-
-<h3>Metal Paragon Pop List</h3>
-
-<ul>
-<% Artist.metal_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Metal Paragon Greatest List</h3>
-
-<ul>
-<% Artist.metal_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Metal Paragon Album List</h3>
-
-<ul>
-<% Artist.metal_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Jam Bands -->
-
-<h3>Jam Bands Paragon Pop List</h3>
-
-<ul>
-<% Artist.jambands_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Jam Bands Paragon Greatest List</h3>
-
-<ul>
-<% Artist.jambands_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Jam Bands Paragon Album List</h3>
-
-<ul>
-<% Artist.jambands_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Rock N Roll -->
-
-<h3>Rock N Roll Paragon Pop List</h3>
-
-<ul>
-<% Artist.rocknroll_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Rock N Roll Paragon Greatest List</h3>
-
-<ul>
-<% Artist.rocknroll_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Rock N Roll Paragon Album List</h3>
-
-<ul>
-<% Artist.rocknroll_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Soul R&B -->
-
-<h3>Soul R&B Paragon Pop List</h3>
-
-<ul>
-<% Artist.soulrb_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Soul R&B Paragon Greatest List</h3>
-
-<ul>
-<% Artist.soulrb_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Soul R&B Paragon Album List</h3>
-
-<ul>
-<% Artist.soulrb_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Disco -->
-
-<h3>Disco Paragon Pop List</h3>
-
-<ul>
-<% Artist.disco_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Disco Paragon Greatest List</h3>
-
-<ul>
-<% Artist.disco_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Disco Paragon Album List</h3>
-
-<ul>
-<% Artist.disco_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Reggae -->
-
-<h3>Reggae Paragon Pop List</h3>
-
-<ul>
-<% Artist.reggae_paragon_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Reggae Paragon Greatest List</h3>
-
-<ul>
-<% Artist.reggae_paragon_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Reggae Paragon Album List</h3>
-
-<ul>
-<% Artist.reggae_paragon_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Focus -->
-<!-- Alternative -->
-
-<h3>Alternative Focus Pop List</h3>
-
-<ul>
-<% Artist.alternative_focus_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Current -->
-<!-- Alternative -->
-
-<h3>Alternative Current Pop List A-D</h3>
-
-<ul>
-<% Artist.alternative_current_poplist_a_d.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Greatest List A-D</h3>
-
-<ul>
-<% Artist.alternative_current_greatestlist_a_d.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Pop List E-K</h3>
-
-<ul>
-<% Artist.alternative_current_poplist_e_k.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Greatest List E-K</h3>
-
-<ul>
-<% Artist.alternative_current_greatestlist_e_k.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Pop List L-R</h3>
-
-<ul>
-<% Artist.alternative_current_poplist_l_r.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Greatest List L-R</h3>
-
-<ul>
-<% Artist.alternative_current_greatestlist_l_r.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Pop List S-Z & #</h3>
-
-<ul>
-<% Artist.alternative_current_poplist_s_z.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Greatest List S-Z & #</h3>
-
-<ul>
-<% Artist.alternative_current_greatestlist_s_z.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Alternative Current Album List</h3>
-
-<ul>
-<% Artist.alternative_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Classic Rock -->
-
-<h3>Classic Rock Current Pop List</h3>
-
-<ul>
-<% Artist.classicrock_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Classic Rock Current Greatest List</h3>
-
-<ul>
-<% Artist.classicrock_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Classic Rock Current Album List</h3>
-
-<ul>
-<% Artist.classicrock_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- 80s Pop -->
-
-<h3>80s Pop Current Pop List</h3>
-
-<ul>
-<% Artist.a80s_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>80s Pop Current Greatest List</h3>
-
-<ul>
-<% Artist.a80s_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>80s Pop Current Album List</h3>
-
-<ul>
-<% Artist.a80s_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Blues -->
-
-<h3>Blues Current Pop List</h3>
-
-<ul>
-<% Artist.blues_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Blues Current Greatest List</h3>
-
-<ul>
-<% Artist.blues_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Blues Current Album List</h3>
-
-<ul>
-<% Artist.blues_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Punk -->
-
-<h3>Punk Current Pop List</h3>
-
-<ul>
-<% Artist.punk_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Punk Current Greatest List</h3>
-
-<ul>
-<% Artist.punk_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Punk Current Album List</h3>
-
-<ul>
-<% Artist.punk_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Metal current -->
-
-<h3>Metal Current Pop List</h3>
-
-<ul>
-<% Artist.metal_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Metal Current Greatest List</h3>
-
-<ul>
-<% Artist.metal_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Metal Current Album List</h3>
-
-<ul>
-<% Artist.metal_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Jam Bands -->
-
-<h3>Jam Bands Current Pop List</h3>
-
-<ul>
-<% Artist.jambands_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Jam Bands Current Greatest List</h3>
-
-<ul>
-<% Artist.jambands_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Jam Bands Current Album List</h3>
-
-<ul>
-<% Artist.jambands_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Rock N Roll -->
-
-<h3>Rock N Roll Current Pop List</h3>
-
-<ul>
-<% Artist.rocknroll_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Rock N Roll Current Greatest List</h3>
-
-<ul>
-<% Artist.rocknroll_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Rock N Roll Current Album List</h3>
-
-<ul>
-<% Artist.rocknroll_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Soul R&B -->
-
-<h3>Soul R&B Current Pop List</h3>
-
-<ul>
-<% Artist.soulrb_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Soul R&B Current Greatest List</h3>
-
-<ul>
-<% Artist.soulrb_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Soul R&B Current Album List</h3>
-
-<ul>
-<% Artist.soulrb_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Disco -->
-
-<h3>Disco Current Pop List</h3>
-
-<ul>
-<% Artist.disco_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Disco Current Greatest List</h3>
-
-<ul>
-<% Artist.disco_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Disco Current Album List</h3>
-
-<ul>
-<% Artist.disco_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<!-- Reggae -->
-
-<h3>Reggae Current Pop List</h3>
-
-<ul>
-<% Artist.reggae_current_poplist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Reggae Current Greatest List</h3>
-
-<ul>
-<% Artist.reggae_current_greatestlist.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
-
-<h3>Reggae Current Album List</h3>
-
-<ul>
-<% Artist.reggae_current_current_album.each do |ap| %>
-  <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-<% end %>
-</ul>
