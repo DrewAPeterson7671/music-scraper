@@ -7,168 +7,197 @@
 
 <div class="accordion" id="accordionArtistList">
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonPoplistDiv" aria-expanded="false" aria-controls="alternativeParagonPoplistDiv">Alternative Paragons Pop List</button>
-    <div class="collapse" id='alternativeParagonPoplistDiv'>
-      <ul>
-      <% Artist.alternative_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.alternative_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonPoplistDiv" aria-expanded="false" aria-controls="alternativeParagonPoplistDiv">Alternative Paragons Pop List</button>
+      <div class="collapse" id='alternativeParagonPoplistDiv'>
+        <ul>
+        <% Artist.alternative_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsGreatestListDiv" aria-expanded="false" aria-controls="alternativeParagonsGreatestListDiv">Alternative Paragons Greatest List</button>
-    <div class="collapse" id='alternativeParagonsGreatestListDiv'>
-      <ul>
-      <% Artist.alternative_paragon_greatestlist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.alternative_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsGreatestListDiv" aria-expanded="false" aria-controls="alternativeParagonsGreatestListDiv">Alternative Paragons Greatest List</button>
+      <div class="collapse" id='alternativeParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.alternative_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsAlbumListDiv" aria-expanded="false" aria-controls="alternativeParagonsAlbumListDiv">Alternative Paragons Album List</button>
-    <div class="collapse" id='alternativeParagonsAlbumListDiv'>
-      <ul>
-      <% Artist.alternative_paragon_album.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.alternative_paragon_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeParagonsAlbumListDiv" aria-expanded="false" aria-controls="alternativeParagonsAlbumListDiv">Alternative Paragons Album List</button>
+      <div class="collapse" id='alternativeParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.alternative_paragon_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
     <!-- Classic Rock -->
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsPopListDiv" aria-expanded="false" aria-controls="classicRockParagonsPopListDiv">Classic Rock Paragons Pop List</button>
-    <div class="collapse" id='classicRockParagonsPopListDiv'>
-      <ul>
-      <% Artist.classicrock_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.classicrock_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsPopListDiv" aria-expanded="false" aria-controls="classicRockParagonsPopListDiv">Classic Rock Paragons Pop List</button>
+      <div class="collapse" id='classicRockParagonsPopListDiv'>
+        <ul>
+        <% Artist.classicrock_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsGreatestListDiv" aria-expanded="false" aria-controls="classicRockParagonsGreatestListDiv">Classic Rock Paragons Greatest List</button>
-    <div class="collapse" id='classicRockParagonsGreatestListDiv'>
-      <ul>
-      <% Artist.classicrock_paragon_greatestlist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.classicrock_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsGreatestListDiv" aria-expanded="false" aria-controls="classicRockParagonsGreatestListDiv">Classic Rock Paragons Greatest List</button>
+      <div class="collapse" id='classicRockParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.classicrock_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsAlbumListDiv" aria-expanded="false" aria-controls="classicRockParagonsAlbumListDiv">Classic Rock Paragons Album List</button>
-    <div class="collapse" id='classicRockParagonsAlbumListDiv'>
-      <ul>
-      <% Artist.classicrock_paragon_album.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.classicrock_paragon_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockParagonsAlbumListDiv" aria-expanded="false" aria-controls="classicRockParagonsAlbumListDiv">Classic Rock Paragons Album List</button>
+      <div class="collapse" id='classicRockParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.classicrock_paragon_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
     <!-- 80s Pop -->
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsPopListDiv" aria-expanded="false" aria-controls="a80sPopParagonsPopListDiv">80s Pop Paragons Pop List</button>
-    <div class="collapse" id='a80sPopParagonsPopListDiv'>
-      <ul>
-      <% Artist.a80s_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.a80s_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsPopListDiv" aria-expanded="false" aria-controls="a80sPopParagonsPopListDiv">80s Pop Paragons Pop List</button>
+      <div class="collapse" id='a80sPopParagonsPopListDiv'>
+        <ul>
+        <% Artist.a80s_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsGreatestListDiv" aria-expanded="false" aria-controls="a80sPopParagonsGreatestListDiv">80s Pop Paragons Greatest List</button>
-    <div class="collapse" id='a80sPopParagonsGreatestListDiv'>
-      <ul>
-      <% Artist.a80s_paragon_greatestlist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.a80s_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsGreatestListDiv" aria-expanded="false" aria-controls="a80sPopParagonsGreatestListDiv">80s Pop Paragons Greatest List</button>
+      <div class="collapse" id='a80sPopParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.a80s_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsAlbumListDiv" aria-expanded="false" aria-controls="a80sPopParagonsAlbumListDiv">80s Pop Paragons Album List</button>
-    <div class="collapse" id='a80sPopParagonsAlbumListDiv'>
-      <ul>
-      <% Artist.a80s_paragon_album.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.a80s_paragon_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sPopParagonsAlbumListDiv" aria-expanded="false" aria-controls="a80sPopParagonsAlbumListDiv">80s Pop Paragons Album List</button>
+      <div class="collapse" id='a80sPopParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.a80s_paragon_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
     <!-- Blues -->
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsPopListDiv" aria-expanded="false" aria-controls="bluesParagonsPopListDiv">Blues Paragon Pop List</button>
-    <div class="collapse" id='bluesParagonsPopListDiv'>
-      <ul>
-      <% Artist.blues_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.blues_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsPopListDiv" aria-expanded="false" aria-controls="bluesParagonsPopListDiv">Blues Paragon Pop List</button>
+      <div class="collapse" id='bluesParagonsPopListDiv'>
+        <ul>
+        <% Artist.blues_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsGreatestListDiv" aria-expanded="false" aria-controls="bluesParagonsGreatestListDiv">Blues Paragon Greatest List</button>
-    <div class="collapse" id='bluesParagonsGreatestListDiv'>
-      <ul>
-      <% Artist.blues_paragon_greatestlist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.blues_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsGreatestListDiv" aria-expanded="false" aria-controls="bluesParagonsGreatestListDiv">Blues Paragon Greatest List</button>
+      <div class="collapse" id='bluesParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.blues_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsAlbumListDiv" aria-expanded="false" aria-controls="bluesParagonsAlbumListDiv">Blues Paragon Album List</button>
-    <div class="collapse" id='bluesParagonsAlbumListDiv'>
-      <ul>
-      <% Artist.blues_paragon_album.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.blues_paragon_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesParagonsAlbumListDiv" aria-expanded="false" aria-controls="bluesParagonsAlbumListDiv">Blues Paragon Album List</button>
+      <div class="collapse" id='bluesParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.blues_paragon_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
     <!-- Punk -->
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsPopListDiv" aria-expanded="false" aria-controls="punkParagonsPopListDiv">Punk Paragon Pop List</button>
-    <div class="collapse" id='punkParagonsPopListDiv'>
-      <ul>
-      <% Artist.punk_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.punk_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsPopListDiv" aria-expanded="false" aria-controls="punkParagonsPopListDiv">Punk Paragon Pop List</button>
+      <div class="collapse" id='punkParagonsPopListDiv'>
+        <ul>
+        <% Artist.punk_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsGreatestListDiv" aria-expanded="false" aria-controls="punkParagonsGreatestListDiv">Punk Paragon Greatest List</button>
-    <div class="collapse" id='punkParagonsGreatestListDiv'>
-      <ul>
-      <% Artist.punk_paragon_greatestlist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.punk_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsGreatestListDiv" aria-expanded="false" aria-controls="punkParagonsGreatestListDiv">Punk Paragon Greatest List</button>
+      <div class="collapse" id='punkParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.punk_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
+  <% if !Artist.punk_paragon_album.empty? %>
   <div class="accorion-item">
     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkParagonsAlbumListDiv" aria-expanded="false" aria-controls="punkParagonsAlbumListDiv">Punk Paragon Album List</button>
     <div class="collapse" id='punkParagonsAlbumListDiv'>
@@ -179,20 +208,24 @@
       </ul>
     </div>
   </div>
+  <% end %>
 
     <!-- Metal -->
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsPopListDiv" aria-expanded="false" aria-controls="metalParagonsPopListDiv">Metal Paragon Pop List</button>
-    <div class="collapse" id='metalParagonsPopListDiv'>
-      <ul>
-      <% Artist.metal_paragon_poplist.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.metal_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsPopListDiv" aria-expanded="false" aria-controls="metalParagonsPopListDiv">Metal Paragon Pop List</button>
+      <div class="collapse" id='metalParagonsPopListDiv'>
+        <ul>
+        <% Artist.metal_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
+  <% if !Artist.metal_paragon_greatestlist.empty? %>
   <div class="accorion-item">
     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsGreatestListDiv" aria-expanded="false" aria-controls="metalParagonsGreatestListDiv">Metal Paragon Greatest List</button>
     <div class="collapse" id='metalParagonsGreatestListDiv'>
@@ -203,229 +236,350 @@
       </ul>
     </div>
   </div>
+  <% end %>
 
-  <div class="accorion-item">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsAlbumListDiv" aria-expanded="false" aria-controls="metalParagonsAlbumListDiv">Metal Paragon Album List</button>
-    <div class="collapse" id='metalParagonsAlbumListDiv'>
-      <ul>
-      <% Artist.metal_paragon_current_album.each do |ap| %>
-        <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-      <% end %>
-      </ul>
+  <% if !Artist.metal_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalParagonsAlbumListDiv" aria-expanded="false" aria-controls="metalParagonsAlbumListDiv">Metal Paragon Album List</button>
+      <div class="collapse" id='metalParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.metal_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-
-
-
+  <% end %>
 
     <!-- Jam Bands -->
 
-    <h3>Jam Bands Paragon Pop List</h3>
+  <% if !Artist.jambands_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandParagonsPopListDiv" aria-expanded="false" aria-controls="jamBandParagonsPopListDiv">Jam Bands Paragon Pop List</button>
+      <div class="collapse" id='jamBandParagonsPopListDiv'>
+        <ul>
+        <% Artist.jambands_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.jambands_paragon_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.jambands_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandParagonsGreatestListDiv" aria-expanded="false" aria-controls="jamBandParagonsGreatestListDiv">Jam Bands Paragon Greatest List</button>
+      <div class="collapse" id='jamBandParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.jambands_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Jam Bands Paragon Greatest List</h3>
-
-    <ul>
-    <% Artist.jambands_paragon_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Jam Bands Paragon Album List</h3>
-
-    <ul>
-    <% Artist.jambands_paragon_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.jambands_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandParagonsAlbumListDiv" aria-expanded="false" aria-controls="jamBandParagonsAlbumListDiv">Jam Bands Paragon Album List</button>
+      <div class="collapse" id='jamBandParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.jambands_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Rock N Roll -->
 
-    <h3>Rock N Roll Paragon Pop List</h3>
+  <% if !Artist.rocknroll_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollBandParagonsPopListDiv" aria-expanded="false" aria-controls="rockNRollBandParagonsPopListDiv">Rock N Roll Paragon Pop List</button>
+      <div class="collapse" id='rockNRollBandParagonsPopListDiv'>
+        <ul>
+        <% Artist.rocknroll_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.rocknroll_paragon_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.rocknroll_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollBandParagonsGreatestListDiv" aria-expanded="false" aria-controls="rockNRollBandParagonsGreatestListDiv">Rock N Roll Paragon Greatest List</button>
+      <div class="collapse" id='rockNRollBandParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.rocknroll_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Rock N Roll Paragon Greatest List</h3>
-
-    <ul>
-    <% Artist.rocknroll_paragon_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Rock N Roll Paragon Album List</h3>
-
-    <ul>
-    <% Artist.rocknroll_paragon_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.rocknroll_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollBandParagonsAlbumListDiv" aria-expanded="false" aria-controls="rockNRollBandParagonsAlbumListDiv">Rock N Roll Paragon Album List</button>
+      <div class="collapse" id='rockNRollBandParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.rocknroll_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Soul R&B -->
 
-    <h3>Soul R&B Paragon Pop List</h3>
+  <% if !Artist.soulrb_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBParagonsPopListDiv" aria-expanded="false" aria-controls="soulRBParagonsPopListDiv">Soul S&B Paragon Pop List</button>
+      <div class="collapse" id='soulRBParagonsPopListDiv'>
+        <ul>
+        <% Artist.soulrb_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.soulrb_paragon_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.soulrb_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBParagonsGreatestListDiv" aria-expanded="false" aria-controls="soulRBParagonsGreatestListDiv">Soul S&B Paragon Greatest List</button>
+      <div class="collapse" id='soulRBParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.soulrb_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Soul R&B Paragon Greatest List</h3>
-
-    <ul>
-    <% Artist.soulrb_paragon_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Soul R&B Paragon Album List</h3>
-
-    <ul>
-    <% Artist.soulrb_paragon_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.soulrb_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBParagonsAlbumListDiv" aria-expanded="false" aria-controls="soulRBParagonsAlbumListDiv">Soul S&B Paragon Album List</button>
+      <div class="collapse" id='soulRBParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.soulrb_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Disco -->
 
-    <h3>Disco Paragon Pop List</h3>
+  <% if !Artist.disco_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoParagonsPopListDiv" aria-expanded="false" aria-controls="discoParagonsPopListDiv">Disco Paragon Pop List</button>
+      <div class="collapse" id='discoParagonsPopListDiv'>
+        <ul>
+        <% Artist.disco_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.disco_paragon_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.disco_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoParagonsGreatestListDiv" aria-expanded="false" aria-controls="discoParagonsGreatestListDiv">Disco Paragon Greatest List</button>
+      <div class="collapse" id='discoParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.disco_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Disco Paragon Greatest List</h3>
-
-    <ul>
-    <% Artist.disco_paragon_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Disco Paragon Album List</h3>
-
-    <ul>
-    <% Artist.disco_paragon_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.disco_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoParagonsAlbumListDiv" aria-expanded="false" aria-controls="discoParagonsAlbumListDiv">Disco Paragon Album List</button>
+      <div class="collapse" id='discoParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.disco_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Reggae -->
 
-    <h3>Reggae Paragon Pop List</h3>
+  <% if !Artist.reggae_paragon_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeParagonsPopListDiv" aria-expanded="false" aria-controls="reggaeParagonsPopListDiv">Reggae Paragon Pop List</button>
+      <div class="collapse" id='reggaeParagonsPopListDiv'>
+        <ul>
+        <% Artist.reggae_paragon_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.reggae_paragon_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.reggae_paragon_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeParagonsGreatestListDiv" aria-expanded="false" aria-controls="reggaeParagonsGreatestListDiv">Reggae Paragon Greatest List</button>
+      <div class="collapse" id='reggaeParagonsGreatestListDiv'>
+        <ul>
+        <% Artist.reggae_paragon_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Reggae Paragon Greatest List</h3>
-
-    <ul>
-    <% Artist.reggae_paragon_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Reggae Paragon Album List</h3>
-
-    <ul>
-    <% Artist.reggae_paragon_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.reggae_paragon_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeParagonsAlbumListDiv" aria-expanded="false" aria-controls="reggaeParagonsAlbumListDiv">Reggae Paragon Album List</button>
+      <div class="collapse" id='reggaeParagonsAlbumListDiv'>
+        <ul>
+        <% Artist.reggae_paragon_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Focus -->
     <!-- Alternative -->
 
-    <h3>Alternative Focus Pop List</h3>
-
-    <ul>
-    <% Artist.alternative_focus_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.alternative_focus_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeFocusPopListDiv" aria-expanded="false" aria-controls="alternativeFocusPopListDiv">Alternative Focus Pop List</button>
+      <div class="collapse" id='alternativeFocusPopListDiv'>
+        <ul>
+        <% Artist.alternative_focus_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Current -->
     <!-- Alternative -->
 
-    <h3>Alternative Current Pop List A-D</h3>
+  <% if !Artist.alternative_current_poplist_a_d.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentPopListABDiv" aria-expanded="false" aria-controls="alternativeCurrentPopListABDiv">Alternative Current Pop List A-D</button>
+      <div class="collapse" id='alternativeCurrentPopListABDiv'>
+        <ul>
+          <% Artist.alternative_current_poplist_a_d.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.alternative_current_poplist_a_d.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.alternative_current_greatestlist_a_d.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentGreatestListABDiv" aria-expanded="false" aria-controls="alternativeCurrentGreatestListABDiv">Alternative Current Greatest List A-D</button>
+      <div class="collapse" id='alternativeCurrentGreatestListABDiv'>
+        <ul>
+        <% Artist.alternative_current_greatestlist_a_d.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Alternative Current Greatest List A-D</h3>
+  <% if !Artist.alternative_current_poplist_e_k.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentPopListEKDiv" aria-expanded="false" aria-controls="alternativeCurrentPopListEKDiv">Alternative Current Pop List E-K</button>
+      <div class="collapse" id='alternativeCurrentPopListEKDiv'>
+        <ul>
+        <% Artist.alternative_current_poplist_e_k.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.alternative_current_greatestlist_a_d.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.alternative_current_greatestlist_e_k.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentGreatestListEKDiv" aria-expanded="false" aria-controls="alternativeCurrentGreatestListEKDiv">Alternative Current Greatest List E-K</button>
+      <div class="collapse" id='alternativeCurrentGreatestListEKDiv'>
+        <ul>
+        <% Artist.alternative_current_greatestlist_e_k.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Alternative Current Pop List E-K</h3>
+  <% if !Artist.alternative_current_poplist_l_r.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentPopListLRDiv" aria-expanded="false" aria-controls="alternativeCurrentPopListLRDiv">Alternative Current Pop List L-R</button>
+      <div class="collapse" id='alternativeCurrentPopListLRDiv'>
+        <ul>
+        <% Artist.alternative_current_poplist_l_r.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.alternative_current_poplist_e_k.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.alternative_current_greatestlist_l_r.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentGreatestListLRDiv" aria-expanded="false" aria-controls="alternativeCurrentGreatestListLRDiv">Alternative Current Greatest List L-R</button>
+      <div class="collapse" id='alternativeCurrentGreatestListLRDiv'>
+        <ul>
+        <% Artist.alternative_current_greatestlist_l_r.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Alternative Current Greatest List E-K</h3>
+  <% if !Artist.alternative_current_poplist_s_z.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentPopListSZDiv" aria-expanded="false" aria-controls="alternativeCurrentPopListSZDiv">Alternative Current Pop List S-Z & #</button>
+      <div class="collapse" id='alternativeCurrentPopListSZDiv'>
+        <ul>
+        <% Artist.alternative_current_poplist_s_z.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.alternative_current_greatestlist_e_k.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.alternative_current_greatestlist_s_z.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#alternativeCurrentGreatestListSZDiv" aria-expanded="false" aria-controls="alternativeCurrentGreatestListSZDiv">Alternative Current Greatest List S-Z & #</button>
+      <div class="collapse" id='alternativeCurrentGreatestListSZDiv'>
+        <ul>
+        <% Artist.alternative_current_greatestlist_s_z.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Alternative Current Pop List L-R</h3>
-
-    <ul>
-    <% Artist.alternative_current_poplist_l_r.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Alternative Current Greatest List L-R</h3>
-
-    <ul>
-    <% Artist.alternative_current_greatestlist_l_r.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Alternative Current Pop List S-Z & #</h3>
-
-    <ul>
-    <% Artist.alternative_current_poplist_s_z.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Alternative Current Greatest List S-Z & #</h3>
-
-    <ul>
-    <% Artist.alternative_current_greatestlist_s_z.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
+ 
     <h3>Alternative Current Album List</h3>
 
     <ul>
