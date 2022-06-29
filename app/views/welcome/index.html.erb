@@ -579,273 +579,431 @@
     </div>
   <% end %>
 
- 
-    <h3>Alternative Current Album List</h3>
+  <% if !Artist.alternative_current_album.empty? %>
+    <div class="accorion-item">
+      <buttoAlbumtton" type="button" data-Albumdata-bs-target="#alternativeCurrentAlbumDiv" aria-expanded="false" aria-controls="alternativeCurrentAlbumDiv">Alternative Current Album</button>
+      <div class="collapse" id='alternativeCurrentAlbumDiv'>
+        <ul>
+        <% Artist.alternative_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.alternative_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
 
     <!-- Classic Rock -->
 
-    <h3>Classic Rock Current Pop List</h3>
+  <% if !Artist.classicrock_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockCurrentPopListDiv" aria-expanded="false" aria-controls="classicRockCurrentPopListDiv">Classic Rock Current Pop List</button>
+      <div class="collapse" id='classicRockCurrentPopListDiv'>
+        <ul>
+        <% Artist.classicrock_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.classicrock_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.classicrock_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockCurrentGreatestListDiv" aria-expanded="false" aria-controls="classicRockCurrentGreatestListDiv">Classic Rock Current Greatest List</button>
+      <div class="collapse" id='classicRockCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.classicrock_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Classic Rock Current Greatest List</h3>
-
-    <ul>
-    <% Artist.classicrock_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Classic Rock Current Album List</h3>
-
-    <ul>
-    <% Artist.classicrock_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.classicrock_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#classicRockCurrentAlbumListDiv" aria-expanded="false" aria-controls="classicRockCurrentAlbumListDiv">Classic Rock Current Album List</button>
+      <div class="collapse" id='classicRockCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.classicrock_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- 80s Pop -->
 
-    <h3>80s Pop Current Pop List</h3>
+  <% if !Artist.a80s_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sCurrentPopListDiv" aria-expanded="false" aria-controls="a80sCurrentPopListDiv">80s Pop Current Pop List</button>
+      <div class="collapse" id='a80sCurrentPopListDiv'>
+        <ul>
+        <% Artist.a80s_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.a80s_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.a80s_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sCurrentGreatestListDiv" aria-expanded="false" aria-controls="a80sCurrentGreatestListDiv">80s Pop Current Greatest List</button>
+      <div class="collapse" id='a80sCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.a80s_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>80s Pop Current Greatest List</h3>
-
-    <ul>
-    <% Artist.a80s_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>80s Pop Current Album List</h3>
-
-    <ul>
-    <% Artist.a80s_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.a80s_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a80sCurrentAlbumListDiv" aria-expanded="false" aria-controls="a80sCurrentAlbumListDiv">80s Pop Current Album List</button>
+      <div class="collapse" id='a80sCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.a80s_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Blues -->
 
-    <h3>Blues Current Pop List</h3>
+  <% if !Artist.blues_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesCurrentPopListDiv" aria-expanded="false" aria-controls="bluesCurrentPopListDiv">Blues Current Pop List</button>
+      <div class="collapse" id='bluesCurrentPopListDiv'>
+        <ul>
+        <% Artist.blues_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.blues_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.blues_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesCurrentGreatestListDiv" aria-expanded="false" aria-controls="bluesCurrentGreatestListDiv">Blues Current Greatest List</button>
+      <div class="collapse" id='bluesCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.blues_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Blues Current Greatest List</h3>
-
-    <ul>
-    <% Artist.blues_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Blues Current Album List</h3>
-
-    <ul>
-    <% Artist.blues_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.blues_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bluesCurrentAlbumListDiv" aria-expanded="false" aria-controls="bluesCurrentAlbumListDiv">Blues Current Album List</button>
+      <div class="collapse" id='bluesCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.blues_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Punk -->
 
-    <h3>Punk Current Pop List</h3>
+  <% if !Artist.punk_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkCurrentPopListDiv" aria-expanded="false" aria-controls="punkCurrentPopListDiv">Punk Current Pop List</button>
+      <div class="collapse" id='punkCurrentPopListDiv'>
+        <ul>
+        <% Artist.punk_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.punk_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.punk_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkCurrentGreatestListDiv" aria-expanded="false" aria-controls="punkCurrentGreatestListDiv">Punk Current Greatest List</button>
+      <div class="collapse" id='punkCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.punk_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Punk Current Greatest List</h3>
-
-    <ul>
-    <% Artist.punk_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Punk Current Album List</h3>
-
-    <ul>
-    <% Artist.punk_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.punk_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#punkCurrentAlbumListDiv" aria-expanded="false" aria-controls="punkCurrentAlbumListDiv">Punk Current Album List</button>
+      <div class="collapse" id='punkCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.punk_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Metal current -->
 
-    <h3>Metal Current Pop List</h3>
+  <% if !Artist.metal_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalCurrentPopListDiv" aria-expanded="false" aria-controls="metalCurrentPopListDiv">Metal Current Pop List</button>
+      <div class="collapse" id='metalCurrentPopListDiv'>
+        <ul>
+        <% Artist.metal_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.metal_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.metal_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalCurrentGreatestListDiv" aria-expanded="false" aria-controls="metalCurrentGreatestListDiv">Metal Current Greatest List</button>
+      <div class="collapse" id='metalCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.metal_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Metal Current Greatest List</h3>
-
-    <ul>
-    <% Artist.metal_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Metal Current Album List</h3>
-
-    <ul>
-    <% Artist.metal_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.metal_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#metalCurrentAlbumListDiv" aria-expanded="false" aria-controls="metalCurrentAlbumListDiv">Metal Current Album List</button>
+      <div class="collapse" id='metalCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.metal_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Jam Bands -->
 
-    <h3>Jam Bands Current Pop List</h3>
+  <% if !Artist.jambands_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandsCurrentPopListDiv" aria-expanded="false" aria-controls="jamBandsCurrentPopListDiv">Jam Bands Current Pop List</button>
+      <div class="collapse" id='jamBandsCurrentPopListDiv'>
+        <ul>
+        <% Artist.jambands_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+        <ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.jambands_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.jambands_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandsCurrentGreatestListDiv" aria-expanded="false" aria-controls="jamBandsCurrentGreatestListDiv">Jam Bands Current Greatest List</button>
+      <div class="collapse" id='jamBandsCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.jambands_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Jam Bands Current Greatest List</h3>
-
-    <ul>
-    <% Artist.jambands_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Jam Bands Current Album List</h3>
-
-    <ul>
-    <% Artist.jambands_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.jambands_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#jamBandsCurrentAlbumListDiv" aria-expanded="false" aria-controls="jamBandsCurrentAlbumListDiv">Jam Bands Current Album List</button>
+      <div class="collapse" id='jamBandsCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.jambands_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Rock N Roll -->
 
-    <h3>Rock N Roll Current Pop List</h3>
+  <% if !Artist.rocknroll_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollCurrentPopListDiv" aria-expanded="false" aria-controls="rockNRollCurrentPopListDiv">Rock N Roll Current Pop List</button>
+      <div class="collapse" id='rockNRollCurrentPopListDiv'>
+        <ul>
+        <% Artist.rocknroll_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+        <ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.rocknroll_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.rocknroll_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollCurrentGreatestListDiv" aria-expanded="false" aria-controls="rockNRollCurrentGreatestListDiv">Rock N Roll Current Greatest List</button>
+      <div class="collapse" id='rockNRollCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.rocknroll_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Rock N Roll Current Greatest List</h3>
-
-    <ul>
-    <% Artist.rocknroll_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Rock N Roll Current Album List</h3>
-
-    <ul>
-    <% Artist.rocknroll_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.rocknroll_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rockNRollCurrentAlbumListDiv" aria-expanded="false" aria-controls="rockNRollCurrentAlbumListDiv">Rock N Roll Current Album List</button>
+      <div class="collapse" id='rockNRollCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.rocknroll_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Soul R&B -->
 
-    <h3>Soul R&B Current Pop List</h3>
+  <% if !Artist.soulrb_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBCurrentPopListDiv" aria-expanded="false" aria-controls="soulRBCurrentPopListDiv">Soul R&B Current Pop List</button>
+      <div class="collapse" id='soulRBCurrentPopListDiv'>
+        <ul>
+        <% Artist.soulrb_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+        <ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.soulrb_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.soulrb_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBCurrentGreatestListDiv" aria-expanded="false" aria-controls="soulRBCurrentGreatestListDiv">Soul R&B Current Greatest List</button>
+      <div class="collapse" id='soulRBCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.soulrb_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Soul R&B Current Greatest List</h3>
-
-    <ul>
-    <% Artist.soulrb_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Soul R&B Current Album List</h3>
-
-    <ul>
-    <% Artist.soulrb_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.soulrb_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#soulRBCurrentAlbumListDiv" aria-expanded="false" aria-controls="soulRBCurrentAlbumListDiv">Soul R&B Current Album List</button>
+      <div class="collapse" id='soulRBCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.soulrb_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Disco -->
 
-    <h3>Disco Current Pop List</h3>
+  <% if !Artist.disco_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoCurrentPopListDiv" aria-expanded="false" aria-controls="discoCurrentPopListDiv">Disco Current Pop List</button>
+      <div class="collapse" id='discoCurrentPopListDiv'>
+        <ul>
+        <% Artist.disco_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.disco_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.disco_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoCurrentGreatestListDiv" aria-expanded="false" aria-controls="discoCurrentGreatestListDiv">Disco Current Greatest List</button>
+      <div class="collapse" id='discoCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.disco_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Disco Current Greatest List</h3>
-
-    <ul>
-    <% Artist.disco_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Disco Current Album List</h3>
-
-    <ul>
-    <% Artist.disco_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.disco_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#discoCurrentAlbumListDiv" aria-expanded="false" aria-controls="discoCurrentAlbumListDiv">Disco Current Album List</button>
+      <div class="collapse" id='discoCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.disco_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
     <!-- Reggae -->
 
-    <h3>Reggae Current Pop List</h3>
+  <% if !Artist.reggae_current_poplist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeCurrentPopListDiv" aria-expanded="false" aria-controls="reggaeCurrentPopListDiv">Reggae Current Pop List</button>
+      <div class="collapse" id='reggaeCurrentPopListDiv'>
+        <ul>
+        <% Artist.reggae_current_poplist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <ul>
-    <% Artist.reggae_current_poplist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.reggae_current_greatestlist.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeCurrentGreatestListDiv" aria-expanded="false" aria-controls="reggaeCurrentGreatestListDiv">Reggae Current Greatest List</button>
+      <div class="collapse" id='reggaeCurrentGreatestListDiv'>
+        <ul>
+        <% Artist.reggae_current_greatestlist.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
-    <h3>Reggae Current Greatest List</h3>
-
-    <ul>
-    <% Artist.reggae_current_greatestlist.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Reggae Current Album List</h3>
-
-    <ul>
-    <% Artist.reggae_current_current_album.each do |ap| %>
-      <li><%= link_to ap.name, edit_artist_path(ap) %></li>
-    <% end %>
-    </ul>
+  <% if !Artist.reggae_current_current_album.empty? %>
+    <div class="accorion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reggaeCurrentAlbumListDiv" aria-expanded="false" aria-controls="reggaeCurrentAlbumListDiv">Reggae Current Album List</button>
+      <div class="collapse" id='reggaeCurrentAlbumListDiv'>
+        <ul>
+        <% Artist.reggae_current_current_album.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
 </div>
