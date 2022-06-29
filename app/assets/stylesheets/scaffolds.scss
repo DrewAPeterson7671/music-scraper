@@ -83,4 +83,13 @@ label {
   display: block;
 }
 
-// Collapse 
+// Bootstrap Accordion
+
+.accordion-item {
+  width: 25%;
+}
+
+.collapse {
+  margin-top: .2rem;
+  margin-bottom: -1rem;
+}
