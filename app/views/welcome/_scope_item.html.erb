@@ -1,0 +1,20 @@
+
+  
+  <% if !scope_item.empty? %>
+
+    <% accord_tags = accord_tags.downcase.camelize(:lower) %>
+    <% id_accord_tags = "#" + accord_tags %>
+    <% title = accord_tags.underscore.titleize %>
+
+    <div class="accordion-item">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="<%= id_accord_tags %>" aria-expanded="false" aria-controls="<%= accord_tags %>"><%= title %></button>
+      <div class="collapse" id="<%= accord_tags %>">
+        <ul>
+        <% scope_item.each do |ap| %>
+          <li><%= link_to ap.name, edit_artist_path(ap) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+  <% end %>
