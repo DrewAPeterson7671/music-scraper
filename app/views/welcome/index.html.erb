@@ -2,10 +2,10 @@
 
 <%= link_to 'Artist List', artists_path %>
 
-<!-- Paragons -->
-<!-- Alternative -->
-
 <div class="accordion" id="accordionArtistList">
+
+    <!-- Paragons -->
+    <!-- Alternative -->
 
   <%= render partial: "scope_item", object: Artist.alternative_paragon_poplist, locals: { accord_tags: "alternative_paragons_pop_list" } %>
 
