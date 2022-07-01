@@ -34,6 +34,7 @@ gem 'httparty'
 gem 'webdrivers', '~> 4.6'
 gem 'open-uri'
 gem 'kaminari'
+gem 'devise'
 
 
 

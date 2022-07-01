@@ -85,5 +85,7 @@
   <%= @album.album_sub_genre2 %>
 </p>
 
-<%= link_to 'Edit', edit_artist_album_path(@artist, @album) %> |
+<% if current_user %>
+  <%= link_to 'Edit', edit_artist_album_path(@artist, @album) %> |
+<% end %>
 <%= link_to 'Back', artist_path(@artist) %>

@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: %i[ show edit update destroy ]
+  before_action :set_album, only: %i[ show edit update destroy ] do
+    redirect_to new_user_session_path unless current_user #&& current_user.admin
+  end
 
   # GET /albums or /albums.json
   def index

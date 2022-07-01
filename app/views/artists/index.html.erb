@@ -2,7 +2,9 @@
 
 <h1>Artists</h1>
 
-<%= link_to 'New Artist', new_artist_path %><br>
+<% if current_user  %>
+  <%= link_to 'New Artist', new_artist_path %><br>
+<% end %>
 
 <table>
   <thead>
