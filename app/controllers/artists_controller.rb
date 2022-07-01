@@ -1,6 +1,9 @@
 class ArtistsController < ApplicationController
 
-  before_action :set_artist, only: %i[ show edit update destroy ]
+  before_action :set_artist, only: %i[ show edit update destroy ] do
+    redirect_to new_user_session_path unless current_user #&& current_user.admin
+  end
+
   before_action :load_locals
 
   # attr_accessor :load_locals_album

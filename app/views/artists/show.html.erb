@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'New Artist', new_artist_path %>
+<% if current_user  %>
+  <%= link_to 'New Artist', new_artist_path %>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -100,7 +102,9 @@
   <%= @artist.dl_listen_song %>
 </p>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<% if current_user  %>
+  <%= link_to 'Edit', edit_artist_path(@artist) %> |
+<% end %>
 <%= link_to 'Back', artist_path %> | 
 <%= link_to 'Home', root_path %>
 
@@ -155,6 +159,7 @@
   <p>To Albums are listed for this artist</p>
 <% end %>
 
-<%= link_to 'New Album', new_artist_album_path(@artist) %>
-
+<% if current_user  %>
+  <%= link_to 'New Album', new_artist_album_path(@artist) %>
+<% end %>
 

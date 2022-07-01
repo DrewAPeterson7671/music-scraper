@@ -1,6 +1,8 @@
 <h1>Music Scraper</h1>
 
-<%= link_to 'Artist List', artists_path %>
+<% if current_user  %>
+  <%= link_to 'Artist List', artists_path %>
+<% end %>
 
 <div class="accordion" id="accordionArtistList">
 
