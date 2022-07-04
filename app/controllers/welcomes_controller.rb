@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class WelcomesController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :new, :create, :edit, :update, :destroy]
 
   def index
