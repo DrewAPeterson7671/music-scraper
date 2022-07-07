@@ -3,7 +3,7 @@ class WelcomesController < ApplicationController
   before_action :set_welcome
 
   def index
-    @welcome = Welcome.find_by(user_id: current_user.id)
+    # @welcome = Welcome.find_by(user_id: current_user.id)
   end
 
   def new
@@ -15,23 +15,22 @@ class WelcomesController < ApplicationController
   def create
     @welcome = Welcome.new(welcome_params)
 
-    respond_to do |format|
-      if @welcome.save 
-        format.html {redirect to home_url(@welcome), notice: "Placeholder updated"}
-      else
-        format.html { render :index, status: :unprocessable_entity }
-      end
+    if @welcome.save 
+      flash[:notice] = "Placeholder created"
+      redirect_to root_path
+    else
+      flash[:notice] = "Placeholder not created"
+      redirect_to root_path
     end
   end
 
   def update
-    @welcome = Welcome.find(params[:id]
-    respond_to do |format|
-      if @welcome.update(welcome_params) 
-        format.html {redirect to home_url(@welcome), notice: "Placeholder updated"}
-      else
-        format.html { render :index, status: :unprocessable_entity }
-      end
+    if @welcome.update(welcome_params) 
+      flash[:notice] = "Placeholder updated"
+      redirect_to root_path
+    else
+      flash[:notice] = "Placeholder not saved"
+      redirect_to root_path
     end
   end
 
@@ -51,7 +50,7 @@ private
   end
 
   def set_welcome
-    # @welcome = Welcome.find_by(:user_id)
+    @welcome = Welcome.find_by(user_id: current_user.id)
   end
 
 end
