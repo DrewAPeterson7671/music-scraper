@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_01_052437) do
+ActiveRecord::Schema.define(version: 2022_07_04_162224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 2022_07_01_052437) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "welcomes", force: :cascade do |t|
+    t.string "placeholder"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_welcomes_on_user_id"
   end
 
   add_foreign_key "albums", "artists"
