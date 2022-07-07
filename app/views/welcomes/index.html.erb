@@ -4,6 +4,7 @@
   <%= link_to 'Artist List', artists_path %>
 <% end %>
 
+
 <div class="accordion" id="accordionArtistList">
 
     <!-- Paragons -->
@@ -210,3 +211,14 @@
   <%= render partial: "scope_item", object: Artist.reggae_current_current_album, locals: { accord_tags: "reggae_current_current_album" } %>
 
 </div>
+
+<%= form_for @welcome do |f| %>
+  <%= f.radio_button :placeholder, 'alternative', onclick: "$(this).closest('form').submit();" %>
+  <%= f.label :placeholder, 'Alternative', onclick: "$(this).closest('form').submit();"  %>
+  <%= f.radio_button :placeholder, 'classic_rock', onclick: "$(this).closest('form').submit();"  %>
+  <%= f.label :placeholder, 'Classic Rock', onclick: "$(this).closest('form').submit();"  %>
+  <%= f.radio_button :placeholder, '80s_pop', onclick: "$(this).closest('form').submit();"  %>
+  <%= f.label :placeholder, '80s Pop', onclick: "$(this).closest('form').submit();"  %>
+<% end %>
+
+<%= @welcome.placeholder %>

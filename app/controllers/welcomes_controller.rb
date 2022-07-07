@@ -1,23 +1,23 @@
 class WelcomesController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_welcome
 
   def index
-    @placeholder = Welcome.all
+    @welcome = Welcome.find_by(user_id: current_user.id)
   end
 
   def new
-    @placeholder = Welcome.new
   end
 
   def edit
   end
 
   def create
-    @placeholder = Welcome.new(welcome_params.merge(:user_id => current_user.id))
+    @welcome = Welcome.new(welcome_params)
 
     respond_to do |format|
-      if @placeholder.save 
-        format.html {redirect to home_url(@placeholder), notice: "Placeholder updated"}
+      if @welcome.save 
+        format.html {redirect to home_url(@welcome), notice: "Placeholder updated"}
       else
         format.html { render :index, status: :unprocessable_entity }
       end
@@ -25,9 +25,10 @@ class WelcomesController < ApplicationController
   end
 
   def update
+    @welcome = Welcome.find(params[:id]
     respond_to do |format|
-      if @placeholder.update(welcome_params) 
-        format.html {redirect to home_url(@placeholder), notice: "Placeholder updated"}
+      if @welcome.update(welcome_params) 
+        format.html {redirect to home_url(@welcome), notice: "Placeholder updated"}
       else
         format.html { render :index, status: :unprocessable_entity }
       end
@@ -38,7 +39,7 @@ class WelcomesController < ApplicationController
     @artist.destroy
 
     respond_to do |format|
-      format.html {redirect to home_url(@placeholder), notice: "Placeholder deleted"}
+      format.html {redirect to home_url(@welcome), notice: "Placeholder deleted"}
     end
   end
 
@@ -47,6 +48,10 @@ private
   def welcome_params
     params.require(:welcome).permit(:user_id, :placeholder)
 
+  end
+
+  def set_welcome
+    # @welcome = Welcome.find_by(:user_id)
   end
 
 end
