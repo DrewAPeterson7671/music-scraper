@@ -86,7 +86,7 @@ label {
 // Bootstrap Accordion
 
 .accordion-item {
-  width: 30%;
+  width: 35%;
 }
 
 .collapse {
@@ -94,7 +94,14 @@ label {
   margin-bottom: -1rem;
 }
 
-.radio-inline {
-  display: block;
-  color: blue;
+// Styles to keep erb inline with html
+
+.inline {
+  display: inline-block;
 }
+
+.left-space {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
