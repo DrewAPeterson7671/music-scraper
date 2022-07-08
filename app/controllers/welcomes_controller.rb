@@ -16,21 +16,17 @@ class WelcomesController < ApplicationController
     @welcome = Welcome.new(welcome_params)
 
     if @welcome.save 
-      flash[:notice] = "Placeholder created"
-      redirect_to root_path
+      redirect_to root_path(@welcome), notice: "Placeholder created"
     else
-      flash[:notice] = "Placeholder not created"
-      redirect_to root_path
+      redirect_to root_path(@welcome), notice: "Placeholder not created"
     end
   end
 
   def update
     if @welcome.update(welcome_params) 
-      flash[:notice] = "Placeholder updated"
-      redirect_to root_path
+      redirect_to root_path(@welcome), notice: "Placeholder Updated"
     else
-      flash[:notice] = "Placeholder not saved"
-      redirect_to root_path
+      redirect_to root_path(@welcome), notice: "Placeholder not saved"
     end
   end
 
