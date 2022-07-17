@@ -1,219 +1,225 @@
 <h1>Music Scraper</h1>
 
+<% if current_user %>
+  <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to 'Log In', new_user_session_path %>
+    <%= link_to 'Register', new_user_registration_path %>
+<% end %>
+
 <% if current_user  %>
   <%= link_to 'Artist List', artists_path %>
-<% end %>
 
+  <div class="accordion" id="accordionArtistList">
 
-<div class="accordion" id="accordionArtistList">
+      <!-- Paragons -->
+      <!-- Alternative -->
 
-    <!-- Paragons -->
-    <!-- Alternative -->
+  <%= form_for @welcome do |f| %>
 
-<%= form_for @welcome do |f| %>
+    <%= render partial: "scope_item", object: Artist.alternative_paragon_poplist, locals: { f: f, accord_tags: "alternative_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_paragon_poplist, locals: { f: f, accord_tags: "alternative_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_paragon_greatestlist, locals: { f: f, accord_tags: "alternative_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_paragon_greatestlist, locals: { f: f, accord_tags: "alternative_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_paragon_album, locals: { f: f, accord_tags: "alternative_paragons_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_paragon_album, locals: { f: f, accord_tags: "alternative_paragons_album" } %>
+      <!-- Classic Rock -->
 
-    <!-- Classic Rock -->
+    <%= render partial: "scope_item", object: Artist.classicrock_paragon_poplist, locals: { f: f, accord_tags: "classic_rock_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.classicrock_paragon_poplist, locals: { f: f, accord_tags: "classic_rock_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.classicrock_paragon_greatestlist, locals: { f: f, accord_tags: "classic_rock_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.classicrock_paragon_greatestlist, locals: { f: f, accord_tags: "classic_rock_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.classicrock_paragon_album, locals: { f: f, accord_tags: "classic_rock_paragons_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.classicrock_paragon_album, locals: { f: f, accord_tags: "classic_rock_paragons_album" } %>
+      <!-- 80s Pop -->
 
-    <!-- 80s Pop -->
+    <%= render partial: "scope_item", object: Artist.a80s_paragon_poplist, locals: { f: f, accord_tags: "80s_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.a80s_paragon_poplist, locals: { f: f, accord_tags: "80s_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.a80s_paragon_greatestlist, locals: { f: f, accord_tags: "80s_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.a80s_paragon_greatestlist, locals: { f: f, accord_tags: "80s_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.a80s_paragon_album, locals: { f: f, accord_tags: "80s_paragons_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.a80s_paragon_album, locals: { f: f, accord_tags: "80s_paragons_album" } %>
+      <!-- Blues -->
 
-    <!-- Blues -->
+    <%= render partial: "scope_item", object: Artist.blues_paragon_poplist, locals: { f: f, accord_tags: "blues_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.blues_paragon_poplist, locals: { f: f, accord_tags: "blues_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.blues_paragon_greatestlist, locals: { f: f, accord_tags: "blues_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.blues_paragon_greatestlist, locals: { f: f, accord_tags: "blues_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.blues_paragon_album, locals: { f: f, accord_tags: "blues_paragons_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.blues_paragon_album, locals: { f: f, accord_tags: "blues_paragons_album" } %>
+      <!-- Punk -->
 
-    <!-- Punk -->
+    <%= render partial: "scope_item", object: Artist.punk_paragon_poplist, locals: { f: f, accord_tags: "punk_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.punk_paragon_poplist, locals: { f: f, accord_tags: "punk_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.punk_paragon_greatestlist, locals: { f: f, accord_tags: "punk_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.punk_paragon_greatestlist, locals: { f: f, accord_tags: "punk_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.punk_paragon_album, locals: { f: f, accord_tags: "punk_paragons_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.punk_paragon_album, locals: { f: f, accord_tags: "punk_paragons_album" } %>
+      <!-- Metal -->
 
-    <!-- Metal -->
+    <%= render partial: "scope_item", object: Artist.metal_paragon_poplist, locals: { f: f, accord_tags: "metal_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_paragon_poplist, locals: { f: f, accord_tags: "metal_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.metal_paragon_greatestlist, locals: { f: f, accord_tags: "metal_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_paragon_greatestlist, locals: { f: f, accord_tags: "metal_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.metal_paragon_current_album, locals: { f: f, accord_tags: "metal_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_paragon_current_album, locals: { f: f, accord_tags: "metal_paragons_current_album" } %>
+      <!-- Jam Bands -->
 
-    <!-- Jam Bands -->
+    <%= render partial: "scope_item", object: Artist.jambands_paragon_poplist, locals: { f: f, accord_tags: "jam_bands_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.jambands_paragon_poplist, locals: { f: f, accord_tags: "jam_bands_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.jambands_paragon_greatestlist, locals: { f: f, accord_tags: "jam_bands_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.jambands_paragon_greatestlist, locals: { f: f, accord_tags: "jam_bands_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.jambands_paragon_current_album, locals: { f: f, accord_tags: "jam_bands_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.jambands_paragon_current_album, locals: { f: f, accord_tags: "jam_bands_paragons_current_album" } %>
+      <!-- Rock N Roll -->
 
-    <!-- Rock N Roll -->
+    <%= render partial: "scope_item", object: Artist.rocknroll_paragon_poplist, locals: { f: f, accord_tags: "rock_n_roll_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_paragon_poplist, locals: { f: f, accord_tags: "rock_n_roll_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.rocknroll_paragon_greatestlist, locals: { f: f, accord_tags: "rock_n_roll_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_paragon_greatestlist, locals: { f: f, accord_tags: "rock_n_roll_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.rocknroll_paragon_current_album, locals: { f: f, accord_tags: "rock_n_roll_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_paragon_current_album, locals: { f: f, accord_tags: "rock_n_roll_paragons_current_album" } %>
+      <!-- Soul R&B -->
 
-    <!-- Soul R&B -->
+    <%= render partial: "scope_item", object: Artist.soulrb_paragon_poplist, locals: { f: f, accord_tags: "soul_r&b_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.soulrb_paragon_poplist, locals: { f: f, accord_tags: "soul_r&b_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.soulrb_paragon_greatestlist, locals: { f: f, accord_tags: "soul_r&b_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.soulrb_paragon_greatestlist, locals: { f: f, accord_tags: "soul_r&b_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.soulrb_paragon_current_album, locals: { f: f, accord_tags: "soul_r&b_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.soulrb_paragon_current_album, locals: { f: f, accord_tags: "soul_r&b_paragons_current_album" } %>
+      <!-- Disco -->
 
-    <!-- Disco -->
+    <%= render partial: "scope_item", object: Artist.disco_paragon_poplist, locals: { f: f, accord_tags: "disco_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.disco_paragon_poplist, locals: { f: f, accord_tags: "disco_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.disco_paragon_greatestlist, locals: { f: f, accord_tags: "disco_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.disco_paragon_greatestlist, locals: { f: f, accord_tags: "disco_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.disco_paragon_current_album, locals: { f: f, accord_tags: "disco_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.disco_paragon_current_album, locals: { f: f, accord_tags: "disco_paragons_current_album" } %>
+      <!-- Reggae -->
 
-    <!-- Reggae -->
+    <%= render partial: "scope_item", object: Artist.reggae_paragon_poplist, locals: { f: f, accord_tags: "reggae_paragons_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_paragon_poplist, locals: { f: f, accord_tags: "reggae_paragons_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.reggae_paragon_greatestlist, locals: { f: f, accord_tags: "reggae_paragons_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_paragon_greatestlist, locals: { f: f, accord_tags: "reggae_paragons_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.reggae_paragon_current_album, locals: { f: f, accord_tags: "reggae_paragons_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_paragon_current_album, locals: { f: f, accord_tags: "reggae_paragons_current_album" } %>
+      <!-- Focus -->
+      <!-- Alternative -->
 
-    <!-- Focus -->
-    <!-- Alternative -->
+    <%= render partial: "scope_item", object: Artist.alternative_focus_poplist, locals: { f: f, accord_tags: "alternative_focus_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_focus_poplist, locals: { f: f, accord_tags: "alternative_focus_pop_list" } %>
+      <!-- Current -->
+      <!-- Classic Rock -->
 
-    <!-- Current -->
-    <!-- Alternative A-D -->
+    <%= render partial: "scope_item", object: Artist.classicrock_current_poplist, locals: { f: f, accord_tags: "classic_rock_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_poplist_a_d, locals: { f: f, accord_tags: "alternative_current_poplist_a_-_d" } %>
+    <%= render partial: "scope_item", object: Artist.classicrock_current_greatestlist, locals: { f: f, accord_tags: "classic_rock_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_a_d, locals: { f: f, accord_tags: "alternative_current_greatestlist_a_-_d" } %>
+    <%= render partial: "scope_item", object: Artist.classicrock_current_album, locals: { f: f, accord_tags: "classic_rock_current_album" } %>
 
-    <!-- Alternative E-K -->
+      <!-- Alternative A-D -->
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_poplist_e_k, locals: { f: f, accord_tags: "alternative_current_poplist_e_-_k" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_poplist_a_d, locals: { f: f, accord_tags: "alternative_current_poplist_a_-_d" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_e_k, locals: { f: f, accord_tags: "alternative_current_greatestlist_e_-_k" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_a_d, locals: { f: f, accord_tags: "alternative_current_greatestlist_a_-_d" } %>
 
-    <!-- Alternative L-R -->
+      <!-- 80s Pop -->
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_poplist_l_r, locals: { f: f, accord_tags: "alternative_current_poplist_l_-_r" } %>
+    <%= render partial: "scope_item", object: Artist.a80s_current_poplist, locals: { f: f, accord_tags: "80s_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_l_r, locals: { f: f, accord_tags: "alternative_current_greatestlist_l_-_r" } %>
+    <%= render partial: "scope_item", object: Artist.a80s_current_greatestlist, locals: { f: f, accord_tags: "80s_current_greatest_hits" } %>
 
-    <!-- Alternative S-X # -->
+    <%= render partial: "scope_item", object: Artist.a80s_current_album, locals: { f: f, accord_tags: "80s_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_poplist_s_z, locals: { f: f, accord_tags: "alternative_current_poplist_s_-_z" } %>
+      <!-- Blues -->
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_s_z, locals: { f: f, accord_tags: "alternative_current_greatestlist_s_-_z" } %>
+    <%= render partial: "scope_item", object: Artist.blues_current_poplist, locals: { f: f, accord_tags: "blues_current_pop_list" } %>
 
-    <!-- Alternative Album -->
+    <%= render partial: "scope_item", object: Artist.blues_current_greatestlist, locals: { f: f, accord_tags: "blues_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.alternative_current_album, locals: { f: f, accord_tags: "alternative_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.blues_current_album, locals: { f: f, accord_tags: "blues_current_album" } %>
 
-    <!-- Classic Rock -->
+      <!-- Punk -->
 
-  <%= render partial: "scope_item", object: Artist.classicrock_current_poplist, locals: { f: f, accord_tags: "classic_rock_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.punk_current_poplist, locals: { f: f, accord_tags: "punk_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.classicrock_current_greatestlist, locals: { f: f, accord_tags: "classic_rock_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.punk_current_greatestlist, locals: { f: f, accord_tags: "punk_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.classicrock_current_album, locals: { f: f, accord_tags: "classic_rock_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.punk_current_album, locals: { f: f, accord_tags: "punk_current_album" } %>
 
-    <!-- 80s Pop -->
+      <!-- Metal current -->
 
-  <%= render partial: "scope_item", object: Artist.a80s_current_poplist, locals: { f: f, accord_tags: "80s_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.metal_current_poplist, locals: { f: f, accord_tags: "metal_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.a80s_current_greatestlist, locals: { f: f, accord_tags: "80s_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.metal_current_greatestlist, locals: { f: f, accord_tags: "metal_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.a80s_current_album, locals: { f: f, accord_tags: "80s_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.metal_current_current_album, locals: { f: f, accord_tags: "metal_current_current_album" } %>
 
-    <!-- Blues -->
+      <!-- Jam Bands -->
 
-  <%= render partial: "scope_item", object: Artist.blues_current_poplist, locals: { f: f, accord_tags: "blues_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.jambands_current_poplist, locals: { f: f, accord_tags: "jam_bands_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.blues_current_greatestlist, locals: { f: f, accord_tags: "blues_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.jambands_current_greatestlist, locals: { f: f, accord_tags: "jam_bands_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.blues_current_album, locals: { f: f, accord_tags: "blues_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.jambands_current_current_album, locals: { f: f, accord_tags: "jam_bands_current_current_album" } %>
 
-    <!-- Punk -->
+      <!-- Alternative E-K -->
 
-  <%= render partial: "scope_item", object: Artist.punk_current_poplist, locals: { f: f, accord_tags: "punk_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_poplist_e_k, locals: { f: f, accord_tags: "alternative_current_poplist_e_-_k" } %>
 
-  <%= render partial: "scope_item", object: Artist.punk_current_greatestlist, locals: { f: f, accord_tags: "punk_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_e_k, locals: { f: f, accord_tags: "alternative_current_greatestlist_e_-_k" } %>
 
-  <%= render partial: "scope_item", object: Artist.punk_current_album, locals: { f: f, accord_tags: "punk_current_album" } %>
+      <!-- Rock N Roll -->
 
-    <!-- Metal current -->
+    <%= render partial: "scope_item", object: Artist.rocknroll_current_poplist, locals: { f: f, accord_tags: "rock_n_roll_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_current_poplist, locals: { f: f, accord_tags: "metal_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.rocknroll_current_greatestlist, locals: { f: f, accord_tags: "rock_n_roll_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_current_greatestlist, locals: { f: f, accord_tags: "metal_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.rocknroll_current_current_album, locals: { f: f, accord_tags: "rock_n_roll_current_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.metal_current_current_album, locals: { f: f, accord_tags: "metal_current_current_album" } %>
+      <!-- Alternative L-R -->
 
-    <!-- Jam Bands -->
+    <%= render partial: "scope_item", object: Artist.alternative_current_poplist_l_r, locals: { f: f, accord_tags: "alternative_current_poplist_l_-_r" } %>
 
-  <%= render partial: "scope_item", object: Artist.jambands_current_poplist, locals: { f: f, accord_tags: "jam_bands_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_l_r, locals: { f: f, accord_tags: "alternative_current_greatestlist_l_-_r" } %>
 
-  <%= render partial: "scope_item", object: Artist.jambands_current_greatestlist, locals: { f: f, accord_tags: "jam_bands_current_greatest_hits" } %>
+      <!-- Soul R&B -->
 
-  <%= render partial: "scope_item", object: Artist.jambands_current_current_album, locals: { f: f, accord_tags: "jam_bands_current_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.soulrb_current_poplist, locals: { f: f, accord_tags: "soul_r&b_current_pop_list" } %>
 
-    <!-- Rock N Roll -->
+    <%= render partial: "scope_item", object: Artist.soulrb_current_greatestlist, locals: { f: f, accord_tags: "soul_r&b_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_current_poplist, locals: { f: f, accord_tags: "rock_n_roll_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.soulrb_current_current_album, locals: { f: f, accord_tags: "soul_r&b_current_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_current_greatestlist, locals: { f: f, accord_tags: "rock_n_roll_current_greatest_hits" } %>
+      <!-- Alternative S-X # -->
 
-  <%= render partial: "scope_item", object: Artist.rocknroll_current_current_album, locals: { f: f, accord_tags: "rock_n_roll_current_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_poplist_s_z, locals: { f: f, accord_tags: "alternative_current_poplist_s_-_z" } %>
 
-    <!-- Soul R&B -->
+    <%= render partial: "scope_item", object: Artist.alternative_current_greatestlist_s_z, locals: { f: f, accord_tags: "alternative_current_greatestlist_s_-_z" } %>
 
-  <%= render partial: "scope_item", object: Artist.soulrb_current_poplist, locals: { f: f, accord_tags: "soul_r&b_current_pop_list" } %>
+      <!-- Disco -->
 
-  <%= render partial: "scope_item", object: Artist.soulrb_current_greatestlist, locals: { f: f, accord_tags: "soul_r&b_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.disco_current_poplist, locals: { f: f, accord_tags: "disco_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.soulrb_current_current_album, locals: { f: f, accord_tags: "soul_r&b_current_current_album" } %>
+    <%= render partial: "scope_item", object: Artist.disco_current_greatestlist, locals: { f: f, accord_tags: "disco_current_greatest_hits" } %>
 
-    <!-- Disco -->
+    <%= render partial: "scope_item", object: Artist.disco_current_current_album, locals: { f: f, accord_tags: "disco_current_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.disco_current_poplist, locals: { f: f, accord_tags: "disco_current_pop_list" } %>
+      <!-- Alternative Album -->
 
-  <%= render partial: "scope_item", object: Artist.disco_current_greatestlist, locals: { f: f, accord_tags: "disco_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.alternative_current_album, locals: { f: f, accord_tags: "alternative_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.disco_current_current_album, locals: { f: f, accord_tags: "disco_current_current_album" } %>
+      <!-- Reggae -->
 
-    <!-- Reggae -->
+    <%= render partial: "scope_item", object: Artist.reggae_current_poplist, locals: { f: f, accord_tags: "reggae_current_pop_list" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_current_poplist, locals: { f: f, accord_tags: "reggae_current_pop_list" } %>
+    <%= render partial: "scope_item", object: Artist.reggae_current_greatestlist, locals: { f: f, accord_tags: "reggae_current_greatest_hits" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_current_greatestlist, locals: { f: f, accord_tags: "reggae_current_greatest_hits" } %>
+    <%= render partial: "scope_item", object: Artist.reggae_current_current_album, locals: { f: f, accord_tags: "reggae_current_current_album" } %>
 
-  <%= render partial: "scope_item", object: Artist.reggae_current_current_album, locals: { f: f, accord_tags: "reggae_current_current_album" } %>
-
-<% end %>
+  <% end %>
 
 </div>
 
-<%= @welcome.placeholder %>
+  <%= @welcome.placeholder %>
+<% end %>
