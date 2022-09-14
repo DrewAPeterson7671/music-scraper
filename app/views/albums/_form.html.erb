@@ -29,6 +29,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :album_queue %>
+    <%= form.select :album_queue, @album_queue %>
+  </div>  
+
+  <div class="field">
     <%= form.label :album_genre %>
     <%= form.text_field :album_genre %>
   </div>

@@ -3,6 +3,16 @@ class AlbumsController < ApplicationController
     redirect_to new_user_session_path unless current_user #&& current_user.admin
   end
 
+  before_action :load_locals
+
+  def load_locals
+    @album_queue = ["", "Queue", "Previous", "Billboard", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
+    @album_type = ["", "Studio", "Live", "Greatest Hits", "Live Greatest Hits", "EP", "Compilation", "Box Set", "Remix", "Video Album", "Live EP", "Remix EP", "Single"]
+    @album_download = ["", "Listed", "Priority", "Queue", "Verified"]
+    @album_version = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
+    @download_verified = ["", "Track Count", "Tested", "Tagged", "Normalized", "Done", "Imperfect But Rare"]
+  end
+
   # GET /albums or /albums.json
   def index
     @albums = Album.all
@@ -74,6 +84,24 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:album_name, :artist_id, :year, :album_genre, :album_priority, :album_type, :album_complete, :album_download, :current_album_song, :album_version, :download_verified, :download_status, :rating, :normalized_tagged, :compiliation, :album_sub_genre1, :album_sub_genre2)
+      params.require(:album).permit(
+        :album_name, 
+        :artist_id, 
+        :album_queue, 
+        :year, 
+        :album_genre, 
+        :album_priority, 
+        :album_type, 
+        :album_complete, 
+        :album_download, 
+        :current_album_song, 
+        :album_version, 
+        :download_verified, 
+        :download_status, 
+        :rating, 
+        :normalized_tagged, 
+        :compiliation, 
+        :album_sub_genre1, 
+        :album_sub_genre2)
     end
 end

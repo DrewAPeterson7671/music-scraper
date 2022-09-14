@@ -361,6 +361,4 @@ scope :reggae_current_current_album, -> { where("genre = 'Reggae' AND priority =
   .order('updated_at ASC')
   .limit(10) }
 
-
-
 end
