@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   before_action :load_locals
 
   def load_locals
-    @album_queue_choices = ["", "Queue", "Previous", "Billboard", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
+    @album_queue_choices = ["", "VAR Queue", "OST Queue", "Tribute Queue", "Previous", "Billboard", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
     @album_type_choices = ["", "Studio", "Live", "Greatest Hits", "Live Greatest Hits", "EP", "Compilation", "Box Set", "Remix", "Video Album", "Live EP", "Remix EP", "Single"]
     @album_download_choices = ["", "Listed", "Priority", "Queue", "Verified"]
     @album_version_choices = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
@@ -87,21 +87,13 @@ class AlbumsController < ApplicationController
       params.require(:album).permit(
         :album_name, 
         :artist_id, 
-        :album_queue, 
         :year, 
-        :album_genre, 
-        :album_priority, 
+        :album_queue, 
         :album_type, 
-        :album_complete, 
         :album_download, 
-        :current_album_song, 
         :album_version, 
-        :download_verified, 
         :download_status, 
         :rating, 
-        :normalized_tagged, 
-        :compiliation, 
-        :album_sub_genre1, 
-        :album_sub_genre2)
+        :current_album_song)
     end
 end
