@@ -30,52 +30,22 @@
 
   <div class="field">
     <%= form.label :album_queue %>
-    <%= form.select :album_queue, @album_queue %>
+    <%= form.select :album_queue, @album_queue_choices %>
   </div>  
 
   <div class="field">
-    <%= form.label :album_genre %>
-    <%= form.text_field :album_genre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_priority %>
-    <%= form.text_field :album_priority %>
-  </div>
-
-  <div class="field">
     <%= form.label :album_type %>
-    <%= form.text_field :album_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_complete %>
-    <%= form.text_field :album_complete %>
+    <%= form.select :album_type, @album_type_choices %>
   </div>
 
   <div class="field">
     <%= form.label :album_download %>
-    <%= form.text_field :album_download %>
-  </div>
-
-  <div class="field">
-    <%= form.label :current_album_song %>
-    <%= form.text_field :current_album_song %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_version %>
-    <%= form.text_field :album_version %>
-  </div>
-
-  <div class="field">
-    <%= form.label :download_verified %>
-    <%= form.text_field :download_verified %>
+    <%= form.select :album_download, @album_download_choices %>
   </div>
 
   <div class="field">
     <%= form.label :download_status %>
-    <%= form.text_field :download_status %>
+    <%= form.select :download_status, @download_status_choices %>
   </div>
 
   <div class="field">
@@ -84,23 +54,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :normalized_tagged %>
-    <%= form.check_box :normalized_tagged %>
-  </div>
-
-  <div class="field">
-    <%= form.label :compiliation %>
-    <%= form.check_box :compiliation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_sub_genre1 %>
-    <%= form.text_field :album_sub_genre1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_sub_genre2 %>
-    <%= form.text_field :album_sub_genre2 %>
+    <%= form.label :current_album_song %>
+    <%= form.text_field :current_album_song %>
   </div>
 
   <div class="actions">
