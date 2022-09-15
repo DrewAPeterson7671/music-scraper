@@ -1,0 +1,23 @@
+
+  
+  <% if !scope_album.empty? %>
+
+    <% accord_tags = accord_tags.downcase.camelize(:lower) %>
+    <% accord_tags[0] === "8" ? accord_tag = ("a" + accord_tags).gsub(/[^0-9-a-z]/i, '') : accord_tag = accord_tags.gsub(/[^0-9-a-z]/i, '') %>
+    <% id_accord_tags = "#" + accord_tag %>
+    <% title = accord_tags.underscore.titleize %>
+
+      
+      <div class="accordion-item radio-inline">
+        <p><span class="inline left-space"><%= f.radio_button :placeholder, title, class: "radio-inline", onclick: "$(this).closest('form').submit();" %></span>
+        <span class="inline left-space"><button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="<%= id_accord_tags %>" aria-expanded="false" aria-controls="<%= accord_tag %>"><%= title %>&nbsp&nbsp</button></span></p>
+        <div class="collapse" id="<%= accord_tag %>">
+          <ul>
+          <% scope_album.each do |ap| %>
+            <li><%= link_to ap.album_name, edit_album_path(ap) %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+
+  <% end %>

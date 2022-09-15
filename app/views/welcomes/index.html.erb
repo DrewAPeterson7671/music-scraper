@@ -220,11 +220,23 @@
 
     <h2>Albums</h2>
 
-    <h2>VAR Albums</h2>
+    <%= render partial: "scope_album", object: Album.var_albums, locals: { f: f, accord_tags: "var_albums" } %>
 
-    <h2>MP3 VAR Albums</h2>
+    <%= render partial: "scope_album", object: Album.var_mp3_albums, locals: { f: f, accord_tags: "var_mp3_albums" } %>
 
-    <h2>MP3 Albums</h2>
+    <%= render partial: "scope_album", object: Album.ost_albums, locals: { f: f, accord_tags: "ost_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.ost_mp3_albums, locals: { f: f, accord_tags: "ost_mp3_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.tribute_albums, locals: { f: f, accord_tags: "tribute_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.tribute_mp3_albums, locals: { f: f, accord_tags: "tribute_mp3_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.previous_albums, locals: { f: f, accord_tags: "previous_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.billboard_albums, locals: { f: f, accord_tags: "billboard_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.mp3_albums, locals: { f: f, accord_tags: "mp3_albums" } %>
 
     <h2>Billboard Lists</h2>
 
