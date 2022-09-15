@@ -176,7 +176,28 @@ class ArtistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artist_params
-      params.require(:artist).permit(:name, :genre, :subgenre1, :subgenre2, :subgenre3, :priority, :pop_list, :greatest_list, :album, :current_album, :current_song, :to_download, :download_type, :download_date, :download_status, :wiki_page, :discogs_page,:current_download, :dl_listen_album, :dl_listen_song)
+      params.require(:artist).permit(
+        :name, 
+        :genre, 
+        :subgenre1, 
+        :subgenre2, 
+        :subgenre3, 
+        :priority, 
+        :pop_list, 
+        :greatest_list, 
+        :album, 
+        :current_album, 
+        :current_song, 
+        :to_download, 
+        :download_type, 
+        :download_date, 
+        :download_status, 
+        :wiki_page, 
+        :discogs_page, 
+        :current_download, 
+        :dl_listen_album, 
+        :dl_listen_song, 
+        :subgenres => [])
       # Need to make download migrations
     end
 

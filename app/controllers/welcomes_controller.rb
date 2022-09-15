@@ -46,7 +46,9 @@ private
   end
 
   def set_welcome
-    @welcome = Welcome.find_by(user_id: current_user.id)
+    if current_user
+      @welcome = Welcome.find_by(user_id: current_user.id)
+    end
   end
 
 end
