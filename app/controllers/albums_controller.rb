@@ -26,20 +26,28 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    # @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:artist_id])
+    @album = Album.new
+    @album.artist_id = @artist.id
+
+    # @album = Album.new
+    # @album.artist_id = @artist.id
+    # @artist.album.artist_id = Artist.find(params[:id])
     # @album = @artist.albums.new
-    @album = Album.find(params[:id])
+    # @album = Album.find(params[:id])
+    # @artist = Artist.find(@album.artist_id)
   end
 
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])
+    @artist = Artist.find(@album.artist_id)
   end
 
   # POST /albums or /albums.json
   def create
     @artist = Artist.find(params[:artist_id])
-    @album = @artist.albums.new(album_params)
+    @album = Album.new(album_params)
 
     respond_to do |format|
       if @album.save
