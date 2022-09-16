@@ -115,8 +115,8 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1 or /artists/1.json
   def show
-    @albums = Album.where(params[:artist_id]).sort_by &:year
-    # @album_types = Album.load_locals
+    @albums = Album.where(artist_id: params[:id]).sort_by &:year
+    # @album_type = Album.load_locals
   end
 
   # GET /artists/new
