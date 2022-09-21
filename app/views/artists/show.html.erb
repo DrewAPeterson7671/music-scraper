@@ -143,6 +143,7 @@
               <td><%= album.current_album_song %></td>
               <td><%= album.album_version %></td>
               <td><%= album.download_status %></td>
+              <td><%= album.listen %></td>
               <td><%= album.rating %></td>
               <td><%= link_to 'E', edit_artist_album_path(@artist, album.id) %></td>
               <td><%= link_to 'D', artist_album_path(@artist, album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>          

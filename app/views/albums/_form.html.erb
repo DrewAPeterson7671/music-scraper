@@ -49,6 +49,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :listen %>
+    <%= form.select :listen, @listen_choices, selected: @album.listen || "Now" %>
+  </div>
+
+  <div class="field">
     <%= form.label :rating %>
     <%= form.number_field :rating %>
   </div>

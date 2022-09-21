@@ -96,6 +96,7 @@ class ArtistsController < ApplicationController
         'Compilation',
         'Remix',
         'Box Set',
+        'Demo',
         'Video Album',
         'Single'
       ]

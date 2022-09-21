@@ -19,11 +19,13 @@ class AlbumsController < ApplicationController
       "Compilation", 
       "Remix", 
       "Box Set", 
+      "Demo",
       "Video Album", 
       "Single"]
     @album_download_choices = ["", "Listed", "Priority", "Queue", "Verified"]
     @album_version_choices = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
     @download_status_choices = ["", "Track Count", "Tested", "Tagged", "Normalized", "Done", "Imperfect But Rare"]
+    @listen_choices = ['Now', 'Later', 'Done']
   end
 
   # GET /albums or /albums.json
@@ -88,11 +90,11 @@ class AlbumsController < ApplicationController
 
   # DELETE /albums/1 or /albums/1.json
   def destroy
-    @artist = Artist.find(params[:artist_id])
+    @album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to artist_path(@artist), notice: "Album was successfully destroyed." }
+      format.html { redirect_to artist_path(@album), notice: "Album was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -115,6 +117,7 @@ class AlbumsController < ApplicationController
         :album_version, 
         :download_status, 
         :rating, 
+        :listen,
         :current_album_song)
     end
 end
