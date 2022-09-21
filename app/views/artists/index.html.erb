@@ -3,7 +3,9 @@
 <h1>Artists</h1>
 
 <% if current_user  %>
-  <%= link_to 'New Artist', new_artist_path %><br>
+  <%= link_to 'New Artist', new_artist_path %> |
+  <%= link_to 'Albums', albums_path %> |
+  <%= link_to 'Home', root_path %> <br>
 <% end %>
 
 <table>
@@ -71,4 +73,6 @@
 
 <br>
 
-<%= link_to 'New Artist', new_artist_path %>
+<%= link_to 'New Artist', new_artist_path %> |
+<%= link_to 'Albums', albums_path %> |
+<%= link_to 'Home', root_path %>
