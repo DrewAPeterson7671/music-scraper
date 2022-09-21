@@ -38,6 +38,10 @@ class Album < ApplicationRecord
     .order('created_at ASC')
     .limit(5) }
 
+  scope :top_independent_albums, -> { where("album_queue = 'Top Independent' AND download_status = '""'")
+      .order('created_at ASC')
+      .limit(5) }
+
   scope :mp3_albums, -> { where("album_queue = 'MP3Album'")
     .order('created_at ASC')
     .limit(5) }

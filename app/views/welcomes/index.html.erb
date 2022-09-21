@@ -236,6 +236,8 @@
 
     <%= render partial: "scope_album", object: Album.billboard_albums, locals: { f: f, accord_tags: "billboard_albums" } %>
 
+    <%= render partial: "scope_album", object: Album.top_independent_albums, locals: { f: f, accord_tags: "top_independent_albums" } %>
+
     <%= render partial: "scope_album", object: Album.mp3_albums, locals: { f: f, accord_tags: "mp3_albums" } %>
 
     <h2>Billboard Lists</h2>
