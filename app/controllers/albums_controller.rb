@@ -6,8 +6,21 @@ class AlbumsController < ApplicationController
   before_action :load_locals
 
   def load_locals
-    @album_queue_choices = ["", "VAR Queue", "OST Queue", "Tribute Queue", "Previous", "Billboard", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
-    @album_type_choices = ["", "Studio", "Live", "Greatest Hits", "Live Greatest Hits", "EP", "Compilation", "Box Set", "Remix", "Video Album", "Live EP", "Remix EP", "Single"]
+    @album_queue_choices = ["", "VAR Queue", "OST Queue", "Tribute Queue", "Previous", "Billboard", "Top Independent", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
+    @album_type_choices = [
+      "", 
+      "Studio", 
+      "EP", 
+      "Live EP", 
+      "Remix EP", 
+      "Live", 
+      "Greatest Hits", 
+      "Live Greatest Hits", 
+      "Compilation", 
+      "Remix", 
+      "Box Set", 
+      "Video Album", 
+      "Single"]
     @album_download_choices = ["", "Listed", "Priority", "Queue", "Verified"]
     @album_version_choices = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
     @download_status_choices = ["", "Track Count", "Tested", "Tagged", "Normalized", "Done", "Imperfect But Rare"]

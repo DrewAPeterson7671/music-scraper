@@ -94,7 +94,10 @@ class ArtistsController < ApplicationController
         'Greatest Hits',
         'Live Greatest Hits',
         'Compilation',
-        'Remix'
+        'Remix',
+        'Box Set',
+        'Video Album',
+        'Single'
       ]
   end
 
