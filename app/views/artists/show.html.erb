@@ -119,6 +119,7 @@
       <tr>
         <th>Album name</th>
         <th>Year</th>
+        <th>MP3 Only</th>
         <th>Album type</th>
         <th>Album complete</th>
         <th>Album download</th>
@@ -138,6 +139,7 @@
             <tr>
               <td><%= link_to album.album_name, artist_album_path(@artist, album.id) %></td>
               <td><%= album.year %></td>
+              <td><%= album.mp3_only %></td>
               <td><%= album.album_type %></td>
               <td><%= album.album_download %></td>
               <td><%= album.current_album_song %></td>
