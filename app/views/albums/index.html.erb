@@ -3,6 +3,7 @@
 <h1>Albums</h1>
 
 <% if current_user  %>
+  <%= link_to 'New Album', new_album_path %> |
   <%= link_to 'Artists', artists_path %> |
   <%= link_to 'Home', root_path %> <br>
 <% end %>
@@ -10,8 +11,10 @@
 <table>
   <thead>
     <tr>
+      <th>Arist</th>
       <th>Album name</th>
       <th>Year</th>
+      <th>MP3</th>
       <th>Album queue</th>
       <th>Album type</th>
       <th>Album download</th>
@@ -26,8 +29,10 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
+        <td><%= link_to Artist.find(album.artist_id).name, Artist.find(album.artist_id), method: :get %></td>
         <td><%= link_to album.album_name, album, method: :get %></td>
         <td><%= album.year %></td>
+        <td><%= album.mp3_only %></td>
         <td><%= album.album_queue %></td>
         <td><%= album.album_type %></td>
         <td><%= album.album_download %></td>
@@ -35,8 +40,8 @@
         <td><%= album.listen %></td>
         <td><%= album.rating %></td>
         <td><%= album.current_album_song %></td>
-        <td><%= link_to 'E', edit_album_path(album) %></td>
-        <td><%= link_to 'D', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'E', edit_album_path(album) %></td>
+        <td><%= button_to 'D', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

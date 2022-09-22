@@ -6,7 +6,16 @@ class AlbumsController < ApplicationController
   before_action :load_locals
 
   def load_locals
-    @album_queue_choices = ["", "VAR Queue", "OST Queue", "Tribute Queue", "Previous", "Billboard", "Top Independent", "VAR", "MP3Album", "MP3VAR", "MP3OST", "MP3Tribute"]
+    @album_queue_choices = [
+      "", 
+      "VAR Queue", 
+      "OST Queue", 
+      "Tribute Queue", 
+      "Previous", 
+      "Billboard", 
+      "Top Independent", 
+      "MP3Album",
+      "Work Recommendations"]
     @album_type_choices = [
       "", 
       "Studio", 
@@ -111,6 +120,7 @@ class AlbumsController < ApplicationController
         :album_name, 
         :artist_id, 
         :year, 
+        :mp3_only,
         :album_queue, 
         :album_type, 
         :album_download, 
