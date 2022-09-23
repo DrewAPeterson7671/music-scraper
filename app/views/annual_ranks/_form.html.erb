@@ -1,0 +1,47 @@
+<%= form_with(model: annual_rank) do |form| %>
+  <% if annual_rank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(annual_rank.errors.count, "error") %> prohibited this annual_rank from being saved:</h2>
+
+      <ul>
+        <% annual_rank.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rank %>
+    <%= form.number_field :rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rank_artist %>
+    <%= form.text_field :rank_artist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rank_track %>
+    <%= form.text_field :rank_track %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rank_album %>
+    <%= form.text_field :rank_album %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

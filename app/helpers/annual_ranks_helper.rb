@@ -1,0 +1,2 @@
+module AnnualRanksHelper
+end
