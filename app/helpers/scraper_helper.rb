@@ -13,12 +13,24 @@ module ScraperHelper
   def harvest_franks_page_list(year)
     #1980 to 2019
     @list_store = []
+    list = []
     doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}.htm")
     info = doc_list.css("tbody")
-    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\r\n/,'') }
+    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub!(/\\r|\\n/,'') }
     rows = info.css("tr")
 
-    @list_store = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
+    list = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
+
+    @list_store = list.map do |lis|
+      lis.map do |li|
+        li.map do |l|
+          l.gsub(/\\n|\\t/, '')
+        end
+      end
+    end
+
+    return @list_store
+
   end
 
   def harvest_radiohitlist_list(year, station)
@@ -45,7 +57,8 @@ module ScraperHelper
 
     @list_store.each do |ls|
       ls.each do |lsa|
-        lsa.gsub!(/\\n|\\t/)
+        lsa.gsub!(/\\n|\\t/, '')
+        # lsa.gsub!(/\\n\\t\\t\\t/, '')
         # lsa.slice! "\r\n      "
       end
     end
@@ -122,7 +135,7 @@ module ScraperHelper
   def billboardtop100_to_1958(year)
     # 1940 to 1958
     # merge these with billboard wiki
-    if year = "1940" 
+    if year == "1940" 
       year = "336"
     end
 
