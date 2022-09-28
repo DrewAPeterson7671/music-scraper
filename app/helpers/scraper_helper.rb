@@ -5,38 +5,54 @@ module ScraperHelper
   end
 
   def target_scrape(url)
-    browser = Watir::Browser.new(:chrome)
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_preference('webkit.webprefs.loads_images_automatically', false)
+
+    browser = Watir::Browser.new :chrome, options: options
     browser.goto(url)
     @doc = Nokogiri::HTML.parse(URI.open(url))
   end
   
   def harvest_franks_page_list(year)
-    #1980 to 2019
-    @list_store = []
-    list = []
+    #1980 only DONE
+    lists = []
     doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}.htm")
     info = doc_list.css("tbody")
-    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub!(/\\r|\\n/,'') }
+    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\\r|\\n|\\t/,'') }
     rows = info.css("tr")
 
-    list = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
+    lists = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
 
-    @list_store = list.map do |lis|
-      lis.map do |li|
-        li.map do |l|
-          l.gsub(/\\n|\\t/, '')
-        end
+    lists.map do |list|
+      list.map do |lis|
+        lis = lis.gsub("\n\t\t\t", '')
       end
     end
-
-    return @list_store
-
   end
 
+  def harvest_franks_page_list_no_album(year)
+    #1981 to 2019 DONE
+    lists = []
+    doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}.htm")
+    info = doc_list.css("table").wait_until(&:present?)
+    # p info
+    info.css('object,embed').each{ |e| e.inner_html = e.inner_html.gsub(/\\r|\\n|\\t/,'') }
+    rows = info.css("tr")
+
+    lists = rows.css('tr')[1..-1].map { |tr| tr.css('td').map &:text}
+
+    lists.map do |list|
+      list.map do |lis|
+        lis = lis.gsub("\n\t\t\t", '')
+      end
+    end
+  end
+
+
   def harvest_radiohitlist_list(year, station)
-    # KROQ 1980 to 2013
-    # 91X 1983 to 2016
-    # Q101 1996 to 2003
+    # KROQ 1980 to 2013 DONE
+    # 91X 1983 to 2016 DONE
+    # Q101 1996 to 2003 DONE
 
     doc_list = target_scrape("http://www.radiohitlist.com/#{station}/#{station}-#{year}.htm")
     info = doc_list.css("table")
@@ -51,13 +67,13 @@ module ScraperHelper
     
     @list_store.each do |ls|
       ls.reject! do |lsa|
-        lsra == "-"
+        lsa == "-"
       end
     end
 
-    @list_store.each do |ls|
-      ls.each do |lsa|
-        lsa.gsub!(/\\n|\\t/, '')
+    @list_store.map do |ls|
+      ls.map do |lsa|
+        lsa = lsa.gsub("\r\n      ", "")
         # lsa.gsub!(/\\n\\t\\t\\t/, '')
         # lsa.slice! "\r\n      "
       end
