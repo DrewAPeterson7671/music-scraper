@@ -13,6 +13,17 @@ module ScraperHelper
     @doc = Nokogiri::HTML.parse(URI.open(url))
   end
   
+  def target_scrape_xml(url)
+    #Incomplete
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_preference('webkit.webprefs.loads_images_automatically', false)
+
+    browser = Watir::Browser.new :chrome, options: options
+    browser.goto(url)
+    @doc = Nokogiri::XML(builder.to_xml)
+  end
+
+
   def harvest_franks_page_list(year)
     #1980 only DONE
     lists = []
@@ -95,20 +106,66 @@ module ScraperHelper
 
   end
   
-  def rocklists_years_gather(url)
-    doc_list = target_scrape("https://www.rocklists.com#{url}")
-    info = doc_list.at('p:contains("Year-End Countdowns available: ")')
+  def rocklists_years_gather(station, year)
+    # CURRENT WORK
+    # KROQ - Already Have
+    # Live 105 ('kits') 1986-2007 DONE
+    # Q101 - I have 1996 to 2003, 1996 only 24 DONE
+            # Need 1993, 94, 95, 96 and 04, 05, 06, 07 DONE
+    # 91X - Already Have
+    # WHFS - 1992, 94, 95, 96, 97, 98, 99, 00-04 2000, 01, 02, 03!! Problem use _qm DONE
+    # WLIR/WDRE Long Island 87 88 DONE
+    # K-Rock New York - Links no good 
+    # WFNX Boston 1998, 1999, 2001, 2002, 03, 05-07 Problem 2005 DONE
+
     @list_years = []
-    info.css('a').each do |i|
-      @list_years << i.try(:text)
-      @list_years << i['href']
+    doc_list = target_scrape("https://www.rocklists.com/#{station}-#{year}.html")
+    info = doc_list.at('div.col-sm-12')
+    info2 = info.css('p').try(:text).to_s()
+
+    info3 = info2.force_encoding('iso8859-1').encode('utf-8')
+    @info4 = info3.split("\n\n\t")
+
+    puts @info4
+
+    @info4.each do |info|
+      info = info.gsub(/(?:\d)(\. )/, ' - ')
+      @list_years << info.split(/( - )/)
     end
-    @other_countdowns = []
-    info = doc_list.at('p:contains("Other Countdowns available: ")')
-    info.css('a').each do |i|
-      @other_countdowns << i.try(:text)
-      @other_countdowns << i['href']
+
+    @list_years.each_with_index do |list_year, i|
+      list_year.delete(' - ')
+      list_year[0] = (i + 1).to_s
     end
+
+    return @list_years
+
+  end
+
+
+  def rocklists_years_gather_qm(station, year)
+    # WHFS  2000, 01, 02, 03!! Problem DONE
+
+    @list_years = []
+    doc_list = target_scrape("https://www.rocklists.com/#{station}-#{year}.html")
+    info = doc_list.at('div.col-sm-12')
+    info2 = info.css('p').try(:text).to_s()
+
+    info3 = info2.force_encoding('iso8859-1').encode('utf-8')
+    @info4 = info3.split("\n\n\t")
+
+    @info4.each do |info|
+      info = info.gsub(/(?:\d)(\. )/, ' - ')
+      @list_years << info.split(/( - )/)
+    end
+
+    @list_years.each_with_index do |list_year, i|
+      list_year.delete(' - ')
+      list_year[0] = (i + 1).to_s
+    end
+
+    return @list_years
+
   end
 
   def rocklists_by_year(year)
@@ -129,26 +186,8 @@ module ScraperHelper
     end
   end
 
-  def frankspage(year)
-    # includes more songs for 2010 to 2018, no albums
-    doc_list = target_scrape("http://www.frankspage.net/kroq/#{year}")
-    info = doc_list.css('table.kroq')
-    @year_list = []
-    rows = info.css("tr")
-
-    @year_list = rows.css('tr').map { |tr| tr.css('td').map &:text}
-    @year_list.delete_if(&:blank?)
-
-    @year_list = @year_list.map do |yl| 
-      yl.map do |yla|
-        yla.gsub!("\n", "")
-        yla.gsub!("\t", "")
-        yla.strip
-      end
-    end
-  end
-
   def billboardtop100_to_1958(year)
+    # ONLY 1940 works for this method and is DONE
     # 1940 to 1958
     # merge these with billboard wiki
     if year == "1940" 
@@ -163,10 +202,11 @@ module ScraperHelper
     rows = info.css("p")
     info.css('p').each { |i| @year_list  << i.try(:text) }
     @year_list = @year_list[0].split("\n")
-    @year_list = @year_list2.map { |yl| yl.split(/\. | – /) }
+    @year_list = @year_list.map { |yl| yl.split(/\. | – /) }
   end
 
   def billboard_wiki(year)
+    # 1946 to 2021 DONE
     # from 1959 to 2021
     # however 1946 to 1958 doesn't have the annoying artist slashes
     doc_list = target_scrape("https://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_#{year}")
@@ -185,7 +225,7 @@ module ScraperHelper
     end
 
     @year_list.map do |yl|
-      yl[1], yl[2] = yl[2], yl[1]
+      yl[0], yl[1], yl[2] = yl[0], yl[2], yl[1]
     end
   end
 
