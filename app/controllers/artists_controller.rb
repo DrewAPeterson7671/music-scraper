@@ -105,7 +105,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists or /artists.json
   def index
-    @artists = sort_artist_index.order(:name).page params[:page]
+    @artists = sort_artist_index.order(:name).paginate(page: params[:page], per_page: 100)
 
     if params[:search]
       @artists = Artist.search(params['search']).page params[:page]

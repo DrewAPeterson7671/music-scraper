@@ -35,6 +35,7 @@ gem 'webdrivers', '~> 4.6'
 gem 'open-uri'
 gem 'kaminari'
 gem 'devise'
+gem 'will_paginate', '~> 3.3'
 
 
 

@@ -117,6 +117,23 @@ module ScraperHelper
     # WLIR/WDRE Long Island 87 88 DONE
     # K-Rock New York - Links no good 
     # WFNX Boston 1998, 1999, 2001, 2002, 03, 05-07 Problem 2005 DONE
+    # KNDD The End Seattle 97,98,99,00,01,02,04,05,06,07 DONE
+    # WOXY Cincinnati 1984 DONE
+    # 89X Detroit 99 00 01 02 03 04 05 06 07 DONE
+    # CD101 Columbus 01 02 03 04 05 06 07 DONE
+    # Y100 Philadelphia 02 03 04 05 06 DONE
+    # CFNY Toronto 90 91 01 03 04 05 06 DONE
+    # CHOI Quebec 04 05 07 DONE
+    # CKQB The Bear Ottawa 03 04 06 DONE
+    # WBZT The Buzz Montreal 00 01 02 03 04 05 06 DONE
+    # The Rock Hartford 00 01 02 03 04 05 06 07 DONE
+    # KCNL 02 03 04 05 DONE
+    # Virgin Radio London 93 94 95 96 97 98 99 00 01 02 DONE
+    # Triple J Australia 93 - 06 DONE
+    # Radio and Records 94-06 DONE
+    # Left off needing CRNC - beware the hard rock station
+
+
 
     @list_years = []
     doc_list = target_scrape("https://www.rocklists.com/#{station}-#{year}.html")
