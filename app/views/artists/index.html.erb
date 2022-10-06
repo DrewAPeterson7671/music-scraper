@@ -45,6 +45,12 @@
     <%= submit_tag 'Genre Search', :name => nil %>
   <% end %>
 
+  <br>
+  <% if !@artists.nil? %>
+    <%= will_paginate @artists %>
+  <% end %>
+  <br>
+
   <tbody>
     <% @artists.each do |artist| %>
       <tr>
@@ -64,8 +70,10 @@
       </tr>
     <% end %>
   </tbody>
-</table><% if !@artists.nil? %>
-  <%= paginate @artists %>
+</table>
+<br>
+<% if !@artists.nil? %>
+  <%= will_paginate @artists %>
 <% end %>
 
 <br>

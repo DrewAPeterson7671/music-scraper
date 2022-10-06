@@ -7,7 +7,11 @@
   <%= link_to 'Artists', artists_path %> |
   <%= link_to 'Home', root_path %> <br>
 <% end %>
-
+<br>
+<% if !@albums.nil? %>
+  <%= will_paginate @albums %>
+<% end %>
+<br>
 <table>
   <thead>
     <tr>
@@ -46,6 +50,12 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<% if !@albums.nil? %>
+  <%= will_paginate @albums %>
+<% end %>
 
 <br>
 
