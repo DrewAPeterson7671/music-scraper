@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  root to: 'welcomes#index'
+
   resources :annual_ranks
   devise_for :users
-  root to: 'welcomes#index'
 
   resource :welcome, only: [:new, :update]
   

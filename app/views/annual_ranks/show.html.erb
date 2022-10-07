@@ -30,5 +30,15 @@
   <%= @annual_rank.rank_album %>
 </p>
 
+<p>
+  <strong>Rank listened:</strong>
+  <%= @annual_rank.rank_listened %>
+</p>
+
+<p>
+  <strong>Rank genre:</strong>
+  <%= @annual_rank.rank_genre %>
+</p>
+
 <%= link_to 'Edit', edit_annual_rank_path(@annual_rank) %> |
 <%= link_to 'Back', annual_ranks_path %>
