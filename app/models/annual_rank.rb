@@ -9,7 +9,8 @@ class AnnualRank < ApplicationRecord
         source: source, 
         rank_track: ranks[i += 1], 
         rank_artist: ranks[i += 1], 
-        rank_album: ranks[i += 1]
+        rank_album: ranks[i += 1],
+        rank_listened: false
       )
     end
   end
@@ -23,14 +24,30 @@ class AnnualRank < ApplicationRecord
         source: source,
         rank_artist: rank[1],
         rank_track: rank[2],
-        rank_album: rank[3]
+        rank_album: rank[3],
+        rank_listened: false
       )
       # end
     end
   end
 
+  # Scopes
 
+  scope :list_genre, -> { select("rank_genre").distinct
+    .order('rank_genre ASC') }
+    
 
+  scope :list_source, -> { select("source").distinct
+    .order('source ASC') }
+
+  scope :list_year, -> { select("year").distinct
+    .order('year ASC') }
+
+  # scope :lookup_source, ->(source) { where("source = ?", source) }
+
+  # scope :lookup_year, ->(target_year) { where("year = ?", target_year)
+  #   .order('rank') }
+  
   # Need to modify harvest_franks_page_list() to deal with \n\t\t\t the regex is tested good,just not applied correctly.
 
   # Need to change the class method for rank capture to deal with array inside an array.

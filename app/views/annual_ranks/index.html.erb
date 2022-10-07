@@ -2,6 +2,8 @@
 
 <h1>Annual Ranks</h1>
 
+<%= link_to %>
+
 <table>
   <thead>
     <tr>
@@ -11,6 +13,7 @@
       <th>Rank artist</th>
       <th>Rank track</th>
       <th>Rank album</th>
+      <th>Listened</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +27,7 @@
         <td><%= annual_rank.rank_artist %></td>
         <td><%= annual_rank.rank_track %></td>
         <td><%= annual_rank.rank_album %></td>
+        <td><%= annual_rank.rank_listened %></td>
         <td><%= link_to 'Show', annual_rank %></td>
         <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
         <td><%= link_to 'Destroy', annual_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,7 +35,11 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @annual_ranks %>
+
+<br>
+<% if !@annual_ranks.nil? %>
+  <%= will_paginate @annual_ranks %>
+<% end %>
 <br>
 
 <%= link_to 'New Annual Rank', new_annual_rank_path %>
