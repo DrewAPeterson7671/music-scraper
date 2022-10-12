@@ -2,7 +2,27 @@
 
 <h1>Annual Ranks</h1>
 
-<%= link_to %>
+<br>
+<% stations = AnnualRank.list_source %>
+<% stations.each do |station| %>
+  <p><%= link_to station.source, :action => "index", :source => station.source %>
+  <% AnnualRank.lookup_source(station.source).list_year.each do |year| %>
+    <%= link_to year.year, :action => "index", :source => station.source, :year => year.year  %>
+  <% end %>
+  </p>
+<% end %>
+<br>
+<% genres = AnnualRank.list_genre %>
+<% genres.each do |genre| %>
+  <p><%= link_to genre.rank_genre, :action => "index", :source => genre.rank_genre %>
+  <% AnnualRank.lookup_genre(genre.rank_genre).list_year.each do |year| %>
+    <%= link_to year.year, :action => "index", :rank_genre => genre.rank_genre, :year => year.year %>
+  <% end %>
+  </p>
+<% end %>
+<br>
+
+
 
 <table>
   <thead>
