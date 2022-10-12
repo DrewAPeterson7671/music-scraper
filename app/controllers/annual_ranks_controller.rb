@@ -3,16 +3,16 @@ class AnnualRanksController < ApplicationController
 
   # GET /annual_ranks or /annual_ranks.json
   def index
-    @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
-
-  end
-
-  def stations
-    @stations = AnnualRank.all
-  end
-
-  def years
-    @years = AnnualRank.all
+    if params[:source].present? && params[:year].present?
+      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).order(:rank)
+    elsif params[:source].present?
+      @annual_ranks = AnnualRank.where(:source => params[:source]).order(:year, :rank).paginate(page: params[:page], per_page: 200)
+    elsif params[:rank_genre].present? && params[:year].present?
+      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
+    else
+      @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
+    end
+  
   end
 
   # GET /annual_ranks/1 or /annual_ranks/1.json

@@ -43,10 +43,12 @@ class AnnualRank < ApplicationRecord
   scope :list_year, -> { select("year").distinct
     .order('year ASC') }
 
-  # scope :lookup_source, ->(source) { where("source = ?", source) }
+  scope :lookup_genre, ->(rank_genre) { where("rank_genre = ?", rank_genre) }
 
-  # scope :lookup_year, ->(target_year) { where("year = ?", target_year)
-  #   .order('rank') }
+  scope :lookup_source, ->(source) { where("source = ?", source) }
+
+  scope :lookup_year, ->(target_year) { where("year = ?", target_year)
+    .order('rank') }
   
   # Need to modify harvest_franks_page_list() to deal with \n\t\t\t the regex is tested good,just not applied correctly.
 
