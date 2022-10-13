@@ -43,7 +43,10 @@
 
   <div class="field">
     <%= form.label :rank_listened %>
-    <%= form.text_field :rank_listened %>
+    <%= form.label :rank_listened, 'Yes', :value => 'true' %>
+    <%= form.radio_button :rank_listened, true %>
+    <%= form.label :rank_listened, 'No', :value => 'false' %>
+    <%= form.radio_button :rank_listened, false, :checked => true %>
   </div>
 
   <div class="field">

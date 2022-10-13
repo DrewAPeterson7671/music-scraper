@@ -57,7 +57,7 @@
 </table>
 
 <br>
-<% if !@annual_ranks.nil? %>
+<% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>
   <%= will_paginate @annual_ranks %>
 <% end %>
 <br>
