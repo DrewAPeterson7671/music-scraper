@@ -74,6 +74,6 @@ class AnnualRanksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def annual_rank_params
-      params.require(:annual_rank).permit(:year, :rank, :source, :rank_artist, :rank_track, :rank_album)
+      params.require(:annual_rank).permit( :year, :rank, :source, :rank_artist, :rank_track, :rank_album, :rank_listened, :rank_genre )
     end
 end
