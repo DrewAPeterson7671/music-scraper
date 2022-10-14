@@ -13,7 +13,10 @@ class AlbumsController < ApplicationController
       "Tribute Queue", 
       "Previous", 
       "Billboard", 
-      "Top Independent", 
+      "Top Independent",
+      "Metal",
+      "Punk",
+      "Reggae", 
       "MP3Album",
       "Work Recommendations"]
     @album_type_choices = [

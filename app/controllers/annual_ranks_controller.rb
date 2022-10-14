@@ -12,6 +12,10 @@ class AnnualRanksController < ApplicationController
     else
       @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
     end
+
+    # if params[:sort].present?
+    #   @annual_rank = @annual_rank.order(params[:sort])
+    # end
   
   end
 
