@@ -235,15 +235,55 @@
 
     <%= render partial: "scope_album", object: Album.tribute_mp3_albums, locals: { f: f, accord_tags: "tribute_mp3_albums" } %>
 
+    <%= render partial: "scope_album", object: Album.mp3_albums, locals: { f: f, accord_tags: "mp3_albums" } %>
+
     <%= render partial: "scope_album", object: Album.previous_albums, locals: { f: f, accord_tags: "previous_albums" } %>
 
     <%= render partial: "scope_album", object: Album.billboard_albums, locals: { f: f, accord_tags: "billboard_albums" } %>
 
     <%= render partial: "scope_album", object: Album.top_independent_albums, locals: { f: f, accord_tags: "top_independent_albums" } %>
 
-    <%= render partial: "scope_album", object: Album.mp3_albums, locals: { f: f, accord_tags: "mp3_albums" } %>
+    <%= render partial: "scope_album", object: Album.top_metal_albums, locals: { f: f, accord_tags: "top_metal_albums" } %>
 
-    <h2>Billboard Lists</h2>
+    <%= render partial: "scope_album", object: Album.top_punk_albums, locals: { f: f, accord_tags: "top_punk_albums" } %>
+
+    <%= render partial: "scope_album", object: Album.top_reggae_albums, locals: { f: f, accord_tags: "top_reggae_albums" } %>
+
+
+    <h2>Annual Ranking Lists</h2>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1955, locals: { f: f, accord_tags: "billboard_1955" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1960, locals: { f: f, accord_tags: "billboard_1960" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_1980, locals: { f: f, accord_tags: "kroq_1980" } %>
+    
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1965, locals: { f: f, accord_tags: "billboard_1965" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_1985, locals: { f: f, accord_tags: "kroq_1985" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1970, locals: { f: f, accord_tags: "billboard_1970" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_1990, locals: { f: f, accord_tags: "kroq_1990" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1980, locals: { f: f, accord_tags: "billboard_1980" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_1995, locals: { f: f, accord_tags: "kroq_1995" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_1990, locals: { f: f, accord_tags: "billboard_1990" } %>
+    
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_2000, locals: { f: f, accord_tags: "kroq_2000" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_2000, locals: { f: f, accord_tags: "billboard_2000" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_2005, locals: { f: f, accord_tags: "kroq_2005" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_2010, locals: { f: f, accord_tags: "billboard_2010" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_2010, locals: { f: f, accord_tags: "kroq_2010" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.billboard_2020, locals: { f: f, accord_tags: "billboard_2020" } %>
+
 
     <h2>Alternative Lists</h2>
 

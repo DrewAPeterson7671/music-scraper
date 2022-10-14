@@ -42,6 +42,18 @@ class Album < ApplicationRecord
       .order('created_at ASC')
       .limit(5) }
 
+  scope :top_metal_albums, -> { where("album_queue = 'Metal' AND download_status = '""' AND listen = 'Now'")
+    .order('created_at ASC')
+    .limit(5) }
+
+  scope :top_punk_albums, -> { where("album_queue = 'Top Independent' AND download_status = '""' AND listen = 'Now'")
+    .order('created_at ASC')
+    .limit(5) }
+    
+  scope :top_reggae_albums, -> { where("album_queue = 'Top Independent' AND download_status = '""' AND listen = 'Now'")
+    .order('created_at ASC')
+    .limit(5) }
+
   scope :mp3_albums, -> { where("album_queue = 'MP3Album' AND listen = 'Now'")
     .order('created_at ASC')
     .limit(5) }

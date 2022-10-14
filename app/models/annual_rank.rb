@@ -50,8 +50,72 @@ class AnnualRank < ApplicationRecord
   scope :lookup_year, ->(target_year) { where("year = ?", target_year)
     .order('rank') }
   
-  # Need to modify harvest_franks_page_list() to deal with \n\t\t\t the regex is tested good,just not applied correctly.
+  scope :billboard_1955, -> { where( "source = 'Billboard' AND year = 1955 AND rank_listened = false" )
+    .order('rank')
+    .limit(5) }
+  
+  scope :billboard_1960, -> { where( "source = 'Billboard' AND year = 1960 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
 
-  # Need to change the class method for rank capture to deal with array inside an array.
+  scope :billboard_1965, -> { where( "source = 'Billboard' AND year = 1965 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_1970, -> { where( "source = 'Billboard' AND year = 1970 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_1980, -> { where( "source = 'Billboard' AND year = 1980 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_1990, -> { where( "source = 'Billboard' AND year = 1990 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_2000, -> { where( "source = 'Billboard' AND year = 2000 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_2010, -> { where( "source = 'Billboard' AND year = 2010 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :billboard_2020, -> { where( "source = 'Billboard' AND year = 2020 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :kroq_1980, -> { where( "source = 'KROQ' AND year = 1980 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }  
+
+  scope :kroq_1985, -> { where( "source = 'KROQ' AND year = 1985 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :kroq_1990, -> { where( "source = 'KROQ' AND year = 1990 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }  
+
+  scope :kroq_1995, -> { where( "source = 'KROQ' AND year = 1995 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :kroq_2000, -> { where( "source = 'KROQ' AND year = 2000 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }  
+
+  scope :kroq_2005, -> { where( "source = 'KROQ' AND year = 2005 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
+
+  scope :kroq_2010, -> { where( "source = 'KROQ' AND year = 2010 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }  
+
+  scope :kroq_2015, -> { where( "source = 'KROQ' AND year = 2015 AND rank_listened = false" )
+    .order('rank')
+    .limit(10) }
 
 end
