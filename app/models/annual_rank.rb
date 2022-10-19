@@ -15,7 +15,7 @@ class AnnualRank < ApplicationRecord
     end
   end
 
-  def self.rank_capture_nested_arrays(year, source, ranks)
+  def self.rank_capture_nested_arrays(year, source, genre, ranks)
     ranks.map do |rank|
       # rank.map do |ran|
       AnnualRank.create(
@@ -25,7 +25,8 @@ class AnnualRank < ApplicationRecord
         rank_artist: rank[1],
         rank_track: rank[2],
         rank_album: rank[3],
-        rank_listened: false
+        rank_listened: false,
+        rank_genre: genre
       )
       # end
     end

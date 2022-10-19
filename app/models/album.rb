@@ -46,11 +46,11 @@ class Album < ApplicationRecord
     .order('created_at ASC')
     .limit(5) }
 
-  scope :top_punk_albums, -> { where("album_queue = 'Top Independent' AND download_status = '""' AND listen = 'Now'")
+  scope :top_punk_albums, -> { where("album_queue = 'Punk' AND download_status = '""' AND listen = 'Now'")
     .order('created_at ASC')
     .limit(5) }
     
-  scope :top_reggae_albums, -> { where("album_queue = 'Top Independent' AND download_status = '""' AND listen = 'Now'")
+  scope :top_reggae_albums, -> { where("album_queue = 'Reggae' AND download_status = '""' AND listen = 'Now'")
     .order('created_at ASC')
     .limit(5) }
 
