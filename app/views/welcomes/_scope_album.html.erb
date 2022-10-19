@@ -14,7 +14,9 @@
         <div class="collapse" id="<%= accord_tag %>">
           <ul>
           <% scope_album.each do |ap| %>
-            <li><%= link_to ap.album_name, edit_album_path(ap) %></li>
+            <li><%= link_to Artist.find(ap.artist_id).name, Artist.find(ap.artist_id), method: :get %>
+            <%= p " - " %>
+            <%= link_to ap.album_name, edit_album_path(ap) %></li>
           <% end %>
           </ul>
         </div>

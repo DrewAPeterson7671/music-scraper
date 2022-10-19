@@ -15,7 +15,9 @@
           <ul>
           <% scope_annual_rank.each do |ap| %>
             <li><%= link_to ap.rank, edit_annual_rank_path(ap)  %>
+            <%= p " - " %>
             <%= link_to ap.rank_artist, edit_annual_rank_path(ap) %>
+            <%= p " - " %>
             <%= link_to ap.rank_track, edit_annual_rank_path(ap) %></li>
           <% end %>
           </ul>

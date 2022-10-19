@@ -185,6 +185,37 @@ module ScraperHelper
 
   end
 
+  def rocklists_collections(station)
+    # WHFS  2000, 01, 02, 03!! Problem DONE
+
+    @list_years = []
+    doc_list = target_scrape("https://www.rocklists.com/#{station}.html")
+    info = doc_list.at('div.col-sm-12')
+    info2 = info.css('p').try(:text).to_s()
+
+    info3 = info2.force_encoding('iso8859-1').encode('utf-8')
+    info3 = info3.gsub("7. Grandmaster Flash & Melle Mel - White Lines\n              \n              (Don\'t Do It)", "7. Grandmaster Flash & Melle Mel - White Lines (Don\'t Do It)")
+    info3 = info3.gsub("The B-52â\u0080\u0099s", "The B-52's")
+    info3 = info3.gsub("The B-52â\u0080\u0099S", "The B-52's")
+
+    @info4 = info3.split("\n")
+
+    @info4.each do |info|
+      info.lstrip!
+      puts info
+      info = info.gsub(/(?:\d)(\. )/, ' - ')
+      @list_years << info.split(/( - )/)
+    end
+    
+    @list_years.each_with_index do |list_year, i|
+      list_year.delete(' - ')
+      list_year[0] = (i + 1).to_s
+    end
+
+    return @list_years
+
+  end
+
   def rocklists_by_year(year)
     # append station and year to instance to ID it?
     doc_list = target_scrape("https://www.rocklists.com#{year}")
