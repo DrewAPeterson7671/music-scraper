@@ -24,6 +24,7 @@
 
 
 
+
 <table>
   <thead>
     <tr>
@@ -63,3 +64,44 @@
 <br>
 
 <%= link_to 'New Annual Rank', new_annual_rank_path %>
+
+
+<h2>Rank Sorter</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to "Year", :sort => "year" %></th>
+      <th><%= link_to "Rank", :sort => "rank" %></th>
+      <th><%= link_to "Source", :sort => "source" %></th>
+      <th><%= link_to "Rank Artist", :sort => "rank_artist" %></th>
+      <th><%= link_to "Rank Track", :sort => "rank_track" %></th>
+      <th><%= link_to "Rank Album", :sort => "rank_album" %></th>
+      <th><%= link_to "Listened", :sort => "listened" %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rank_sorters.each do |rank_sorter| %>
+      <tr>
+        <td><%= rank_sorter.year %></td>
+        <td><%= rank_sorter.rank %></td>
+        <td><%= rank_sorter.source %></td>
+        <td><%= rank_sorter.rank_artist %></td>
+        <td><%= rank_sorter.rank_track %></td>
+        <td><%= rank_sorter.rank_album %></td>
+        <td><%= rank_sorter.rank_listened %></td>
+        <td><%= link_to 'Show', rank_sorter %></td>
+        <td><%= link_to 'Edit', edit_annual_rank_path(rank_sorter) %></td>
+        <td><%= link_to 'Destroy', rank_sorter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>
+  <%= will_paginate @rank_sorters %>
+<% end %>
+<br>
