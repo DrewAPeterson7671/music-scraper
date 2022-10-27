@@ -2,7 +2,6 @@
 
 <h1>Annual Ranks</h1>
 
-<br>
 <% stations = AnnualRank.list_source %>
 <% stations.each do |station| %>
   <p><%= link_to station.source, :action => "index", :source => station.source %>
@@ -22,8 +21,8 @@
 <% end %>
 <br>
 
-
-
+<br>
+<br>
 
 <table>
   <thead>
@@ -35,29 +34,37 @@
       <th><%= link_to "Rank Track", :sort => "rank_track" %></th>
       <th><%= link_to "Rank Album", :sort => "rank_album" %></th>
       <th><%= link_to "Listened", :sort => "listened" %></th>
-      <th><%= link_to "Alt Collection", :sort => "Alt Collection" %></th>
+      <th><%= link_to "Alt Collection", :sort => "alt_collection" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @annual_ranks.each do |annual_rank| %>
-      <tr>
-        <td><%= annual_rank.year %></td>
-        <td><%= annual_rank.rank %></td>
-        <td><%= annual_rank.source %></td>
-        <td><%= annual_rank.rank_artist %></td>
-        <td><%= annual_rank.rank_track %></td>
-        <td><%= annual_rank.rank_album %></td>
-        <td><%= annual_rank.rank_listened %></td>
-        <td><%= annual_rank.alt_collection %></td>
-        <td><%= link_to 'Show', annual_rank %></td>
-        <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
-        <td><%= link_to 'Destroy', annual_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <%= form_for :annual_rank, :url => update_all_path, :html => { :method => :put } do %>
+
+    <tbody>
+      <% @annual_ranks.each do |annual_rank| %>
+        <tr>
+          <td><%= annual_rank.year %></td>
+          <td><%= annual_rank.rank %></td>
+          <td><%= annual_rank.source %></td>
+          <td><%= annual_rank.rank_artist %></td>
+          <td><%= annual_rank.rank_track %></td>
+          <td><%= annual_rank.rank_album %></td>
+          <td><%= annual_rank.rank_listened %></td>
+          <td><%= annual_rank.alt_collection %></td>
+          <%= fields_for "Alt Collection", annual_rank do |annual_rank_fields| %>
+            <td><%= annual_rank_fields.check_box :alt_collection %></td>
+          <% end %>
+          <td><%= link_to 'Show', annual_rank %></td>
+          <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
+          <td><%= link_to 'Destroy', annual_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
 </table>
+<%= submit_tag %>
+<% end %>
 
 <br>
 <% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>
@@ -67,45 +74,4 @@
 
 <%= link_to 'New Annual Rank', new_annual_rank_path %>
 
-
-<h2>Rank Sorter</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= link_to "Year", :sort => "year" %></th>
-      <th><%= link_to "Rank", :sort => "rank" %></th>
-      <th><%= link_to "Source", :sort => "source" %></th>
-      <th><%= link_to "Rank Artist", :sort => "rank_artist" %></th>
-      <th><%= link_to "Rank Track", :sort => "rank_track" %></th>
-      <th><%= link_to "Rank Album", :sort => "rank_album" %></th>
-      <th><%= link_to "Listened", :sort => "listened" %></th>
-      <th><%= link_to "Alt Collection", :sort => "Alt Collection" %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rank_sorters.each do |rank_sorter| %>
-      <tr>
-        <td><%= rank_sorter.year %></td>
-        <td><%= rank_sorter.rank %></td>
-        <td><%= rank_sorter.source %></td>
-        <td><%= rank_sorter.rank_artist %></td>
-        <td><%= rank_sorter.rank_track %></td>
-        <td><%= rank_sorter.rank_album %></td>
-        <td><%= rank_sorter.rank_listened %></td>
-        <td><%= rank_sorter.alt_collection %></td>
-        <td><%= link_to 'Show', rank_sorter %></td>
-        <td><%= link_to 'Edit', edit_annual_rank_path(rank_sorter) %></td>
-        <td><%= link_to 'Destroy', rank_sorter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>
-  <%= will_paginate @rank_sorters %>
-<% end %>
 <br>
