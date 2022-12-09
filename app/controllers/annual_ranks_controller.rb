@@ -10,7 +10,7 @@ class AnnualRanksController < ApplicationController
     elsif params[:rank_genre].present? && params[:year].present?
       @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
     elsif params[:alt_collection].present?
-      @annual_ranks = AnnualRank.where(:source => params[:alt_collection]).order(:artist_name).paginate(page: params[:page], per_page: 200)
+      @annual_ranks = AnnualRank.where( :alt_collection => true ).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
     else
       @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
     end
@@ -55,6 +55,7 @@ class AnnualRanksController < ApplicationController
 
   # PATCH/PUT /annual_ranks/1 or /annual_ranks/1.json
   def update
+    @annual_rank = AnnualRank.find(params[:id])
     respond_to do |format|
       if @annual_rank.update(annual_rank_params)
         format.html { redirect_to annual_rank_url(@annual_rank), notice: "Annual rank was successfully updated." }
@@ -68,6 +69,7 @@ class AnnualRanksController < ApplicationController
 
   # DELETE /annual_ranks/1 or /annual_ranks/1.json
   def destroy
+    @annual_rank = AnnualRank.find(params[:id])
     @annual_rank.destroy
 
     respond_to do |format|
