@@ -20,7 +20,14 @@
   </p>
 <% end %>
 <br>
-
+<% all_times = AnnualRank.list_rank_genre %>
+<% all_times.each do |all_time| %>
+  <p><%= link_to all_time.source, :action => "index", :source => all_time.source %>
+  </p>
+<% end %>
+<p><%= link_to "All-Time Alternative", :action => "index", :alt_collection => true %></p>
+<br>
+<br>
 <br>
 <br>
 
@@ -39,8 +46,6 @@
     </tr>
   </thead>
 
-  <%= form_for :annual_rank, :url => update_all_path, :html => { :method => :put } do %>
-
     <tbody>
       <% @annual_ranks.each do |annual_rank| %>
         <tr>
@@ -52,9 +57,6 @@
           <td><%= annual_rank.rank_album %></td>
           <td><%= annual_rank.rank_listened %></td>
           <td><%= annual_rank.alt_collection %></td>
-          <%= fields_for "Alt Collection", annual_rank do |annual_rank_fields| %>
-            <td><%= annual_rank_fields.check_box :alt_collection %></td>
-          <% end %>
           <td><%= link_to 'Show', annual_rank %></td>
           <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
           <td><%= link_to 'Destroy', annual_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -63,8 +65,6 @@
     </tbody>
 
 </table>
-<%= submit_tag %>
-<% end %>
 
 <br>
 <% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>

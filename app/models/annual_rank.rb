@@ -32,6 +32,87 @@ class AnnualRank < ApplicationRecord
     end
   end
 
+  def self.rank_artist_the(artist)
+    pattern_a = /^((a)\s)/i
+    pattern_the = /^((the)\s)/i
+
+    return artist.rank_artist.sub!(pattern_a, "").concat(', A') if artist.rank_artist.match?(pattern_a)
+    return artist.rank_artist.sub!(pattern_the, "").concat(', The') if artist.rank_artist.match?(pattern_the)
+  end
+
+  def self.change_artist(oldstuff, newstuff)
+    @change = AnnualRank.where( rank_artist: oldstuff )
+    @change.map do |c|
+      c.rank_artist = newstuff
+      c.save
+    end
+  end
+
+  def self.change_track(oldstuff, newstuff)
+    @change = AnnualRank.where(rank_track: oldstuff )
+    @change.map do |c|
+      c.rank_track = newstuff
+      c.save
+    end
+  end
+
+  def self.unsafe_change_track(artist, oldstuff, newstuff)
+    @change = AnnualRank.where(rank_artist: artist, rank_track: oldstuff )
+    @change.map do |c|
+      c.rank_track = newstuff
+      c.save
+    end
+  end
+
+  def self.trim_artists_tracks
+    trim = AnnualRank.all
+    trim.map do |t|
+      t.rank_artist = t.rank_artist&.strip
+      t.rank_track = t.rank_track&.strip
+      t.save
+    end
+  end
+
+  def self.titleize_artists_tracks
+    trim = AnnualRank.all
+    trim.map do |t|
+      t.rank_artist = t.rank_artist&.titleize
+      t.rank_track = t.rank_track&.titleize
+      t.save
+    end
+  end
+
+  def self.remove_alt_collection
+    remove = AnnualRank.where( alt_collection: true )
+    remove.map do |r|
+      r.alt_collection = false
+      r.save
+    end
+  end
+
+  def self.new_alt_collection
+    new_coll = AnnualRank.select("DISTINCT ON(annual_ranks.rank_track, annual_ranks.rank_artist) annual_ranks.*").where(rank_genre: "Alternative")
+    new_coll.map do |n|
+      n.alt_collection = true
+      n.save
+    end
+  end
+
+  def self.refresh_alt_collection
+    remove = AnnualRank.where( alt_collection: true )
+    remove.map do |r|
+      r.alt_collection = false
+      r.save
+    end
+
+    new_coll = AnnualRank.select("DISTINCT ON(annual_ranks.rank_track, annual_ranks.rank_artist) annual_ranks.*").where(rank_genre: "Alternative")
+    new_coll.map do |n|
+      n.alt_collection = true
+      n.save
+    end
+  end
+
+
   # Scopes
 
   scope :list_genre, -> { select("rank_genre")
@@ -46,8 +127,7 @@ class AnnualRank < ApplicationRecord
     .order('year ASC') }
 
   scope :list_rank_genre, -> { select("source").where(rank_genre: 'Alternative All-Time')
-    .distinct
-    .order('rank_genre ASC') }
+    .distinct }
 
   scope :lookup_genre, ->(rank_genre) { where("rank_genre = ?", rank_genre) }
 
@@ -55,7 +135,10 @@ class AnnualRank < ApplicationRecord
 
   scope :lookup_year, ->(target_year) { where("year = ?", target_year)
     .order('rank') }
-  
+
+  # scope :all_time_alternative, -> { where("rank_genre = 'All-Time Alternative'")
+  # .order('rank_artist', 'rank_track') }  
+    
   scope :billboard_1955, -> { where( "source = 'Billboard' AND year = 1955 AND rank_listened = false" )
     .order('rank')
     .limit(5) }
