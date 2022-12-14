@@ -285,6 +285,10 @@
 
     <%= render partial: "scope_annual_rank", object: AnnualRank.kroq_2015, locals: { f: f, accord_tags: "kroq_2015" } %>
 
+    <%= render partial: "scope_annual_rank", object: AnnualRank.annual_rank_download, locals: { f: f, accord_tags: "annual_rank_download" } %>
+
+    <%= render partial: "scope_annual_rank", object: AnnualRank.annual_rank_download_process, locals: { f: f, accord_tags: "annual_rank_download_process" } %>
+
     <h2>Collections</h2>
 
     <h2>Alternative Lists</h2>
@@ -292,7 +296,8 @@
     <h2>Spotify Playlists Of Others</h2>
 
     <h2>Download Status</h2>
-    <!-- NEW INDEX PAGE MP3 DOWNLOADS -->
+
+    <%= render partial: "scope_item", object: Artist.artist_downloads, locals: { f: f, accord_tags: "artist_downloads" } %>
 
   <% end %>
 

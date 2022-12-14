@@ -207,4 +207,16 @@ class AnnualRank < ApplicationRecord
     .order('rank')
     .limit(10) }
 
+  scope :annual_rank_download, -> { where( "to_download = 'To Download'" )
+    .order('rank')
+    }
+
+  scope :annual_rank_download, -> { where( "to_download = 'To Download'" )
+    .order('rank')
+    }
+
+  scope :annual_rank_download_process, -> { where( "to_download = 'To Process'" )
+    .order('rank')
+    }
+
 end

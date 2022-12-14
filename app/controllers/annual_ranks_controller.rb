@@ -1,6 +1,13 @@
 class AnnualRanksController < ApplicationController
   # before_action :set_annual_rank
 
+  before_action :load_locals
+
+  def load_locals
+    @to_download_choices = 
+    [ nil, "To Download", "To Process", "Done"]
+  end
+
   # GET /annual_ranks or /annual_ranks.json
   def index
     if params[:source].present? && params[:year].present?
@@ -100,6 +107,6 @@ class AnnualRanksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def annual_rank_params
-      params.require(:annual_rank).permit( :year, :rank, :source, :rank_artist, :rank_track, :rank_album, :rank_listened, :rank_genre, :alt_collection )
+      params.require(:annual_rank).permit( :year, :rank, :source, :rank_artist, :rank_track, :rank_album, :rank_listened, :rank_genre, :alt_collection, :to_download )
     end
 end

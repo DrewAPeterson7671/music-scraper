@@ -57,7 +57,12 @@
   <div class="field">
     <%= form.label :alt_collection %>
     <%= form.check_box :alt_collection %>
-  </div>  
+  </div>
+
+  <div class="field">
+    <%= form.label :to_download %>
+    <%= form.select :to_download, @to_download_choices, selected: @annual_rank.to_download || nil %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
