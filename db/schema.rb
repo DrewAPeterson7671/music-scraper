@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_031657) do
+ActiveRecord::Schema.define(version: 2022_12_14_032120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_10_20_031657) do
     t.boolean "rank_listened"
     t.string "rank_genre"
     t.boolean "alt_collection"
+    t.string "to_download"
   end
 
   create_table "artists", force: :cascade do |t|

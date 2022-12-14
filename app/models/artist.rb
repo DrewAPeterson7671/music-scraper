@@ -263,102 +263,109 @@ class Artist < ApplicationRecord
     .order('updated_at ASC')
     .limit(10) }
 
-# Punk
+  # Punk
 
-scope :punk_current_poplist, -> { where("genre = 'Punk' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :punk_current_poplist, -> { where("genre = 'Punk' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :punk_current_greatestlist, -> { where("genre = 'Punk' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :punk_current_greatestlist, -> { where("genre = 'Punk' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :punk_current_album, -> { where("genre = 'Punk' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :punk_current_album, -> { where("genre = 'Punk' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Metal
+  # Metal
 
-scope :metal_current_poplist, -> { where("genre = 'Metal' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :metal_current_poplist, -> { where("genre = 'Metal' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :metal_current_greatestlist, -> { where("genre = 'Metal' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :metal_current_greatestlist, -> { where("genre = 'Metal' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :metal_current_current_album, -> { where("genre = 'Metal' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :metal_current_current_album, -> { where("genre = 'Metal' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Jam Bands
+  # Jam Bands
 
-scope :jambands_current_poplist, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
-  
-scope :jambands_current_greatestlist, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :jambands_current_poplist, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+    
+  scope :jambands_current_greatestlist, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :jambands_current_current_album, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :jambands_current_current_album, -> { where("genre = 'Jam Bands' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Rock N Roll
+  # Rock N Roll
 
-scope :rocknroll_current_poplist, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
-  
-scope :rocknroll_current_greatestlist, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :rocknroll_current_poplist, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+    
+  scope :rocknroll_current_greatestlist, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :rocknroll_current_current_album, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :rocknroll_current_current_album, -> { where("genre = 'Rock N Roll' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Soul R&B
+  # Soul R&B
 
-scope :soulrb_current_poplist, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
-  
-scope :soulrb_current_greatestlist, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :soulrb_current_poplist, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+    
+  scope :soulrb_current_greatestlist, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :soulrb_current_current_album, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :soulrb_current_current_album, -> { where("genre = 'Soul R&B' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Disco
+  # Disco
 
-scope :disco_current_poplist, -> { where("genre = 'Disco' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
-  
-scope :disco_current_greatestlist, -> { where("genre = 'Disco' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :disco_current_poplist, -> { where("genre = 'Disco' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+    
+  scope :disco_current_greatestlist, -> { where("genre = 'Disco' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :disco_current_current_album, -> { where("genre = 'Disco' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :disco_current_current_album, -> { where("genre = 'Disco' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-# Reggae
+  # Reggae
 
-scope :reggae_current_poplist, -> { where("genre = 'Reggae' AND priority = 'Current' AND pop_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
-  
-scope :reggae_current_greatestlist, -> { where("genre = 'Reggae' AND priority = 'Current' AND greatest_list = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :reggae_current_poplist, -> { where("genre = 'Reggae' AND priority = 'Current' AND pop_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+    
+  scope :reggae_current_greatestlist, -> { where("genre = 'Reggae' AND priority = 'Current' AND greatest_list = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
 
-scope :reggae_current_current_album, -> { where("genre = 'Reggae' AND priority = 'Current' AND album = 'Active'")
-  .order('updated_at ASC')
-  .limit(10) }
+  scope :reggae_current_current_album, -> { where("genre = 'Reggae' AND priority = 'Current' AND album = 'Active'")
+    .order('updated_at ASC')
+    .limit(10) }
+
+  # Downloads
+
+  scope :artist_downloads, -> { where("to_download = 'To Do'")
+    .order('updated_at ASC')
+    .limit(10) }
+
 
 end
