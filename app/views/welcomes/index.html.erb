@@ -1,4 +1,5 @@
 <h1>Music Scraper</h1>
+<br>
 
 <% if current_user %>
   <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %> |
@@ -11,6 +12,8 @@
   <%= link_to 'Artist List', artists_path %> |
   <%= link_to 'Albums', albums_path %> |
   <%= link_to 'Annual Ranks', annual_ranks_path %>
+  <br>
+  <br>
 
   <div class="accordion" id="accordionArtistList">
 

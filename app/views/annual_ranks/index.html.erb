@@ -2,30 +2,63 @@
 
 <h1>Annual Ranks</h1>
 
-<% stations = AnnualRank.list_source %>
-<% stations.each do |station| %>
-  <p><%= link_to station.source, :action => "index", :source => station.source %>
-  <% AnnualRank.lookup_source(station.source).list_year.each do |year| %>
-    <%= link_to year.year, :action => "index", :source => station.source, :year => year.year  %>
-  <% end %>
-  </p>
+<% if current_user  %>
+  <%= link_to 'Albums', albums_path %> |
+  <%= link_to 'Artists', artists_path %> |
+  <%= link_to 'Home', root_path %> <br>
 <% end %>
 <br>
-<% genres = AnnualRank.list_genre %>
-<% genres.each do |genre| %>
-  <p><%= link_to genre.rank_genre, :action => "index", :source => genre.rank_genre %>
-  <% AnnualRank.lookup_genre(genre.rank_genre).list_year.each do |year| %>
-    <%= link_to year.year, :action => "index", :rank_genre => genre.rank_genre, :year => year.year %>
+
+<h2>Station Annual Lists
+  <span class="inline left-space">
+    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-station">
+    &nbsp&nbsp</button>
+  </span>
+</h2>
+<div class="collapse" id="collapse-station" >
+  <% stations = AnnualRank.list_source %>
+  <% stations.each do |station| %>
+    <p><%= link_to station.source, :action => "index", :source => station.source %>
+    <% AnnualRank.lookup_source(station.source).list_year.each do |year| %>
+      <%= link_to year.year, :action => "index", :source => station.source, :year => year.year  %>
+    <% end %>
+    </p>
   <% end %>
-  </p>
-<% end %>
+</div>
 <br>
-<% all_times = AnnualRank.list_rank_genre %>
-<% all_times.each do |all_time| %>
-  <p><%= link_to all_time.source, :action => "index", :source => all_time.source %>
-  </p>
-<% end %>
-<p><%= link_to "All-Time Alternative", :action => "index", :alt_collection => true %></p>
+
+<h2>Genre Lists
+  <span class="inline left-space">
+    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#genre-collapse">
+    &nbsp&nbsp</button>
+  </span>
+</h2>
+<div class="collapse" id="genre-collapse" >
+  <% genres = AnnualRank.list_genre %>
+  <% genres.each do |genre| %>
+    <p><%= link_to genre.rank_genre, :action => "index", :source => genre.rank_genre %>
+    <% AnnualRank.lookup_genre(genre.rank_genre).list_year.each do |year| %>
+      <%= link_to year.year, :action => "index", :rank_genre => genre.rank_genre, :year => year.year %>
+    <% end %>
+    </p>
+  <% end %>
+</div>
+<br>
+
+<h2>All-Time Station Lists
+  <span class="inline left-space">
+    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#all-time-collapse">
+    &nbsp&nbsp</button>
+  </span>
+</h2>
+<div class="collapse" id="all-time-collapse" >
+  <% all_times = AnnualRank.list_rank_genre %>
+  <% all_times.each do |all_time| %>
+    <p><%= link_to all_time.source, :action => "index", :source => all_time.source %>
+    </p>
+  <% end %>
+  <p><%= link_to "All-Time Alternative", :action => "index", :alt_collection => true %></p>
+</div>
 <br>
 <br>
 <br>
