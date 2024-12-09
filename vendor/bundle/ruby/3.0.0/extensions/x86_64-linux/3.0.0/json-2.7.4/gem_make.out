@@ -1,0 +1,18 @@
+current directory: /home/drew/code/pers/musicscraper/vendor/bundle/ruby/3.0.0/gems/json-2.7.4/ext/json/ext/parser
+/usr/share/rvm/rubies/ruby-3.0.2/bin/ruby -I /usr/share/rvm/rubies/ruby-3.0.2/lib/ruby/3.0.0 -r ./siteconf20241029-36386-d6a0gy.rb extconf.rb
+checking for rb_enc_raise() in ruby.h... yes
+checking for rb_enc_interned_str() in ruby.h... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/drew/code/pers/musicscraper/vendor/bundle/ruby/3.0.0/gems/json-2.7.4/ext/json/ext/parser
+make DESTDIR\= clean
+
+current directory: /home/drew/code/pers/musicscraper/vendor/bundle/ruby/3.0.0/gems/json-2.7.4/ext/json/ext/parser
+make DESTDIR\=
+compiling parser.c
+linking shared-object json/ext/parser.so
+
+current directory: /home/drew/code/pers/musicscraper/vendor/bundle/ruby/3.0.0/gems/json-2.7.4/ext/json/ext/parser
+make DESTDIR\= install
+/usr/bin/install -m 0755 parser.so ./.gem.20241029-36386-4igqjo/json/ext

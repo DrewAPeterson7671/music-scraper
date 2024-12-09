@@ -36,6 +36,8 @@ gem 'open-uri'
 gem 'kaminari'
 gem 'devise'
 gem 'will_paginate', '~> 3.3'
+gem 'jwt'
+gem 'faraday'
 
 
 

@@ -40,6 +40,21 @@ class AnnualRank < ApplicationRecord
     return artist.rank_artist.sub!(pattern_the, "").concat(', The') if artist.rank_artist.match?(pattern_the)
   end
 
+  def self.rank_artist_the2(artist)
+    pattern_a = /^((a)\s)/i
+    pattern_the = /^((the)\s)/i
+
+    return artist.sub!(pattern_a, "").concat(', A') if artist.match?(pattern_a)
+    return artist.sub!(pattern_the, "").concat(', The') if artist.match?(pattern_the)
+  end
+
+  def self.find_artist(rank_artist)
+    target_the = rank_artist.rank_artist_the
+
+    search = target_the.gsub!(/[^0-9A-Za-z]/, '')
+    @propose_artist = Artist.where("artists.name LIKE ?", "%#{search}%")
+  end
+
   def self.change_artist(oldstuff, newstuff)
     @change = AnnualRank.where( rank_artist: oldstuff )
     @change.map do |c|
