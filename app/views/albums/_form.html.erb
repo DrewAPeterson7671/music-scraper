@@ -1,6 +1,6 @@
 
 
-<%= form_for [@artist, @album] do |form| %>
+<%= form_for(@artist ? [@artist, @album] : @album) do |form| %>
   <% if album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -19,9 +19,20 @@
     <%= form.text_field :album_name %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :artist_id %>
-  </div>
+  <% if @artist %>
+    <div class="field">
+      <%= form.hidden_field :artist_id %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :artist_id %>
+      <% top_artist_names = ["Various Artists", "Tribute Artists", "Original Soundtrack Artists"] %>
+      <% top_artists = Artist.where(name: top_artist_names).order(:name) %>
+      <% other_artists = Artist.where.not(name: top_artist_names).order(:name) %>
+      <% all_artists = top_artists + other_artists %>
+      <%= form.collection_select :artist_id, all_artists, :id, :name, include_blank: true %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :mp3_only %>
