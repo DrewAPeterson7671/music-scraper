@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :type, 'Rank Type' %>
+    <%= form.select :type, options_for_select([['AnnualRank (default)', ''], ['CollectionRank', 'CollectionRank']], annual_rank.type), include_blank: false %>
+  </div>
+  <div class="field">
     <%= form.label :year %>
     <%= form.number_field :year %>
   </div>

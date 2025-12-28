@@ -244,6 +244,7 @@ class AnnualRank < ApplicationRecord
       added = master.map { |r| [r.rank_artist&.downcase, r.rank_track&.downcase] }
 
       others = AnnualRank.where(year: year)
+        .where.not(type: 'CollectionRank')
         .where.not(source: ['KROQ', 'Billboard', 'KROQ-1'])
         .order(:rank)
 
