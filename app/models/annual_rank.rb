@@ -49,10 +49,11 @@ class AnnualRank < ApplicationRecord
   end
 
   def self.find_artist(rank_artist)
-    target_the = rank_artist.rank_artist_the
+    target_the = rank_artist.rank_artist_the2
+    target
 
     search = target_the.gsub!(/[^0-9A-Za-z]/, '')
-    @propose_artist = Artist.where("artists.name LIKE ?", "%#{search}%")
+    @propose_artist = Artist.where("artists.name ILIKE ?", "%#{search}%")
   end
 
   def self.change_artist(oldstuff, newstuff)
@@ -234,4 +235,35 @@ class AnnualRank < ApplicationRecord
     .order('rank')
     }
 
+  # Returns a hash of year => master list of annual ranks for that year, per requirements
+  def self.master_list_for_year_range(start_year = 1980, end_year = Time.now.year)
+    results = {}
+    (start_year..end_year).each do |year|
+      master = AnnualRank.where(year: year, source: 'KROQ').order(:rank).to_a
+      # We'll keep a cache of already added records for performance
+      added = master.map { |r| [r.rank_artist&.downcase, r.rank_track&.downcase] }
+
+      others = AnnualRank.where(year: year)
+        .where.not(type: 'CollectionRank')
+        .where.not(source: ['KROQ', 'Billboard', 'KROQ-1'])
+        .order(:rank)
+
+      others.each do |rec|
+        # Check for ILIKE match in master list (in DB)
+        exists_in_master = AnnualRank.where(year: year, source: 'KROQ')
+          .where('rank_artist ILIKE ? AND rank_track ILIKE ?', rec.rank_artist, rec.rank_track)
+          .exists?
+        # Also check if we've already added this combo from another source
+        key = [rec.rank_artist&.downcase, rec.rank_track&.downcase]
+        already_added = added.include?(key)
+        unless exists_in_master || already_added
+          master << rec
+          added << key
+        end
+      end
+
+      results[year] = master
+    end
+    results
+  end
 end

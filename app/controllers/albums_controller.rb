@@ -18,6 +18,7 @@ class AlbumsController < ApplicationController
       "Punk",
       "Reggae", 
       "MP3Album",
+      "Bonus Only MP3",
       "Work Recommendations"]
     @album_type_choices = [
       "", 
@@ -33,11 +34,14 @@ class AlbumsController < ApplicationController
       "Box Set", 
       "Demo",
       "Video Album", 
-      "Single"]
+      "Single",
+      "Bootleg Live",
+      "Bootleg Compilation",
+      "Soundtrack"]
     @album_download_choices = ["", "Listed", "Priority", "Queue", "Verified"]
     @album_version_choices = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
     @download_status_choices = ["", "Track Count", "Tested", "Tagged", "Normalized", "Done", "Imperfect But Rare"]
-    @listen_choices = ['Now', 'Later', 'Done']
+    @listen_choices = ['Now', 'Later', 'Done', 'In Apple Music']
   end
 
   # GET /albums or /albums.json
@@ -53,9 +57,13 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @artist = Artist.find(params[:artist_id])
-    @album = Album.new
-    @album.artist_id = @artist.id
+    if params[:artist_id].present?
+      @artist = Artist.find(params[:artist_id])
+      @album = Album.new
+      @album.artist_id = @artist.id
+    else
+      @album = Album.new
+    end
 
     # @album = Album.new
     # @album.artist_id = @artist.id
@@ -73,12 +81,16 @@ class AlbumsController < ApplicationController
 
   # POST /albums or /albums.json
   def create
-    @artist = Artist.find(params[:artist_id])
     @album = Album.new(album_params)
+    @artist = Artist.find(params[:artist_id]) if params[:artist_id].present?
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to artist_path(@artist), notice: "Album was successfully created." }
+        if @artist
+          format.html { redirect_to artist_path(@artist), notice: "Album was successfully created." }
+        else
+          format.html { redirect_to album_path(@album), notice: "Album was successfully created." }
+        end
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new, status: :unprocessable_entity }
