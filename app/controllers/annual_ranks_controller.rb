@@ -10,7 +10,27 @@ class AnnualRanksController < ApplicationController
 
   # GET /annual_ranks or /annual_ranks.json
   def index
-    @master_lists_by_year = AnnualRank.master_list_for_year_range
+    if params[:source].present? && params[:year].present?
+      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).order(:rank)
+    elsif params[:source].present?
+      @annual_ranks = AnnualRank.where(:source => params[:source]).order(:year, :rank).paginate(page: params[:page], per_page: 200)
+    elsif params[:rank_genre].present? && params[:year].present?
+      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
+    elsif params[:alt_collection].present?
+      @annual_ranks = AnnualRank.where( :alt_collection => true ).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
+    else
+      @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
+    end
+
+    @consolidated_ranks_by_year = ConsolidatedAnnualRank.all.group_by(&:year)    
+
+    # @consolidated_ranks_by_year = ConsolidatedAnnualRank.all.group_by(&:year).paginate(page: params[:page], per_page: 200)
+
+    # @rank_sorters = AnnualRank.where(rank_genre: "Alternative All-Time" ).order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
+
+    # if params[:sort].present?
+    #   @annual_rank = @annual_rank.order(params[:sort])
+    # end
   end
 
   # GET /annual_ranks/1 or /annual_ranks/1.json
