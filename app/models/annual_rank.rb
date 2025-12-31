@@ -236,23 +236,22 @@ class AnnualRank < ApplicationRecord
     }
 
   # Returns a hash of year => master list of annual ranks for that year, per requirements
-  def self.master_list_for_year_range(start_year = 1980, end_year = Time.now.year)
+  def self.recreate_consolidated_annual_rank(start_year = 1980, end_year = Time.now.year)
     results = {}
     (start_year..end_year).each do |year|
+
+      # Remove old consolidated records for this year
+      ConsolidatedAnnualRank.where(year: year).delete_all
+
       master = AnnualRank.where(year: year, source: 'KROQ').order(:rank).to_a
       # We'll keep a cache of already added records for performance
       added = master.map { |r| [r.rank_artist&.downcase, r.rank_track&.downcase] }
 
-      others = AnnualRank.where(year: year)
-        .where.not(type: 'CollectionRank')
-        .where.not(source: ['KROQ', 'Billboard', 'KROQ-1'])
-        .order(:rank)
+      others = AnnualRank.where(year: year).where(type: nil).where.not(source: ['KROQ', 'Billboard', 'KROQ-1']).order(:rank)
 
       others.each do |rec|
         # Check for ILIKE match in master list (in DB)
-        exists_in_master = AnnualRank.where(year: year, source: 'KROQ')
-          .where('rank_artist ILIKE ? AND rank_track ILIKE ?', rec.rank_artist, rec.rank_track)
-          .exists?
+        exists_in_master = AnnualRank.where(year: year, source: 'KROQ').where('rank_artist ILIKE ? AND rank_track ILIKE ?', rec.rank_artist, rec.rank_track).exists?
         # Also check if we've already added this combo from another source
         key = [rec.rank_artist&.downcase, rec.rank_track&.downcase]
         already_added = added.include?(key)
@@ -262,8 +261,22 @@ class AnnualRank < ApplicationRecord
         end
       end
 
-      results[year] = master
+      master.each_with_index do |rec, idx|
+        ConsolidatedAnnualRank.create(
+          year: rec.year,
+          rank: rec.rank,
+          source: rec.source,
+          rank_artist: rec.rank_artist,
+          rank_track: rec.rank_track,
+          rank_album: rec.rank_album,
+          rank_genre: rec.rank_genre,
+          collection_rank: idx + 1
+        )
+      end
+
+
+      # results[year] = master
     end
-    results
+    # results
   end
 end

@@ -50,5 +50,16 @@ select count(*) from annual_ranks where type = 'CollectionRank';
 select count(*) from annual_ranks;
 select count(*) from annual_ranks where type is null;
 
+select * from annual_ranks where type = 'CollectionRank';
+
+select count(*) from annual_ranks where year = 1995 and type != 'CollectionRank' and source not in ('KROQ','Billboard','KROQ-1');
+select count(*) from annual_ranks where year = 1995;
+select count(*) from annual_ranks where year = 1995 and source not in ('KROQ','Billboard','KROQ-1');
+select count(*) from annual_ranks where year = 1995 and type is null;
+select count(*) from annual_ranks where year = 1995 and type = 'ConsolidatedAnnualRank';
 
 
+
+select count(*) from annual_ranks where type = 'ConsolidatedAnnualRank' and year = 1995;
+
+select * from annual_ranks where Source = '91X' and year = 1995;
