@@ -142,7 +142,7 @@ class AnnualRank < ApplicationRecord
   scope :list_year, -> { select("year").distinct
     .order('year ASC') }
 
-  scope :list_rank_genre, -> { select("source").where(rank_genre: 'Alternative All-Time')
+  scope :list_collection, -> { select("source")
     .distinct }
 
   scope :lookup_genre, ->(rank_genre) { where("rank_genre = ?", rank_genre) }

@@ -15,11 +15,13 @@ class AnnualRanksController < ApplicationController
     elsif params[:source].present?
       @annual_ranks = AnnualRank.where(:source => params[:source]).where(:type => nil).order(:year, :rank).paginate(page: params[:page], per_page: 200)
     elsif params[:rank_genre].present? && params[:year].present?
-      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:year => params[:year]).where(:type => nil).order(:source, :rank).paginate(page: params[:page], per_page: 200)
+      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
+    elsif params[:rank_genre].present?
+      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).order(:source, :rank).paginate(page: params[:page], per_page: 200)
     elsif params[:alt_collection].present?
-      @annual_ranks = AnnualRank.where( :alt_collection => true ).where(:type => nil).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
+      @annual_ranks = AnnualRank.where( :alt_collection => true ).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
     elsif params[:source].present? && params[:year].present?
-      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).where(:type => nil).order(:rank)
+      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).order(:rank)
     else
       @annual_ranks = AnnualRank.all.order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
     end
