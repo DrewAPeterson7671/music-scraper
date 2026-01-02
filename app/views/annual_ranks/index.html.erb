@@ -45,7 +45,7 @@
 </div>
 <br>
 
-<h2>All-Time Station Lists
+<h2>All-Time Station Collections
   <span class="inline left-space">
     <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#all-time-collapse">
     &nbsp&nbsp</button>
@@ -64,104 +64,49 @@
 <br>
 <br>
 
-<h2>Consolidated Alternative Years
-  <span class="inline left-space">
-    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#consolidated-collapse">
-    &nbsp&nbsp</button>
-  </span>
-</h2>
-<div class="collapse" id="consolidated-collapse" >
-  <% #all_times = AnnualRank.list_rank_genre %>
-  <% @consolidated_ranks_by_year.keys.sort.each do |year| %>
-    <p><%= link_to year, annual_ranks_path(year: year) %></p>
-      <% if params[:year].present? && @consolidated_ranks_by_year[params[:year].to_i] %>
-        <h3>Year: <%= params[:year] %></h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Collection Rank</th>
-              <th>Rank</th>
-              <th>Source</th>
-              <th>Rank Artist</th>
-              <th>Rank Track</th>
-              <th>Rank Album</th>
-              <th>Listened</th>
-              <th>Alt Collection</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @consolidated_ranks_by_year[params[:year].to_i].each do |annual_rank| %>
-              <tr>
-                <td><%= annual_rank.collection_rank %></td>
-                <td><%= annual_rank.rank %></td>
-                <td><%= annual_rank.source %></td>
-                <td><%= annual_rank.rank_artist %></td>
-                <td><%= annual_rank.rank_track %></td>
-                <td><%= annual_rank.rank_album %></td>
-                <td><%= annual_rank.rank_listened %></td>
-                <td><%= annual_rank.alt_collection %></td>
-                <td><%= link_to 'Show', annual_rank_path(annual_rank) %></td>
-                <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
-                <td><%= link_to 'Destroy', annual_rank_path(annual_rank), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <br>
-      <% end %>
-  <% end %>
-  <p><%= link_to "All-Time Alternative", :action => "index", :alt_collection => true %></p>
-</div>
-<br>
-<br>
-<br>
-<br>
 
-<h3>Years</h3>
-<ul>
-  <% @consolidated_ranks_by_year.keys.sort.each do |year| %>
-    <li>
-      <%= link_to year, annual_ranks_path(year: year) %>
-    </li>
-  <% end %>
-</ul>
-
-<% if params[:year].present? && @consolidated_ranks_by_year[params[:year].to_i] %>
-  <h3>Year: <%= params[:year] %></h3>
-  <table>
-    <thead>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Year</th>
+      <th>Source</th>
+      <th>Rank Artist</th>
+      <th>Rank Track</th>
+      <th>Rank Album</th>
+      <th>Listened</th>
+      <th>Alt Collection</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @annual_ranks.each do |annual_rank| %>
       <tr>
-        <th>Collection Rank</th>
-        <th>Rank</th>
-        <th>Source</th>
-        <th>Rank Artist</th>
-        <th>Rank Track</th>
-        <th>Rank Album</th>
-        <th>Listened</th>
-        <th>Alt Collection</th>
-        <th colspan="3"></th>
+        <td><%= annual_rank.rank %></td>
+        <td><%= annual_rank.year %></td>
+        <td><%= annual_rank.source %></td>
+        <td><%= annual_rank.rank_artist %></td>
+        <td><%= annual_rank.rank_track %></td>
+        <td><%= annual_rank.rank_album %></td>
+        <td><%= annual_rank.rank_listened %></td>
+        <td><%= annual_rank.alt_collection %></td>
+        <td><%= link_to 'Show', annual_rank_path(annual_rank) %></td>
+        <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
+        <td><%= link_to 'Destroy', annual_rank_path(annual_rank), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
-    <tbody>
-      <% @consolidated_ranks_by_year[params[:year].to_i].each do |annual_rank| %>
-        <tr>
-          <td><%= annual_rank.collection_rank %></td>
-          <td><%= annual_rank.rank %></td>
-          <td><%= annual_rank.source %></td>
-          <td><%= annual_rank.rank_artist %></td>
-          <td><%= annual_rank.rank_track %></td>
-          <td><%= annual_rank.rank_album %></td>
-          <td><%= annual_rank.rank_listened %></td>
-          <td><%= annual_rank.alt_collection %></td>
-          <td><%= link_to 'Show', annual_rank_path(annual_rank) %></td>
-          <td><%= link_to 'Edit', edit_annual_rank_path(annual_rank) %></td>
-          <td><%= link_to 'Destroy', annual_rank_path(annual_rank), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<% if !@annual_ranks.nil? && @annual_ranks.count > 200 %>
+  <%= will_paginate @annual_ranks %>
 <% end %>
+<br>
+<br>
+<br>
+<br>
+
+
 
 <%= link_to 'New Annual Rank', new_annual_rank_path %>
