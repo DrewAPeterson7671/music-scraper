@@ -72,3 +72,7 @@ select * from annual_ranks where year = 1987 and source = '91X' and type is null
 
 select * from annual_ranks where year = 1950 and rank_genre = 'Alternative';
 update annual_ranks set year = 1983 where id = 3;
+
+select * from annual_ranks limit 10;
+
+select * from annual_ranks where type = 'CollectionRank' and source = 'Y100 collection' order by rank;
