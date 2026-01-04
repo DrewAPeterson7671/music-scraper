@@ -54,10 +54,12 @@
 <div class="collapse" id="all-time-collapse" >
   <% all_times = AnnualRank.list_collection %>
   <% all_times.each do |all_time| %>
-    <p><%= link_to all_time.source, :action => "index", :source => all_time.source %>
+    <p><%= link_to all_time.source, :action => "index", :source => all_time.source, :alt_collection => true %>
+    <% AnnualRank.lookup_source(all_time.source).list_year.each do |year| %>
+      <%= link_to year.year, :action => "index", :source => all_time.source, :year => year.year, :alt_collection => true  %>
+    <% end %>
     </p>
   <% end %>
-  <p><%= link_to "All-Time Alternative", :action => "index", :alt_collection => true %></p>
 </div>
 <br>
 <br>
