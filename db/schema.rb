@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2025_12_28_000000) do
     t.string "to_download"
     t.integer "collection_rank"
     t.string "type"
+    t.integer "unique_rank"
   end
 
   create_table "artists", force: :cascade do |t|

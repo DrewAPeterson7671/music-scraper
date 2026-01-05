@@ -45,7 +45,7 @@
 </div>
 <br>
 
-<h2>All-Time Collections
+<h2>Collections
   <span class="inline left-space">
     <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#all-time-collapse">
     &nbsp&nbsp</button>
@@ -62,6 +62,20 @@
   <% end %>
 </div>
 <br>
+
+<h2>Consolidated Alternative Years
+  <span class="inline left-space">
+    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-consolidated">
+    &nbsp&nbsp</button>
+  </span>
+</h2>
+<div class="collapse" id="collapse-consolidated" >
+  <% consolidated = AnnualRank.where(type: 'ConsolidatedAnnualRank').list_year %>
+  <% consolidated.each do |year| %>
+    <%= link_to year.year, :action => "index", :year => year.year, :consolidated => true  %>
+  <% end %>
+</div>
+<br>
 <br>
 <br>
 <br>
@@ -70,6 +84,9 @@
 <table>
   <thead>
     <tr>
+      <% if @show_collection_rank %>
+        <th>Collection Rank</th>
+      <% end %>
       <th>Rank</th>
       <th>Year</th>
       <th>Source</th>
@@ -83,7 +100,10 @@
   </thead>
   <tbody>
     <% @annual_ranks.each do |annual_rank| %>
-      <tr>
+      <tr>      
+        <% if @show_collection_rank %>
+          <td><%= annual_rank.collection_rank %></td>
+        <% end %>
         <td><%= annual_rank.rank %></td>
         <td><%= annual_rank.year %></td>
         <td><%= annual_rank.source %></td>

@@ -56,7 +56,7 @@ select count(*) from annual_ranks where year = 1995 and type != 'CollectionRank'
 select count(*) from annual_ranks where year = 1995;
 select count(*) from annual_ranks where year = 1995 and source not in ('KROQ','Billboard','KROQ-1');
 select count(*) from annual_ranks where year = 1995 and type is null;
-select count(*) from annual_ranks where year = 1995 and type = 'ConsolidatedAnnualRank';
+select count(*) from annual_ranks where type = 'ConsolidatedAnnualRank';
 select count(*) from annual_ranks where rank_genre = 'Alternative';
 
 
@@ -76,3 +76,6 @@ update annual_ranks set year = 1983 where id = 3;
 select * from annual_ranks limit 10;
 
 select * from annual_ranks where type = 'CollectionRank' and source = 'Y100 collection' order by rank;
+select * from annual_ranks where type = 'ConsolidatedAnnualRank' and year = 1988 order by collection_rank;
+
+select * from annual_ranks where unique_rank is not null order by unique_rank;

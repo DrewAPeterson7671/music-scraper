@@ -12,20 +12,28 @@ class AnnualRanksController < ApplicationController
   def index
     if params[:alt_collection].present? && params[:source].present? && params[:year].present?
       @annual_ranks = AnnualRank.where(:type => 'CollectionRank').where(:source => params[:source]).where(:year => params[:year]).order(:rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
     elsif params[:alt_collection].present? && params[:source].present?
       @annual_ranks = AnnualRank.where(:type => 'CollectionRank').where(:source => params[:source]).order(:year, :rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
+    elsif params[:consolidated].present?
+      @annual_ranks = AnnualRank.where(:type => 'ConsolidatedAnnualRank').where(:year => params[:year]).order(:collection_rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = true
     elsif params[:source].present? && params[:year].present?
       @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).where(:type => nil).order(:rank)
+      @show_collection_rank = false
     elsif params[:source].present?
       @annual_ranks = AnnualRank.where(:source => params[:source]).where(:type => nil).order(:year, :rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
     elsif params[:rank_genre].present? && params[:year].present?
       @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
     elsif params[:rank_genre].present?
       @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).order(:source, :rank).paginate(page: params[:page], per_page: 200)
-    # elsif params[:alt_collection].present
-    #   @annual_ranks = AnnualRank.where(:source => params[:source]).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
     else
       @annual_ranks = AnnualRank.where(type: nil).order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
+      @show_collection_rank = false
     end
    
 

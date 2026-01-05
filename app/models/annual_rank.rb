@@ -1,4 +1,36 @@
 class AnnualRank < ApplicationRecord
+  # Build a master list of unique ConsolidatedAnnualRank records by rank_artist and rank_track (ILIKE), assign unique_rank, and copy to UniqueConsolidatedRank
+  def self.create_unique_consolidated_ranks(start_year = 1980, end_year = Time.now.year)
+    # Reset unique_rank for all records
+    AnnualRank.update_all(unique_rank: nil)
+    seen = []
+    unique_rank = 1
+
+    # Step 1: Assign unique_rank to first occurrence of each unique (rank_artist, rank_track) pair in ConsolidatedAnnualRank
+    (start_year..end_year).each do |year|
+      ConsolidatedAnnualRank.where(year: year).find_each do |rank|
+        next if seen.any? { |a, t| a.casecmp(rank.rank_artist.to_s).zero? && t.casecmp(rank.rank_track.to_s).zero? }
+        # Find the first matching record in annual_ranks (any type)
+        rec = AnnualRank.where('rank_artist ILIKE ? AND rank_track ILIKE ?', rank.rank_artist, rank.rank_track).where(unique_rank: nil).first
+        if rec
+          rec.update(unique_rank: unique_rank)
+          seen << [rec.rank_artist.to_s, rec.rank_track.to_s]
+          unique_rank += 1
+        end
+      end
+    end
+
+    # Step 2: Assign unique_rank to first occurrence of each unique (rank_artist, rank_track) pair in CollectionRank not already seen
+    CollectionRank.find_each do |col|
+      next if seen.any? { |a, t| a.casecmp(col.rank_artist.to_s).zero? && t.casecmp(col.rank_track.to_s).zero? }
+      rec = AnnualRank.where('rank_artist ILIKE ? AND rank_track ILIKE ?', col.rank_artist, col.rank_track).where(unique_rank: nil).first
+      if rec
+        rec.update(unique_rank: unique_rank)
+        seen << [rec.rank_artist.to_s, rec.rank_track.to_s]
+        unique_rank += 1
+      end
+    end
+  end
 
   def self.rank_capture_one_array(year, source, ranks)
     i = -1
