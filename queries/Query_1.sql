@@ -56,9 +56,12 @@ select count(*) from annual_ranks where year = 1995 and type != 'CollectionRank'
 select count(*) from annual_ranks where year = 1995;
 select count(*) from annual_ranks where year = 1995 and source not in ('KROQ','Billboard','KROQ-1');
 select count(*) from annual_ranks where year = 1995 and type is null;
+
 select count(*) from annual_ranks where type = 'ConsolidatedAnnualRank';
 select count(*) from annual_ranks where rank_genre = 'Alternative';
-
+select count(*) from annual_ranks where unique_rank is not null;
+select count(*) from annual_ranks where type = 'CollectionRank';
+select count(*) from annual_ranks;
 
 select count(*) from annual_ranks where type = 'ConsolidatedAnnualRank' and year = 1995;
 
@@ -79,3 +82,10 @@ select * from annual_ranks where type = 'CollectionRank' and source = 'Y100 coll
 select * from annual_ranks where type = 'ConsolidatedAnnualRank' and year = 1988 order by collection_rank;
 
 select * from annual_ranks where unique_rank is not null order by unique_rank;
+
+update annual_ranks set type = 'CollectionRank' where source = 'CFNY The Edge Toronto collection Top 1000';
+select distinct source from annual_ranks where type != 'CollectionRank';
+select distinct source from annual_ranks where type = 'CollectionRank';
+select distinct source from annual_ranks where type is null;
+
+select * from annual_ranks where source = 'KROQ-1' limit 10;

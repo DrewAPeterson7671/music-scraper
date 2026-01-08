@@ -76,6 +76,17 @@
   <% end %>
 </div>
 <br>
+
+<h2>Unique Consolidated Alternative Collection
+  <span class="inline left-space">
+    <button class="accordion-button radio-inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-unique">
+    &nbsp&nbsp</button>
+  </span>
+</h2>
+<div class="collapse" id="collapse-unique" >
+  <%= link_to AnnualRank.where.not(unique_rank: nil).order(:unique_rank), :action => "index", :unique_consolidated => true %>
+</div>
+<br>
 <br>
 <br>
 <br>
@@ -84,8 +95,11 @@
 <table>
   <thead>
     <tr>
-      <% if @show_collection_rank %>
+      <% if @show_consolidated_rank %>
         <th>Collection Rank</th>
+      <% end %>
+      <% if @show_unique_rank %>
+        <th>Unique Rank</th>
       <% end %>
       <th>Rank</th>
       <th>Year</th>
@@ -101,8 +115,11 @@
   <tbody>
     <% @annual_ranks.each do |annual_rank| %>
       <tr>      
-        <% if @show_collection_rank %>
+        <% if @show_consolidated_rank %>
           <td><%= annual_rank.collection_rank %></td>
+        <% end %>
+        <% if @show_unique_rank %>
+          <td><%= annual_rank.unique_rank %></td>
         <% end %>
         <td><%= annual_rank.rank %></td>
         <td><%= annual_rank.year %></td>
