@@ -3,13 +3,18 @@ class AnnualRank < ApplicationRecord
   def self.collection_rank_for_export
     AnnualRank.where(type: 'CollectionRank').order(:source, :year, :rank)
   end
-
+  
   def self.consolidated_annual_rank_for_export
     AnnualRank.where(type: 'ConsolidatedAnnualRank').order(:collection_rank, :year)
   end
 
   def self.source_for_export(source)
     AnnualRank.where(source: source).order(:year, :rank)
+  end
+
+  # Export all records for a set of sources
+  def self.multi_source_for_export(sources)
+    AnnualRank.where(source: sources).order(:source, :year, :rank)
   end
 
   def self.everything_for_export
@@ -304,35 +309,35 @@ class AnnualRank < ApplicationRecord
     .order('rank')
     .limit(10) }
 
-  scope :kroq_1980, -> { where( "source = 'KROQ' AND year = 1980 AND rank_listened = false" )
+  scope :kroq_1980, -> { where( "source = 'KROQ' AND year = 1980 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }  
 
-  scope :kroq_1985, -> { where( "source = 'KROQ' AND year = 1985 AND rank_listened = false" )
+  scope :kroq_1985, -> { where( "source = 'KROQ' AND year = 1985 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }
 
-  scope :kroq_1990, -> { where( "source = 'KROQ' AND year = 1990 AND rank_listened = false" )
+  scope :kroq_1990, -> { where( "source = 'KROQ' AND year = 1990 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }  
 
-  scope :kroq_1995, -> { where( "source = 'KROQ' AND year = 1995 AND rank_listened = false" )
+  scope :kroq_1995, -> { where( "source = 'KROQ' AND year = 1995 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }
 
-  scope :kroq_2000, -> { where( "source = 'KROQ' AND year = 2000 AND rank_listened = false" )
+  scope :kroq_2000, -> { where( "source = 'KROQ' AND year = 2000 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }  
 
-  scope :kroq_2005, -> { where( "source = 'KROQ' AND year = 2005 AND rank_listened = false" )
+  scope :kroq_2005, -> { where( "source = 'KROQ' AND year = 2005 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }
 
-  scope :kroq_2010, -> { where( "source = 'KROQ' AND year = 2010 AND rank_listened = false" )
+  scope :kroq_2010, -> { where( "source = 'KROQ' AND year = 2010 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }  
 
-  scope :kroq_2015, -> { where( "source = 'KROQ' AND year = 2015 AND rank_listened = false" )
+  scope :kroq_2015, -> { where( "source = 'KROQ' AND year = 2015 AND rank_listened = false AND type is null" )
     .order('rank')
     .limit(10) }
 

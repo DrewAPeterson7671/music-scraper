@@ -89,3 +89,9 @@ select distinct source from annual_ranks where type = 'CollectionRank';
 select distinct source from annual_ranks where type is null;
 
 select * from annual_ranks where source = 'KROQ-1' limit 10;
+select * from annual_ranks where source = 'KROQ' and year = 1980 and type is null order by rank;
+select * from annual_ranks where source = 'Billboard' and year = 1945 order by rank;
+select * from annual_ranks where source = 'Billboard' and year = 1946 order by rank;
+
+select * from annual_ranks where source = 'Billboard' and year = 1941 order by rank;
+select * from annual_ranks where source = 'Billboard' and year = 2025 order by rank;
