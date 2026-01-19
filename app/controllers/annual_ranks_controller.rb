@@ -10,22 +10,17 @@ class AnnualRanksController < ApplicationController
 
   # GET /annual_ranks or /annual_ranks.json
   def index
-    if params[:alt_collection].present? && params[:source].present? && params[:year].present?
-      @annual_ranks = AnnualRank.where(:type => 'CollectionRank').where(:source => params[:source]).where(:year => params[:year]).order(:rank).paginate(page: params[:page], per_page: 200)
-    elsif params[:alt_collection].present? && params[:source].present?
-      @annual_ranks = AnnualRank.where(:type => 'CollectionRank').where(:source => params[:source]).order(:year, :rank).paginate(page: params[:page], per_page: 200)
-    elsif params[:source].present? && params[:year].present?
-      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:year => params[:year]).where(:type => nil).order(:rank)
-    elsif params[:source].present?
-      @annual_ranks = AnnualRank.where(:source => params[:source]).where(:type => nil).order(:year, :rank).paginate(page: params[:page], per_page: 200)
-    elsif params[:rank_genre].present? && params[:year].present?
-      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).where(:year => params[:year]).order(:source, :rank).paginate(page: params[:page], per_page: 200)
-    elsif params[:rank_genre].present?
-      @annual_ranks = AnnualRank.where(:rank_genre => params[:rank_genre]).where(:type => nil).order(:source, :rank).paginate(page: params[:page], per_page: 200)
-    # elsif params[:alt_collection].present
-    #   @annual_ranks = AnnualRank.where(:source => params[:source]).order(:rank_artist, :rank_track).paginate(page: params[:page], per_page: 200)
+    @annual_ranks = AnnualRank.filtered_for_export(params).paginate(page: params[:page], per_page: 200)
+    # Set flags as before
+    if params[:consolidated].present?
+      @show_consolidated_rank = true
+      @show_unique_rank = false
+    elsif params[:unique_consolidated].present?
+      @show_consolidated_rank = false
+      @show_unique_rank = true
     else
-      @annual_ranks = AnnualRank.where(type: nil).order(:source, :year, :rank).paginate(page: params[:page], per_page: 200)
+      @show_consolidated_rank = false
+      @show_unique_rank = false
     end
    
 
@@ -118,3 +113,4 @@ class AnnualRanksController < ApplicationController
       params.require(:annual_rank).permit( :year, :rank, :source, :rank_artist, :rank_track, :rank_album, :rank_listened, :rank_genre, :alt_collection, :to_download )
     end
 end
+
