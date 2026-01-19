@@ -10,7 +10,9 @@ class AlbumsController < ApplicationController
       "", 
       "VAR Queue", 
       "OST Queue", 
-      "Tribute Queue", 
+      "Tribute Queue",
+      "VAR Ongoing Playlist",
+      "VAR Static Playlist",
       "Previous", 
       "Billboard", 
       "Top Independent",
@@ -37,7 +39,9 @@ class AlbumsController < ApplicationController
       "Single",
       "Bootleg Live",
       "Bootleg Compilation",
-      "Soundtrack"]
+      "Soundtrack",
+      "VAR Ongoing Playlist",
+      "VAR Static Playlist"]
     @album_download_choices = ["", "Listed", "Priority", "Queue", "Verified"]
     @album_version_choices = ["", "Remaster", "Extended Edition", "Special Edition", "Anniversary Edition", "Demo"]
     @download_status_choices = ["", "Track Count", "Tested", "Tagged", "Normalized", "Done", "Imperfect But Rare"]

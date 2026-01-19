@@ -11,6 +11,7 @@ namespace :annual_rank do
     # EXPORT_TYPE=consolidated_annual_rank rake annual_rank:export
     # EXPORT_TYPE=source SOURCE=YourSourceName rake annual_rank:export
     # EXPORT_TYPE=everything rake annual_rank:export
+    # EXPORT_TYPE=multi_source rake annual_rank:export
 
     # Choose export type by ENV['EXPORT_TYPE']
     # Options: collection_rank, consolidated_annual_rank, source, everything, or default (filtered_for_export)
@@ -41,6 +42,15 @@ namespace :annual_rank do
         exit 1
       end
       AnnualRank.source_for_export(source)
+    when 'multi_source'
+      sources = [
+        'Live105', 'KCNL San Jose', 'Billboard', 'WDRE', 'CFNY Toronto', 'ModernRock.com', 'WLIR Long Island',
+        'The Bear Ottawa', 'CD101 Columbus', 'WHFS-DC', 'CRNC', '91X', 'WRCX', 'WIRS', 'Q101-1', '89X Detroit',
+        'KROQ-1', 'The Buzz Montreal', 'CHOI Quebec', 'Q101', 'KNDD The End Seattle', 'WFNX Boston',
+        'WOXY Cincinnati', 'Triple J Australia', 'KNAC', 'Virgin Radio London', 'The Rock Hartford',
+        'KROQ', 'Radio & Records', 'Y100 Philadelphia'
+      ]
+      AnnualRank.multi_source_for_export(sources)
     when 'everything'
       AnnualRank.everything_for_export
     else
