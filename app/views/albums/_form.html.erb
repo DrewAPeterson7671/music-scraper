@@ -26,7 +26,7 @@
   <% else %>
     <div class="field">
       <%= form.label :artist_id %>
-      <% top_artist_names = ["Various Artists", "Tribute Artists", "Original Soundtrack Artists"] %>
+      <% top_artist_names = ["Various Artists", "Tribute Artists", "Original Soundtrack Artists", "VAR Ongoing Playlist", "VAR Static Playlist"] %>
       <% top_artists = Artist.where(name: top_artist_names).order(:name) %>
       <% other_artists = Artist.where.not(name: top_artist_names).order(:name) %>
       <% all_artists = top_artists + other_artists %>
