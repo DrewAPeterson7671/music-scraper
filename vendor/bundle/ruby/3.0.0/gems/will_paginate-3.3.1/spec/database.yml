@@ -1,29 +1,34 @@
-sqlite3:
-  database: ":memory:"
-  adapter: sqlite3
-  timeout: 500
-
-mysql:
-  adapter: mysql2
-  database: will_paginate
-  username: <%= ENV["MYSQL_USER"] || "root" %>
-  encoding: utf8
-<% if ENV["MYSQL_PORT"] %>
-  host: <%= ENV["MYSQL_HOST"] %>
-  port: <%= ENV["MYSQL_PORT"] %>
-<% elsif File.exist?("/var/run/mysql5/mysqld.sock") %>
-  host: localhost
-  socket: /var/run/mysql5/mysqld.sock
-<% elsif File.exist? "/tmp/mysql.sock" %>
-  host: localhost
-  socket: /tmp/mysql.sock
-<% end %>
-
-postgres:
+development:
   adapter: postgresql
-  database: will_paginate
-  min_messages: warning
-  username: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
-  port: <%= ENV["POSTGRES_PORT"] %>
+  database: musicscraper_development
+  username: postgres
+  password: '32@husker98vespa'
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  database: musicscraper_test
+  username: postgres
+  password: 'yourpassword'
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  database: musicscraper_production
+  username: postgres
+  password: 'yourpassword'
+  host: localhost
+  port: 5432
+
+
+
+# postgres:
+#   adapter: postgresql
+#   database: will_paginate
+#   min_messages: warning
+#   username: postgres
+#   password: '32@husker98vespa'
+#   host: localhost
+#   port: 5432
