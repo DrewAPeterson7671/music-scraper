@@ -10,6 +10,7 @@ import "channels"
 
 import 'jquery';
 import '@popperjs/core';
+import './application.scss';
 // import "bootstrap"
 // import "../stylesheets/application"
 import '../js/bootstrap_js_files.js' 
